@@ -9,6 +9,11 @@ import { NavbarService } from '@services/navbar.service';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/administracion/main/main.component';
+import { ComentariosComponent } from '@components/administracion/comentarios/comentarios.component';
+import { ImagenesComponent } from './components/administracion/imagenes/imagenes.component';
+import { SubirImagenComponent } from '@components/administracion/subir-imagen/subir-imagen.component';
 
 
 @NgModule({
@@ -16,7 +21,11 @@ import { RouterModule } from '@angular/router';
     AppComponent,
     NavbarComponent,
     LandingPageComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    LoginComponent,
+    MainComponent,
+    ImagenesComponent,
+    SubirImagenComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +34,18 @@ import { RouterModule } from '@angular/router';
     RouterModule.forRoot([
       { path: '', component: LandingPageComponent },
       { path: 'registro', component: CrearUsuarioComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'admin', component: MainComponent,
+        children:[
+          { path : '', pathMatch: 'prefix', redirectTo: 'admin' },
+          { path : 'comentarios', component:  ComentariosComponent },
+          { path : 'imagenes', component:  ImagenesComponent },
+          { path : 'subirImg', component:  SubirImagenComponent },
+
+        ]
+      },
+      
+
     ])
   ],
   providers: [
