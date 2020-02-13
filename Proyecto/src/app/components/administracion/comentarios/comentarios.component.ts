@@ -12,4 +12,8 @@ export class ComentariosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  delete(){
+    console.log("borrando");
+  }
+
 }
