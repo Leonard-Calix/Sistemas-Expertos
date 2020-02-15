@@ -8,14 +8,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CrearUsuarioComponent implements OnInit {
 
-  constructor( private _ac: ActivatedRoute ) { }
+  constructor( private activatedRoute: ActivatedRoute ) {
+    
+    this.activatedRoute.params.subscribe( params => {
+      console.log(params['plan'])
+    });
+
+
+   }
 
   ngOnInit(): void {
-    /*
-    this._ac.paramMap.subscribe( params => {
-      const idPlan = params.get('plan')
-    })
-*/
+  
   }
 
 }

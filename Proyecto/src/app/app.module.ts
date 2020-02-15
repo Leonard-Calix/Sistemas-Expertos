@@ -14,6 +14,9 @@ import { MainComponent } from './components/administracion/main/main.component';
 import { ComentariosComponent } from '@components/administracion/comentarios/comentarios.component';
 import { ImagenesComponent } from './components/administracion/imagenes/imagenes.component';
 import { SubirImagenComponent } from '@components/administracion/subir-imagen/subir-imagen.component';
+import { LoginAdminComponent } from '@components/administracion/login-admin/login-admin.component';
+import { IndexComponent } from './components/index/index.component';
+
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import { SubirImagenComponent } from '@components/administracion/subir-imagen/su
     LoginComponent,
     MainComponent,
     ImagenesComponent,
-    SubirImagenComponent
+    SubirImagenComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,15 +37,18 @@ import { SubirImagenComponent } from '@components/administracion/subir-imagen/su
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: LandingPageComponent },
-      { path: 'registro', component: CrearUsuarioComponent },
+      { path: 'registro/:plan', component: CrearUsuarioComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'nav', component: NavbarComponent },
+      { path: 'index', component: IndexComponent },
+      { path: 'loginAdmin', component: LoginAdminComponent },
       { path: 'admin', component: MainComponent,
+
         children:[
           { path : '', pathMatch: 'prefix', redirectTo: 'admin' },
           { path : 'comentarios', component:  ComentariosComponent },
           { path : 'imagenes', component:  ImagenesComponent },
           { path : 'subirImg', component:  SubirImagenComponent },
-
         ]
       },
       

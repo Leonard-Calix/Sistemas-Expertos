@@ -12,4 +12,8 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  buscar(termino){
+    console.log('El termino de busqueda es ' + termino );
+  }
+
 }
