@@ -16,6 +16,13 @@ import { ImagenesComponent } from './components/administracion/imagenes/imagenes
 import { SubirImagenComponent } from '@components/administracion/subir-imagen/subir-imagen.component';
 import { LoginAdminComponent } from '@components/administracion/login-admin/login-admin.component';
 import { IndexComponent } from './components/index/index.component';
+import { UsuariosComponent } from './components/administracion/usuarios/usuarios.component';
+import { PerfilComponent } from './components/administracion/perfil/perfil.component';
+import { PaginasWebComponent } from './components/administracion/paginas-web/paginas-web.component';
+import { BlogComponent } from './components/administracion/blog/blog.component';
+import { NuevaPaginaComponent } from './components/administracion/nueva-pagina/nueva-pagina.component';
+import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo-blog.component';
+
 
 
 
@@ -30,25 +37,41 @@ import { IndexComponent } from './components/index/index.component';
     ImagenesComponent,
     SubirImagenComponent,
     IndexComponent,
+    UsuariosComponent,
+    PerfilComponent,
+    PaginasWebComponent,
+    BlogComponent,
+    NuevaPaginaComponent,
+    NuevoBlogComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([
+      //{ path: '**', redirectTo: 'index'},
       { path: '', component: LandingPageComponent },
       { path: 'registro/:plan', component: CrearUsuarioComponent },
       { path: 'login', component: LoginComponent },
       { path: 'nav', component: NavbarComponent },
       { path: 'index', component: IndexComponent },
       { path: 'loginAdmin', component: LoginAdminComponent },
-      { path: 'admin', component: MainComponent,
 
+      { path: 'admin', component: MainComponent,
         children:[
           { path : '', pathMatch: 'prefix', redirectTo: 'admin' },
           { path : 'comentarios', component:  ComentariosComponent },
           { path : 'imagenes', component:  ImagenesComponent },
           { path : 'subirImg', component:  SubirImagenComponent },
+          { path : 'usuarios', component: UsuariosComponent },
+          { path : 'perfil', component: PerfilComponent },
+          { path : 'paginas', component: PaginasWebComponent },
+          { path : 'blog', component: BlogComponent },
+          { path : 'nueva', component: NuevaPaginaComponent },
+          { path : 'nuevo', component: NuevoBlogComponent }
+
+
         ]
       },
       
