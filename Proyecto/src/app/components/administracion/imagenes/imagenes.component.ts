@@ -10,7 +10,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class ImagenesComponent implements OnInit {
 
-  albunes = ["facebook", "instagram", "Spotify", "Youtube"];
+  albunes = ["Facebook", "Instagram", "Spotify", "Youtube", "Tik-tok"];
 
 
   constructor(private http: HttpClient) {

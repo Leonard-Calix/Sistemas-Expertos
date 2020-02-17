@@ -10,7 +10,8 @@ export class NavbarService {
 
   prueba() {
     let url = 'https://localhost:4300/usuario';
-    return this.http.get(url);
+    //return this.http.get(url);
+    console.log("hola desde el servicio");
   }
 
 }
