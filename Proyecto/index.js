@@ -13,6 +13,14 @@ app.get('/usuario', function(req ,res){
     res.json({'mensaje' : 'Respuesta del servidor de Node'});
 });
 
-app.get('/imagenes', function(req ,res){
-    res.json({'mensaje' : 'Respuesta del servidor de Node imagenes'});
+app.get('/obtenerUsuario', function(req ,res){
+    res.json({'mensaje' : 'Respuesta del servidor de Node, para obtener usuarios'});
+});
+
+app.get('/buscarUsuario', function(req ,res){
+    res.json({'mensaje' : 'Respuesta del servidor de Node, para buscar usuario'});
+});
+
+app.get('/login', function(req ,res){
+    res.json({'mensaje' : 'Respuesta del servidor de Node, para hacer login'});
 });

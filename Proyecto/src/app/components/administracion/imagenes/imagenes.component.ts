@@ -14,7 +14,7 @@ export class ImagenesComponent implements OnInit {
 
 
   constructor(private http: HttpClient) {
-    //this.http.get('http://localhost:4300/imagenes').subscribe(datos => console.log(datos))
+    this.http.get('http://localhost:4300/usuario').subscribe(datos => console.log(datos))
     //this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(datos => console.log(datos))
 
 

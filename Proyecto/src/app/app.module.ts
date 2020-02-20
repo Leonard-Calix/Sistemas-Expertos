@@ -24,6 +24,8 @@ import { NuevaPaginaComponent } from './components/administracion/nueva-pagina/n
 import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo-blog.component';
 
 
+import { UsuarioService } from "@services/usuario.service";
+
 
 
 @NgModule({
@@ -79,7 +81,8 @@ import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo
     ])
   ],
   providers: [
-    NavbarService
+    NavbarService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

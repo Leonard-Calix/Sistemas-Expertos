@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '@services/navbar.service';
+import { UsuarioService } from '@services/usuario.service';
 
 
 @Component({
@@ -9,14 +10,16 @@ import { NavbarService } from '@services/navbar.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private servicio: NavbarService) { }
+  constructor( private servicio: UsuarioService) { }
 
   ngOnInit(): void {
   }
 
+  usuarios = {}
+
   login(){
 
-    console.log(this.servicio.prueba() );
+    this.servicio.getUser();
 
   }
 
