@@ -1,32 +1,74 @@
-<div class="container mt-5 animated fadeIn " >
-    <form>
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">  Example select</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Example textarea</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-      </form>
-</div>
+<section class="rounded animated">
+  <div class="container mt-5" >
+    <div class="row bg-gray" >
+      <div class="col-lg-4 col-md-4 col-12 bg-primary ocultar">
+        <br><br><br>
+        <img src="../../..//assets/img/logo-login.png" class="img-fluid rounded" alt="">
+      </div>
+      <div class="col-lg-8 col-md-8 col-12 mt-5 rounded bg-gray ">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Nombre</label>
+              <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre completo">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Apellido</label>
+              <input type="text" class="form-control" id="inputPassword4" placeholder="Apellido">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Correo electronico</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Correo electronico">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Contrasenia</label>
+              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Contrasenia</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="confirmar contrasenia">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Direccion</label>
+              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">State</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="inputZip">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

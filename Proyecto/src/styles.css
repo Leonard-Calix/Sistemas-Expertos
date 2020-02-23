@@ -2,3 +2,35 @@
 .fuente-principal{
     font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
+
+.btn{
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .500rem .990rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 20px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+  }
+  
+  .btn-primary {
+    color: #007bff;
+    font-weight: bold;
+    background-color: #fff;
+    border-color: #007bff;
+}
+
+.btn-inline-primary {
+    color: #fff;
+    font-weight: bold;
+    background-color:transparent;
+    border-color: #fff;
+}
