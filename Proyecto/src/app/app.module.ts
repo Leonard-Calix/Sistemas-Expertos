@@ -25,6 +25,7 @@ import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo
 
 
 import { UsuarioService } from "@services/usuario.service";
+import { ResumenComponent } from './components/administracion/resumen/resumen.component';
 
 
 
@@ -45,6 +46,7 @@ import { UsuarioService } from "@services/usuario.service";
     BlogComponent,
     NuevaPaginaComponent,
     NuevoBlogComponent,
+    ResumenComponent,
     
   ],
   imports: [
@@ -62,7 +64,7 @@ import { UsuarioService } from "@services/usuario.service";
 
       { path: 'admin', component: MainComponent,
         children:[
-          { path : '', pathMatch: 'prefix', redirectTo: 'admin' },
+          { path : 'admin', pathMatch: 'prefix', redirectTo: 'admin/resumen' },
           { path : 'comentarios', component:  ComentariosComponent },
           { path : 'imagenes', component:  ImagenesComponent },
           { path : 'subirImg', component:  SubirImagenComponent },
@@ -71,7 +73,9 @@ import { UsuarioService } from "@services/usuario.service";
           { path : 'paginas', component: PaginasWebComponent },
           { path : 'blog', component: BlogComponent },
           { path : 'nueva', component: NuevaPaginaComponent },
-          { path : 'nuevo', component: NuevoBlogComponent }
+          { path : 'nuevo', component: NuevoBlogComponent },
+          { path : 'resumen', component: ResumenComponent }
+
 
 
         ]
