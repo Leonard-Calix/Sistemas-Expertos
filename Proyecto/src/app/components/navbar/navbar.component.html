@@ -12,18 +12,24 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="#">blog <span class="sr-only">(current)</span></a>
       </li>
+      <li *ngIf="autenticacion" class="nav-item">
+        <a class="nav-link text-white" href="#">Crear Sitio<span class="sr-only">(current)</span></a>
+      </li>
+      <li *ngIf="autenticacion" class="nav-item">
+        <a class="nav-link text-white" href="#">Crear blog<span class="sr-only">(current)</span></a>
+      </li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item" >
+      <li *ngIf="!autenticacion" class="nav-item" >
         <a class="nav-link text-white" routerLink="/login">Iniciar Seccion</a>
       </li>
-      <li *ngIf="false" class="nav-item dropdown">
+      <li *ngIf="autenticacion"  class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img class="img-perfil img-fluid" src="../../../../assets/img/user-perfil.jpg" alt=""> Leonard-Calix
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/admin/perfil"> <i class="fas fa-user-cog"></i> Perfil  </a>
-          <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesion</a>
+          <a class="dropdown-item" routerLink="/index/perfil"> <i class="fas fa-user-cog"></i> Perfil  </a>
+          <a class="dropdown-item" routerLink="/login"><i class="fas fa-sign-out-alt"></i> Cerrar sesion</a>
         </div>
       </li>
     </ul>

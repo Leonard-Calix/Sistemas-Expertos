@@ -9,6 +9,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class NavbarComponent implements OnInit {
 
+  autenticacion:Boolean = false;
+
   constructor( private http: HttpClient) {
 
     this.http.get('http://localhost:4300/usuario').subscribe(datos => console.log(datos))

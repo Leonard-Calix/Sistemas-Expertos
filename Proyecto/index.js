@@ -6,7 +6,7 @@ app.use(express.static('public'));//use se utiliza para ejecutar middlewares
 app.use(cors());
 
 app.listen('4300',function(){
-    console.log('Servidor levantado')
+    console.log('Servidor levantado...')
 });
 
 app.get('/usuario', function(req ,res){

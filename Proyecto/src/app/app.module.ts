@@ -26,6 +26,7 @@ import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo
 
 import { UsuarioService } from "@services/usuario.service";
 import { ResumenComponent } from './components/administracion/resumen/resumen.component';
+import { MenuComponent } from './components/usuario/menu/menu.component';
 
 
 
@@ -47,6 +48,7 @@ import { ResumenComponent } from './components/administracion/resumen/resumen.co
     NuevaPaginaComponent,
     NuevoBlogComponent,
     ResumenComponent,
+    MenuComponent,
     
   ],
   imports: [
@@ -56,11 +58,18 @@ import { ResumenComponent } from './components/administracion/resumen/resumen.co
     RouterModule.forRoot([
       //{ path: '**', redirectTo: 'index'},
       { path: '', component: LandingPageComponent },
+      { path: 'nav', component: NavbarComponent },
+      { path: 'loginAdmin', component: LoginAdminComponent },
       { path: 'registro/:plan', component: CrearUsuarioComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'nav', component: NavbarComponent },
-      { path: 'index', component: IndexComponent },
-      { path: 'loginAdmin', component: LoginAdminComponent },
+
+
+      { path: 'index', component: IndexComponent ,
+        children:[
+          { path: 'perfil', component : PerfilComponent },
+        ]
+      },
+
 
       { path: 'admin', component: MainComponent,
         children:[
@@ -75,9 +84,6 @@ import { ResumenComponent } from './components/administracion/resumen/resumen.co
           { path : 'nueva', component: NuevaPaginaComponent },
           { path : 'nuevo', component: NuevoBlogComponent },
           { path : 'resumen', component: ResumenComponent }
-
-
-
         ]
       },
       
