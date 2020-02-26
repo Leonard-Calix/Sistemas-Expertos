@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var cors = require('cors');
+var database = require('./modelo/database');
 
 app.use(express.static('public'));//use se utiliza para ejecutar middlewares
 app.use(cors());
