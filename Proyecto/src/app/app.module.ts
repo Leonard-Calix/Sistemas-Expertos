@@ -27,6 +27,7 @@ import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo
 import { UsuarioService } from "@services/usuario.service";
 import { ResumenComponent } from './components/administracion/resumen/resumen.component';
 import { MenuComponent } from './components/usuario/menu/menu.component';
+import { CargaImagenesService } from '@services/carga-imagenes.service';
 
 
 
@@ -92,7 +93,8 @@ import { MenuComponent } from './components/usuario/menu/menu.component';
   ],
   providers: [
     NavbarService,
-    UsuarioService
+    UsuarioService,
+    CargaImagenesService
   ],
   bootstrap: [AppComponent]
 })
