@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+/* COMPONENTES */
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/principal/app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from '@components/navbar/navbar.component';
 import { NavbarService } from '@services/navbar.service';
@@ -23,6 +24,7 @@ import { BlogComponent } from './components/administracion/blog/blog.component';
 import { NuevaPaginaComponent } from './components/administracion/nueva-pagina/nueva-pagina.component';
 import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo-blog.component';
 
+/* SERVICIOS */
 
 import { UsuarioService } from "@services/usuario.service";
 import { ResumenComponent } from './components/administracion/resumen/resumen.component';

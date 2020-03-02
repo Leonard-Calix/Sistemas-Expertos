@@ -12,6 +12,9 @@ export class CargaImagenesService {
 
   constructor(private httpCient:HttpClient) { }
 
+  respuesta:any = '';
+
+
   ngOnInit(): void {
   }
  
@@ -20,15 +23,20 @@ export class CargaImagenesService {
   cargarImagenes(archivo){
 
     let url = 'http://localhost:4300/cargarImagen';
-    this.httpCient.post(this.urlServicio+'cargarImagen' , archivo ).subscribe(datos => console.log(datos));
+    this.httpCient.post(this.urlServicio+'cargarImagen' , archivo ).subscribe(datos => {
+      this.respuesta = datos;
+    });
+    return this.respuesta;
     
   }
 
   getImagenes(){
     
     let url = 'http://localhost:4300/getImagenes';
-    this.httpCient.get(url).subscribe(datos => console.log(datos));
-    
+    this.httpCient.get(url).subscribe(datos =>{
+      this.respuesta = datos;
+    });
+    return this.respuesta;
   }
 
 }

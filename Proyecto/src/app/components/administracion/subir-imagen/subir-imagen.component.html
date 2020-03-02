@@ -8,7 +8,9 @@
         <div class="custom-file">
           <input (change)="cargarImagen($event)" type="file" class="custom-file-input" id="customFile">
           <label class="custom-file-label" for="customFile">Choose file</label><br><br>
-          <button type="button" class="btn btn-outline-success">Subir imagen</button>
+          <div *ngIf="seGuardo" class="alert alert-primary" role="alert">
+            {{ mensaje.mensaje }}
+          </div>
         </div>
       </div>
     </div>
