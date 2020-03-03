@@ -9,7 +9,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class NavbarComponent implements OnInit {
 
-  autenticacion:Boolean = false;
+  autenticacion:Boolean = true;
 
   constructor( private http: HttpClient) {
 

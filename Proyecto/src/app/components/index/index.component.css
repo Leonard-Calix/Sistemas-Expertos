@@ -10,3 +10,33 @@
     color: #fff;
     background: -webkit-linear-gradient(45deg,#68d0ff,#453cf5 100%);
 }
+
+.btn .sm {
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 12px 19px 10px;
+}
+
+.btn:hover {
+  box-shadow: 0 7px 14px rgba(0,0,0,.12), 0 3px 6px rgba(0,0,0,.08);
+  background: #4d8dfd;
+  color: #fff;
+  outline: 0;
+}
+
+.btn {
+  font-weight: 500;
+  border-radius: 4px;
+  line-height: 1.4em;
+  padding: 8px;
+  margin-right: 10px;
+  transition: all .3s ease;
+  font-size: 18px;
+  border: 0 solid rgba(0,0,0,0);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.12);
+  background: #3880ff;
+  letter-spacing: -.01em;
+}
