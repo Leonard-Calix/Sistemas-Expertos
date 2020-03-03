@@ -30,6 +30,10 @@ import { UsuarioService } from "@services/usuario.service";
 import { ResumenComponent } from './components/administracion/resumen/resumen.component';
 import { MenuComponent } from './components/usuario/menu/menu.component';
 import { CargaImagenesService } from '@services/carga-imagenes.service';
+import { VistaSitiosComponent } from './components/vista-sitios/vista-sitios.component';
+import { VistaBlogsComponent } from '@components/vista-blogs/vista-blogs.component';
+import { CrearSitioComponent } from './components/usuario/crear-sitio/crear-sitio.component';
+import { CrearBlogComponent } from './components/usuario/crear-blog/crear-blog.component';
 
 
 
@@ -52,6 +56,9 @@ import { CargaImagenesService } from '@services/carga-imagenes.service';
     NuevoBlogComponent,
     ResumenComponent,
     MenuComponent,
+    VistaSitiosComponent,
+    CrearSitioComponent,
+    CrearBlogComponent,
     
   ],
   imports: [
@@ -67,9 +74,15 @@ import { CargaImagenesService } from '@services/carga-imagenes.service';
       { path: 'login', component: LoginComponent },
 
 
+
       { path: 'index', component: IndexComponent ,
         children:[
           { path: 'perfil', component : PerfilComponent },
+          { path: 'sitios', component: VistaSitiosComponent },
+          { path: 'blogs', component: VistaBlogsComponent },
+          { path: 'crearSitio', component: CrearSitioComponent },
+          { path: 'crearBlog', component: CrearBlogComponent },
+
         ]
       },
 

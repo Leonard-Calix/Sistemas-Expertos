@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser')
-//var database = require('./modelo/database');
+var database = require('./modelo/database');
 
 app.use(express.static('public'));//use se utiliza para ejecutar middlewares
 app.use(cors());
