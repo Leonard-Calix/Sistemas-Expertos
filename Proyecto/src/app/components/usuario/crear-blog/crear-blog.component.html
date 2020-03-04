@@ -1,1 +1,69 @@
-<p>crear-blog works!</p>
+<div class="container animated fadeIn" > 
+    <div class="card bg-light mt-4" >
+      <div class="card-header m-0">Nuevo blog</div>
+      <div class="card-body">
+        <div class="row" >
+          <div class="col-md-6 col-12" >
+            <div class="form-row">
+                <div class="col">
+                  <label for="">Nombre del blog</label><br>
+                  <input type="text" class="form-control" placeholder="Nombre del blog">
+                </div>
+                <div class="col">
+                  <label for="">Url</label><br>
+                  <input type="text" class="form-control" placeholder="Url">
+                </div>
+              </div><br>
+            <div class="form-group">
+              <label for="inputAddress">Descripcion</label>
+              <textarea class="form-control" name="" id="" cols="30" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="col-md-6 col-12" >
+            <div class="form-group">
+                <label for="inputAddress">Imagen del posts</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Subir imagen</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01">
+                      <label class="custom-file-label" for="inputGroupFile01">Selecionar Archivo</label>
+                    </div>
+                  </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Categoria</label>
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option value="0">---Seleccione---</option>
+                        <option value="0">Musica</option>
+                        <option value="1">Arte</option>
+                        <option value="2">Moda</option>
+                        <option value="3">Peliculas</option>
+                        <option value="4">Ventas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Comentarios</label><br>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline1">Perminir</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline2">No permitir</label>
+                </div>
+            </div>
+          </div>
+        </div>     
+          <button type="button" class="btn btn-sm btn-primary mr-2">Cancelar</button>
+          <a routerLink="/index/crearBlogShourcouts" class="btn btn-sm btn-secondary">Siguiente</a>
+      </div>
+    </div>
+  </div>
+

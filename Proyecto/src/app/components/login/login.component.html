@@ -1,4 +1,4 @@
-<section class="rounded animated">
+<section class="rounded animated fadeIn">
   <div class="container mt-5" >
     <div class="row bg-gray" >
       <div class="col-lg-6 col-md-6 col-12 bg-primary ocultar">
@@ -13,12 +13,13 @@
           <label for="inputPassword" class="sr-only">Contrasenia</label>
           <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
           <div class="checkbox mb-3">
-            <label>
-              <input class="" type="checkbox" value="remember-me"> Remember me
-            </label>
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input type="checkbox" class="custom-control-input" id="customControlInline">
+              <label class="custom-control-label" for="customControlInline">Remember</label>
+            </div>          
           </div>
-          <button class="btn btn-lg btn-primary btn-block" (click)="login()" type="button">Sign in</button>
-          <p class="mt-5 mb-3 text-muted">¿ Si no tienes cuenta ? <a class="text-primary" routerLink="/registro">Crea una cuenta</a></p>
+          <button class="btn btn-sm btn-primary btn-block" (click)="login()" type="button">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">¿ Si no tienes cuenta ? <a class="text-primary" routerLink="/">Crea una cuenta</a></p>
       </div>
       </div>
     </div>

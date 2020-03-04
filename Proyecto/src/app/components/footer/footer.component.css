@@ -1,0 +1,33 @@
+.titulo{
+    letter-spacing: 3px;
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+ul li{
+    /*background: #343a40 !important;*/
+    background-color: #f8f9fa!important;
+    padding: 5px;
+    border-bottom: none;
+} 
+
+.footer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    display:block;
+    margin:auto;
+}
+
+@media (max-width: 768px) { 
+    .img-fluid{
+        display: none;
+    }
+
+}

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-crear-blog',
-  templateUrl: './crear-blog.component.html',
-  styleUrls: ['./crear-blog.component.css']
+  selector: 'app-crear-sitio2',
+  templateUrl: './crear-sitio2.component.html',
+  styleUrls: ['./crear-sitio2.component.css']
 })
-export class CrearBlogComponent implements OnInit {
+export class CrearSitio2Component implements OnInit {
 
   galeria:boolean = false;
   shorcouts:boolean = false;
@@ -24,5 +24,4 @@ export class CrearBlogComponent implements OnInit {
     this.galeria = false;
     this.shorcouts = true;
   }
-
 }

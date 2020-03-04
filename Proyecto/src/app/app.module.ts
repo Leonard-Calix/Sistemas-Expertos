@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 /* COMPONENTES */
@@ -34,6 +35,11 @@ import { VistaSitiosComponent } from './components/vista-sitios/vista-sitios.com
 import { VistaBlogsComponent } from '@components/vista-blogs/vista-blogs.component';
 import { CrearSitioComponent } from './components/usuario/crear-sitio/crear-sitio.component';
 import { CrearBlogComponent } from './components/usuario/crear-blog/crear-blog.component';
+import { CrearBlog2Component } from './components/usuario/crear-blog2/crear-blog2.component';
+import { MisSitiosComponent } from './components/usuario/mis-sitios/mis-sitios.component';
+import { MisBlogsComponent } from './components/usuario/mis-blogs/mis-blogs.component';
+import { CrearSitio2Component } from './components/usuario/crear-sitio2/crear-sitio2.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -59,19 +65,26 @@ import { CrearBlogComponent } from './components/usuario/crear-blog/crear-blog.c
     VistaSitiosComponent,
     CrearSitioComponent,
     CrearBlogComponent,
+    CrearBlog2Component,
+    MisSitiosComponent,
+    MisBlogsComponent,
+    CrearSitio2Component,
+    FooterComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       //{ path: '**', redirectTo: 'index'},
       { path: '', component: LandingPageComponent },
       { path: 'nav', component: NavbarComponent },
-      { path: 'loginAdmin', component: LoginAdminComponent },
       { path: 'registro/:plan', component: CrearUsuarioComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'loginAdmin', component: LoginAdminComponent },
+
 
 
 
@@ -82,7 +95,10 @@ import { CrearBlogComponent } from './components/usuario/crear-blog/crear-blog.c
           { path: 'blogs', component: VistaBlogsComponent },
           { path: 'crearSitio', component: CrearSitioComponent },
           { path: 'crearBlog', component: CrearBlogComponent },
-
+          { path: 'crearBlogShourcouts', component: CrearBlog2Component },
+          { path: 'misSitios', component: MisSitiosComponent },
+          { path: 'misBlogs', component: MisBlogsComponent },
+          { path: 'crearSitioShourcouts', component: CrearSitio2Component },
         ]
       },
 
@@ -99,7 +115,9 @@ import { CrearBlogComponent } from './components/usuario/crear-blog/crear-blog.c
           { path : 'blog', component: BlogComponent },
           { path : 'nueva', component: NuevaPaginaComponent },
           { path : 'nuevo', component: NuevoBlogComponent },
-          { path : 'resumen', component: ResumenComponent }
+          { path : 'resumen', component: ResumenComponent },
+
+
         ]
       },
       

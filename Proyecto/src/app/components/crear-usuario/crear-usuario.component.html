@@ -5,68 +5,45 @@
         <br><br><br>
         <img src="../../..//assets/img/logo-login.png" class="img-fluid rounded" alt="">
       </div>
-      <div class="col-lg-8 col-md-8 col-12 mt-5 rounded bg-gray ">
-        <form>
+      <div class="col-lg-8 col-md-8 col-12 mt-5 rounded bg-gray p-5 ">
+        <form novalidate="" (ngSubmit)="guardar(formulario)" #formulario="ngForm">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Nombre</label>
-              <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre completo">
+              <input type="text" class="form-control"  placeholder="Nombre completo" name="nombre" [(ngModel)]="usuario.nombre" required #nombre="ngModel">
+              <div *ngIf="nombre.errors?.required" >Este campo es requerido</div>
             </div>
+            
             <div class="form-group col-md-6">
               <label for="inputPassword4">Apellido</label>
-              <input type="text" class="form-control" id="inputPassword4" placeholder="Apellido">
+              <input type="text" class="form-control" id="inputPassword4" placeholder="apellido" [(ngModel)]="usuario.apellido" name="apellido" required #apellido="ngModel">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Correo electronico</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Correo electronico">
+              <input type="email" class="form-control" placeholder="Correo electronico" [(ngModel)]="usuario.correo" name="correo" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" required #correo="ngModel" >
             </div>
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Contrasenia</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              <label for="inputPassword4">Direccion</label>
+              <input type="text" class="form-control" placeholder="Direccion" [(ngModel)]="usuario.direccion" name="direccion" required #direccion="ngModel">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Contrasenia</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="confirmar contrasenia">
+              <input type="password" class="form-control" placeholder="contrasenia" [(ngModel)]="usuario.contrasena"  name="contrasena" required #contrasena="ngModel" >
             </div>
+
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Direccion</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              <label for="inputPassword4">Confirmar contrasenia</label>
+              <input type="password" class="form-control" placeholder="confirmar contrasenia" name="confirmacion"
+               [(ngModel)]="usuario.confirmacion"   required #confirmacion="ngModel"  >
+
             </div>
           </div>
-          <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Check me out
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-sm btn-success">Guardar</button>
+          <a routerLink="/index/sitios" type="button" class="btn btn-sm btn-danger ml-3">Cancelar</a> 
         </form>
       </div>
     </div>

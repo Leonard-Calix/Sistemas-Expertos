@@ -1,6 +1,6 @@
 
 <section class="vista" >
-  <div class="container">
+  <div class="container animated fadeIn">
     <nav class="navbar navbar-expand-lg navbar-dark bg-trasparente">
       <a class="navbar-brand"routerLink="">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/index">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-white" routerLink="/index/sitios">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" routerLink="/index">Features</a>
@@ -19,16 +19,22 @@
     </nav>
     <br>
     <div class="row mt-5">
-      <div class="col-lg-6 col-md-6 col-12 mb-5 mt-3" >
-        <h3 class="text-white" >Crea tu sitio web ahora con MISITIO</h3>
+      <div class="col-lg-6 col-md-12 col-12 mb-5 mt-3" >
+        <h3 class="text-white titulo" >Crea tu sitio web ahora con MISITIO</h3>
       <hr style="background-color:solid white  1px;" >
       <p class="parrafo" >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore inventore expedita velit quod maxime earum optio quae amet corrupti aperiam corporis voluptates voluptas maiores id reprehenderit doloribus, voluptate consectetur quisquam.</p>
         <br><br>
-      <a class="btn btn-primary ml-5 mr-5" routerLink="/index">Empezar</a>
-      <a class="btn btn-inline-primary" routerLink="#">Mas informacion</a>
+        <div class="row" >
+          <div class="col-6" >
+            <a class="btn btn-primary ml-5 mr-5" routerLink="/index/sitios">Empezar</a>
+          </div>
+          <div class="col-6 text-center" >
+             <a class="btn btn-inline-primary" routerLink="#">Mas informacion</a>
+          </div>
+        </div>
     </div>
-      <div class="col-lg-6 col-md-6 col-12 mb-5 mt-5 " >
-        <img src="../../../assets/img/logo-1.png" class="img-fluid" alt="">
+      <div class="col-lg-6 col-md-12 col-12 mb-5 mt-5 " >
+        <img src="../../../assets/img/logo-1.png" class="img-fluid foto-header" alt="">
       </div>
     </div>
   </div>
@@ -63,12 +69,12 @@
   <div class="container ">
     <br><br><br>
     <div class="row">
-      <div class="col-lg-6 col-md-6 col-12" >
+      <div class="col-lg-5 col-md-5 col-12 " >
         <img src="../../../assets/img/panel.jpg" class="img-fluid" style="box-shadow: rgb(0,0,0);" alt="">
       </div>
-      <div class="col-lg-6 col-md-6 col-12" >
-        <h3 class="card-title" ><b>Descargar </b>la aplicacion</h3><br><br>
-        <a class="btn btn-primary btn-precio-blanco centro" routerLink="">Descargar</a>
+      <div class="col-lg-5 col-md-5 col-12 app" >
+        <h3 class="card-title ml-5" ><b>Descargar </b>la aplicacion</h3><br><br>
+        <a class="btn btn-primary btn-precio-blanco centro ml-5" routerLink="">Descargar</a>
       </div>
     </div>
   </div>
@@ -112,6 +118,7 @@
 <section id="precios" class="container mt-3">
 
   <h3 class="title text-center">Planes</h3><br><br>
+  
 
   <div class="card-deck">
     <div class="card">
@@ -158,9 +165,8 @@
 
   </div>  
 </section>
-
-
-<br><br><br>
+<br>
+<app-footer></app-footer>
 
 
 

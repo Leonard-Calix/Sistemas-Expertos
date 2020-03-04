@@ -1,0 +1,57 @@
+<div class="container animated fadeIn" > 
+    <div class="card bg-light mt-4" >
+      <div class="card-header m-0">Defina su sitios web</div>
+      <div class="card-body">
+        <div class="form-group">
+            <!-- Button trigger modal -->
+              <button (click)="modalShorcouts()" type="button" class="btn btn-sm btn-primary mr-4" data-toggle="modal" data-target="#exampleModalCenter">Shorcouts</button>
+              <button (click)="modalGaleria()" type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">Imagenes</button>
+            <hr>
+              <div class="form-group">
+                <label for="inputAddress">Informacion del sitio</label>
+                <textarea class="form-control" placeholder="{tipo:'galeria',imagenes:['56bcvb5545shjh65','56bcvb5545shjh66','56bcvb5545shjh67']}
+                " name="" id="" cols="300" rows="10"></textarea>
+              </div>
+          </div>
+            
+          <button type="button" class="btn btn-sm btn-primary mr-2">Guardar</button>
+          <button type="button" class="btn btn-sm btn-danger mr-2">Cancelar</button>
+          <button type="button" class="btn btn-sm btn-outline-success mr-2">Visualizar</button>         
+      </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 *ngIf="shorcouts" class="modal-title" id="exampleModalLongTitle">Seleciones un Shorcouts</h5>
+          <h5 *ngIf="galeria" class="modal-title" id="exampleModalLongTitle">Galeria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+            <div *ngIf="shorcouts" class="row" >
+                <div class="col">Imagenes</div>
+                <div class="col">Galeria</div>
+                <div class="col">Enlace</div>
+            </div>
+
+            <div *ngIf="galeria" class="row">
+                <div class="col-4">
+                    <img class="img-fluid"  src="../../../../assets/img/blog.jpg" alt="">
+                    <p>Id 33nsdfjk</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

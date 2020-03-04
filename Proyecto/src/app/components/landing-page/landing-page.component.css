@@ -198,3 +198,19 @@ hr {
     background-color:transparent;
     border-color: #fff;
 }
+
+@media (max-width: 992px) { 
+    .foto-header{
+        display: none;
+    }
+
+    .titulo{
+        padding-top: 0px;
+    }
+
+    .app{
+        margin-top: 15px;
+    }
+
+
+}

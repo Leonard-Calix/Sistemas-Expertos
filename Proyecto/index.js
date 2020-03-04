@@ -36,7 +36,7 @@ app.get('/login', function(req ,res){
 
 app.post('/cargarImagen', function(req ,res){
     //res.json({'mensaje' : 'Listo para guardar imagen' , 'nombreArchivo' : req.body.nombre , 'FormatoArchivo' : req.body.tipo});
-    //res.json(req.body);
+    res.json(req.body);
     res.json({'mensaje' : 'Imgen guardada corectamente' , 'status' : 'Ok'});
 });
 
