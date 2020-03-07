@@ -1,16 +1,15 @@
 <section class="text-center animated fadeIn">
     <div class="form-signin bg-white rounded">
-      <img class="mb-4" src="../../../../assets/logo.png" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <i class="fab fa-4x fa-accusoft mb-3 text-primary"></i><br><br>
       <label for="inputEmail" class="sr-only">Correo electronico</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Correo electronico" required autofocus><br>
+      <input type="email" id="inputEmail" class="form-contro" placeholder="Correo electronico" required autofocus><br><br>
       <label for="inputPassword" class="sr-only">Contrasenia</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Contrasenia" required>
-      <div class="custom-control custom-checkbox my-1 mr-sm-2">
-        <input type="checkbox" class="custom-control-input" id="customControlInline">
+      <input type="password" id="inputPassword" class="form-contro" placeholder="Contrasenia" required>
+      <div class="custom-control custom-checkbox my-1 mr-sm-2" style="float: left;"><br>
+        <input type="checkbox" class="custom-control-input" id="customControlInline" >
         <label class="custom-control-label" for="customControlInline">Recordarme</label>
-      </div>
-      <button class="btn btn-primary btn-block" type="button">Sign in</button>
+      </div><br>
+      <button class="btn btn-primary btn-block mt-5" (click)="login()" type="button">Sign in</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </div>
 </section>

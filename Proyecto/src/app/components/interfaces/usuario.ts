@@ -5,5 +5,6 @@ export interface Usuario{
     direccion: string,
     correo: string,
     contrasena: string,
-    confirmacion: string
+    confirmacion: string,
+    acepta: boolean,
 }

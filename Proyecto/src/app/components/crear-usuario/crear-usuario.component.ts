@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Usuario } from "../interfaces/usuario";
+import { UsuarioService } from "@services/usuario.service";
+
 
 @Component({
   selector: 'app-crear-usuario',
@@ -16,28 +18,31 @@ export class CrearUsuarioComponent implements OnInit {
     direccion: null,
     correo: null,
     contrasena: null,
-    confirmacion: null
+    confirmacion: null,
+    acepta: false,
   }
 
-  constructor( private activatedRoute: ActivatedRoute ) { 
+  constructor( private activatedRoute: ActivatedRoute, private router:Router, private servicesUsuario:UsuarioService ) { 
     
-    this.activatedRoute.params.subscribe( params => {
-      console.log(params['plan'])
-    });
-   }
-
-   
-
+  }
 
   ngOnInit(): void {
   
   }
 
   guardar(formulario:NgForm){
-    console.log("foma completa" , formulario);
+    //console.log("foma completa" , formulario);
     //console.log("foma valores" , formulario.value);
+    //console.log(this.usuario);
 
-    
+     this.servicesUsuario.addUser(this.usuario).subscribe(ServerRes =>{
+      //this.respuesta = ServerRes
+      console.log(ServerRes);
+
+    });
+
+    this.router.navigate(['/index/perfil']);
+
   }
 
 }

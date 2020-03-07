@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+
+
 
 /* COMPONENTES */
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/principal/app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from '@components/navbar/navbar.component';
@@ -24,13 +26,6 @@ import { PaginasWebComponent } from './components/administracion/paginas-web/pag
 import { BlogComponent } from './components/administracion/blog/blog.component';
 import { NuevaPaginaComponent } from './components/administracion/nueva-pagina/nueva-pagina.component';
 import { NuevoBlogComponent } from './components/administracion/nuevo-blog/nuevo-blog.component';
-
-/* SERVICIOS */
-
-import { UsuarioService } from "@services/usuario.service";
-import { ResumenComponent } from './components/administracion/resumen/resumen.component';
-import { MenuComponent } from './components/usuario/menu/menu.component';
-import { CargaImagenesService } from '@services/carga-imagenes.service';
 import { VistaSitiosComponent } from './components/vista-sitios/vista-sitios.component';
 import { VistaBlogsComponent } from '@components/vista-blogs/vista-blogs.component';
 import { CrearSitioComponent } from './components/usuario/crear-sitio/crear-sitio.component';
@@ -40,7 +35,16 @@ import { MisSitiosComponent } from './components/usuario/mis-sitios/mis-sitios.c
 import { MisBlogsComponent } from './components/usuario/mis-blogs/mis-blogs.component';
 import { CrearSitio2Component } from './components/usuario/crear-sitio2/crear-sitio2.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ResumenComponent } from './components/administracion/resumen/resumen.component';
+import { MenuComponent } from './components/usuario/menu/menu.component';
 
+
+/* SERVICIOS */
+
+import { UsuarioService } from "@services/usuario.service";
+import { CargaImagenesService } from '@services/carga-imagenes.service';
+import { LandingPage2Component } from './landing-page2/landing-page2.component';
+import { NoFoundComponent } from './no-found/no-found.component';
 
 
 @NgModule({
@@ -70,6 +74,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MisBlogsComponent,
     CrearSitio2Component,
     FooterComponent,
+    LandingPage2Component,
+    NoFoundComponent,
     
   ],
   imports: [
@@ -77,57 +83,13 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      //{ path: '**', redirectTo: 'index'},
-      { path: '', component: LandingPageComponent },
-      { path: 'nav', component: NavbarComponent },
-      { path: 'registro/:plan', component: CrearUsuarioComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'loginAdmin', component: LoginAdminComponent },
-
-
-
-
-      { path: 'index', component: IndexComponent ,
-        children:[
-          { path: 'perfil', component : PerfilComponent },
-          { path: 'sitios', component: VistaSitiosComponent },
-          { path: 'blogs', component: VistaBlogsComponent },
-          { path: 'crearSitio', component: CrearSitioComponent },
-          { path: 'crearBlog', component: CrearBlogComponent },
-          { path: 'crearBlogShourcouts', component: CrearBlog2Component },
-          { path: 'misSitios', component: MisSitiosComponent },
-          { path: 'misBlogs', component: MisBlogsComponent },
-          { path: 'crearSitioShourcouts', component: CrearSitio2Component },
-        ]
-      },
-
-
-      { path: 'admin', component: MainComponent,
-        children:[
-          { path : 'admin', pathMatch: 'prefix', redirectTo: 'admin/resumen' },
-          { path : 'comentarios', component:  ComentariosComponent },
-          { path : 'imagenes', component:  ImagenesComponent },
-          { path : 'subirImg', component:  SubirImagenComponent },
-          { path : 'usuarios', component: UsuariosComponent },
-          { path : 'perfil', component: PerfilComponent },
-          { path : 'paginas', component: PaginasWebComponent },
-          { path : 'blog', component: BlogComponent },
-          { path : 'nueva', component: NuevaPaginaComponent },
-          { path : 'nuevo', component: NuevoBlogComponent },
-          { path : 'resumen', component: ResumenComponent },
-
-
-        ]
-      },
-      
-
-    ])
+    
   ],
   providers: [
     NavbarService,
     UsuarioService,
-    CargaImagenesService
+    CargaImagenesService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

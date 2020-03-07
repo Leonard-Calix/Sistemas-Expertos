@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarService } from '@services/navbar.service';
+import { NgForm } from '@angular/forms';
 import { UsuarioService } from '@services/usuario.service';
+import { Usuario } from "../interfaces/usuario";
+
 
 
 @Component({
@@ -10,16 +12,29 @@ import { UsuarioService } from '@services/usuario.service';
 })
 export class LoginComponent implements OnInit {
 
+  usuario:Usuario = {
+    nombre: null,
+    apellido: null,
+    direccion: null,
+    correo: null,
+    contrasena: null,
+    confirmacion: null,
+    acepta: false,
+  }
+
   constructor( private servicio: UsuarioService) { }
 
   ngOnInit(): void {
   }
 
-  usuarios = {}
+  
 
-  login(){
+  login(formulario:NgForm){
 
-    this.servicio.getUser();
+    console.log("foma completa" , formulario);
+    //console.log("foma valores" , formulario.value);
+
+    //this.servicio.getUser();
 
   }
 

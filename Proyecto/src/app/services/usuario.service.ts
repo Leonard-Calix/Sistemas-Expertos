@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { Usuario } from "../components/interfaces/usuario";
+
 
 
 @Injectable({
@@ -14,15 +16,15 @@ export class UsuarioService {
 
 
   getUser(){
-
     return this.http.get('http://localhost:4300/obtenerUsuario');
     //return this.http.get('https://jsonplaceholder.typicode.com/users')
-
   }
 
   buscarUsuario(){
+    return this.http.get('http://localhost:4300/addUser');
+  }
 
-    return this.http.get('http://localhost:4300/buscarUsuario');
-
+  addUser(user:Usuario){
+    return this.http.post('http://localhost:4300/addUser', user);
   }
 }

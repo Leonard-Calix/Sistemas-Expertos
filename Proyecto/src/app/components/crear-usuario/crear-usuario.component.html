@@ -1,48 +1,58 @@
-<section class="rounded animated">
-  <div class="container mt-5" >
-    <div class="row bg-gray" >
-      <div class="col-lg-4 col-md-4 col-12 bg-primary ocultar">
-        <br><br><br>
-        <img src="../../..//assets/img/logo-login.png" class="img-fluid rounded" alt="">
-      </div>
-      <div class="col-lg-8 col-md-8 col-12 mt-5 rounded bg-gray p-5 ">
-        <form novalidate="" (ngSubmit)="guardar(formulario)" #formulario="ngForm">
+<section class="rounded animated bg-light" style="height: 100vh;">
+  <div class="container pt-5" >
+    <div class="row bg-white p-4 rounded" > 
+      <div class="col-lg-12 col-md-12 col-12 mt-2 rounded">
+        <div  class="fondo-user">
+          <h5 class="card-title text-center text-white pt-5 fa-2x" >Crear cuenta</h5>
+        </div><br>
+        <form novalidate="" (ngSubmit)="guardar(formulario)" #formulario="ngForm" >
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Nombre</label>
-              <input type="text" class="form-control"  placeholder="Nombre completo" name="nombre" [(ngModel)]="usuario.nombre" required #nombre="ngModel">
-              <div *ngIf="nombre.errors?.required" >Este campo es requerido</div>
+              <label for="inputEmail4"></label>
+              <input type="text" class="form-contro"  placeholder="Nombre completo" name="nombre" [(ngModel)]="usuario.nombre" required #nombre="ngModel">
+              <div class="mensaje-error" *ngIf="nombre.errors?.required"  >Este campo es requerido</div>
             </div>
             
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Apellido</label>
-              <input type="text" class="form-control" id="inputPassword4" placeholder="apellido" [(ngModel)]="usuario.apellido" name="apellido" required #apellido="ngModel">
+              <label for="inputPassword4"></label>
+              <input type="text" class="form-contro" id="inputPassword4" placeholder="Apellido" [(ngModel)]="usuario.apellido" name="apellido" required #apellido="ngModel">
+              <div *ngIf="apellido.errors?.required" class="mensaje-error" >Este campo es requerido</div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Correo electronico</label>
-              <input type="email" class="form-control" placeholder="Correo electronico" [(ngModel)]="usuario.correo" name="correo" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" required #correo="ngModel" >
+              <label for="inputEmail4"></label>
+              <input type="email" class="form-contro" placeholder="Correo electronico" [(ngModel)]="usuario.correo" name="correo" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" required #correo="ngModel" >
+              <div *ngIf="correo.errors?.required" class="mensaje-error" >Este campo es requerido</div>
+              <div *ngIf="correo.errors?.pattern" class="mensaje-error" >Direccion de correo no valida</div>
             </div>
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Direccion</label>
-              <input type="text" class="form-control" placeholder="Direccion" [(ngModel)]="usuario.direccion" name="direccion" required #direccion="ngModel">
+              <label for="inputPassword4"></label>
+              <input type="text" class="form-contro" placeholder="Direccion" [(ngModel)]="usuario.direccion" name="direccion" required #direccion="ngModel">
+              <div *ngIf="direccion.errors?.required" class="mensaje-error" >Este campo es requerido</div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Contrasenia</label>
-              <input type="password" class="form-control" placeholder="contrasenia" [(ngModel)]="usuario.contrasena"  name="contrasena" required #contrasena="ngModel" >
+              <label for="inputEmail4"></label>
+              <input type="password" class="form-contro" placeholder="Contrasenia" [(ngModel)]="usuario.contrasena" minlength="6"  name="contrasena" required #contrasena="ngModel" >
+              <div *ngIf="contrasena.errors?.required" class="mensaje-error" >Este campo es requerido</div>
+              <div *ngIf="contrasena.errors?.minlength" class="mensaje-error" >la contrasena debes de ser por lo menos {{ contrasena.errors.minlength.requiredLength }} caracteres</div>
             </div>
-
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Confirmar contrasenia</label>
-              <input type="password" class="form-control" placeholder="confirmar contrasenia" name="confirmacion"
-               [(ngModel)]="usuario.confirmacion"   required #confirmacion="ngModel"  >
-
+              <label for="inputPassword4"></label>
+              <input type="password" class="form-contro" placeholder="Confirmar contrasenia" name="confirmacion"
+               [(ngModel)]="usuario.confirmacion"  required #confirmacion="ngModel" minlength="6" >
+               <div *ngIf="confirmacion.errors?.required" class="mensaje-error" >Este campo es requerido</div>
+               <div *ngIf="confirmacion.errors?.minlength" class="mensaje-error" >la contrasena debes de ser por lo menos {{ confirmacion.errors.minlength.requiredLength }} caracteres</div>
+               <div *ngIf="usuario.confirmacion!=usuario.contrasena && !confirmacion.errors?.minlength" class="mensaje-error" >Las contrasenas no coinciden</div>
             </div>
           </div>
-          <button type="submit" class="btn btn-sm btn-success">Guardar</button>
+          <div class="custom-control custom-checkbox">
+            <input [(ngModel)]="usuario.acepta" required type="checkbox" class="custom-control-input" id="customCheck1" name="acepta">
+            <label class="custom-control-label" for="customCheck1">Aceptar terminos y condiciones</label>
+          </div><br>
+          <button [disabled]="!formulario.valid" type="submit" class="btn btn-sm btn-success">Guardar</button>
           <a routerLink="/index/sitios" type="button" class="btn btn-sm btn-danger ml-3">Cancelar</a> 
         </form>
       </div>

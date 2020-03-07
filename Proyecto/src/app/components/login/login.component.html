@@ -1,26 +1,30 @@
-<section class="rounded animated fadeIn">
-  <div class="container mt-5" >
-    <div class="row bg-gray" >
-      <div class="col-lg-6 col-md-6 col-12 bg-primary ocultar">
-        <br><br><br>
-        <img src="../../..//assets/img/logo-login.png" class="img-fluid rounded" alt="">
-      </div>
-      <div class="col-lg-6 col-md-6 col-12 mt-5 rounded ">
-        <div class="form-signin mt-5">
-          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1><br>
-          <label for="inputEmail" class="sr-only">Correo electronico</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
-          <label for="inputPassword" class="sr-only">Contrasenia</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          <div class="checkbox mb-3">
-            <div class="custom-control custom-checkbox my-1 mr-sm-2">
-              <input type="checkbox" class="custom-control-input" id="customControlInline">
-              <label class="custom-control-label" for="customControlInline">Remember</label>
-            </div>          
+<section class="rounded bg-gray animated fadeIn">
+  <div class="container" >
+    <div class="form-signin" >
+      <div class=" mt-5 rounded ">
+        <div class="card mb-1  rounded centar">
+          <div class="fondo-login" ><br><br>
+            <h1 class="h3 mb-3 font-weight-normal text-center text-white "> <b>INICIAR SESION</b> </h1>
           </div>
-          <button class="btn btn-sm btn-primary btn-block" (click)="login()" type="button">Sign in</button>
-          <p class="mt-5 mb-3 text-muted">¿ Si no tienes cuenta ? <a class="text-primary" routerLink="/">Crea una cuenta</a></p>
-      </div>
+          <div class="card-body">
+            <form class="mt-3 bg-white rounded" #formulario="ngForm" (ngSubmit)="login(formulario)">
+              <label for="inputEmail" class="sr-only">  Correo electronico</label>
+              <input type="email" name="correo" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" [(ngModel)]="usuario.correo" required class="form-contro" placeholder="Email address" #correo="ngModel" autofocus><br><br>
+              <label for="inputPassword" class="sr-only">Contrasenia</label>
+              <input type="password" name="contrasenia" class="form-contro" [(ngModel)]="usuario.contrasena" minlength="6" placeholder="Password" #contrasenia="ngModel" required>
+              <div class="checkbox mb-3">
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="customControlInline">
+                  <label class="custom-control-label" for="customControlInline">Remember</label>
+                </div>          
+              </div>
+              <button [disabled]="!formulario.valid" class="btn btn-primary btn-block mt-5" type="submit">Sign in</button>
+              <p class="mt-5 mb-3 text-muted">¿ Si no tienes cuenta ? <a class="text-primary" routerLink="/registro">Crea una cuenta</a></p>
+            </form>
+          </div>
+        </div>
+    
+        
       </div>
     </div>
   </div>

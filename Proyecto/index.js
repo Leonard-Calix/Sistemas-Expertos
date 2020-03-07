@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser')
-var database = require('./modelo/database');
+//var database = require('./modelo/database');
 
 app.use(express.static('public'));//use se utiliza para ejecutar middlewares
 app.use(cors());
@@ -18,9 +18,15 @@ app.listen('4300',function(){
     console.log('Servidor levantado...')
 });
 
-app.get('/usuario', function(req ,res){
-    res.json({'mensaje' : 'Respuesta del servidor de Node'});
+/* ===============================Usuario========================================= */
+
+app.post('/addUser', function(req ,res){
+    let informacion = req.body;
+    res.json({'mensaje' : 'Usuarios guardado con exito' , 'status' : 'Ok'});
 });
+
+
+
 
 app.get('/obtenerUsuario', function(req ,res){
     res.json({'mensaje' : 'Respuesta del servidor de Node, para obtener usuarios'});

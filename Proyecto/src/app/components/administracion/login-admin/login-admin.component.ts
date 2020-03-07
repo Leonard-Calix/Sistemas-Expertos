@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-admin',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor( private router:Router ) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+
+    console.log("metodo de login");
+
+    this.router.navigate(['/admin/resumen']);
+  
+
   }
 
 }
