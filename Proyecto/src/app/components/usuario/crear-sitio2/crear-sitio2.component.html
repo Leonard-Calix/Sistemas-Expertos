@@ -9,8 +9,12 @@
             <hr>
               <div class="form-group">
                 <label for="inputAddress">Informacion del sitio</label>
+
+                <ckeditor [(ngModel)]="model.editorData" [editor]="Editor"></ckeditor>
+                <!--
                 <textarea class="form-control" placeholder="{tipo:'galeria',imagenes:['56bcvb5545shjh65','56bcvb5545shjh66','56bcvb5545shjh67']}
                 " name="" id="" cols="300" rows="10"></textarea>
+              -->
               </div>
           </div>
             

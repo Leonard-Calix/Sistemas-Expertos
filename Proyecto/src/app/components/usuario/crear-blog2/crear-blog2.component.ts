@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 
 @Component({
   selector: 'app-crear-blog2',
@@ -6,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./crear-blog2.component.css']
 })
 export class CrearBlog2Component implements OnInit {
+
+  public Editor = ClassicEditor;
+
+  public model = {
+    editorData: ''
+  };
 
   galeria:boolean = false;
   shorcouts:boolean = false;
@@ -24,5 +32,20 @@ export class CrearBlog2Component implements OnInit {
     this.galeria = false;
     this.shorcouts = true;
   }
+
+  public ready( editor ) {
+    editor.ui.getEditableElement().parentElement.insertBefore(
+        editor.ui.view.toolbar.element,
+        editor.ui.getEditableElement()
+    );
+}
+
+
+
+public editor( { editor }: ChangeEvent ) {
+    const data = editor.getData();
+
+    console.log( data );
+}
 
 }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { CKEditorModule   } from '@ckeditor/ckeditor5-angular';
 
 
 
@@ -83,6 +84,7 @@ import { NoFoundComponent } from './no-found/no-found.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    CKEditorModule
     
   ],
   providers: [

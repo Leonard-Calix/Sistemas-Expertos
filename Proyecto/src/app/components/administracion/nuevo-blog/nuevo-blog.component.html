@@ -1,6 +1,6 @@
 <div class="container-fluid mt-3" >
   <div class="card bg-light mb-3" >
-      <div class="card-header m-0">Nueva blog</div>
+      <div class="card-header m-0">Nuevo blog</div>
       <div class="card-body">
         <form>
           <div class="form-row">
@@ -17,16 +17,16 @@
               </select>
             </div>
             <div class="form-group col-md-4">
-              <label for="inputEmail4">Comentarios</label><br>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">Si</label>
+              <label for="inputAddress">Comentarios</label><br>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Perminir</label>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">No</label>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">No permitir</label>
               </div>
-            </div>
+          </div>
           </div>
           <div class="form-group">
             <label for="inputAddress">Descripcion</label>
@@ -36,15 +36,24 @@
             <label for="inputAddress">Shorcouts</label>
             <div class="row">
               <div class="col-md-4 col-12">
-                <label for="">Entrada</label>
+                <label for="">Entrada Post</label>
                 <p class="text-muted" >tipo:'entrada',id:'56bcvb5545shjh44'</p>
               </div>
               <div class="col-md-4 col-12">
                 <label for="">Imagen</label>
-                <p class="text-muted" >tipo:'imagen',id:'56bcvb5545shjh44'</p>
+                <p class="text-muted" > tipo:'imagen',id:'56bcvb5545shjh44'</p>
               </div>
               <div class="col-md-4 col-12">
-                <label for="">Enlaces</label>
+                <label for="">Enlaces a descarga</label>
+                <p class="text-muted" > tipo:'enlace',id:'56bcvb5545shjh65',titulo:'Descargar archivo' </p>
+              </div>
+              <div class="col-md-4 col-12">
+                <label for="">Galeria </label>
+                <p class="text-muted" >tipo:'galeria',imagenes:['56bcvb5545shjh65','56bcvb5545shjh66','56bcvb5545shjh67']</p>
+              </div>
+              <div class="col-md-4 col-12">
+                <label for="">Galeria </label>
+                <p class="text-muted" > tipo:'menu',id:'56bcvb5545shjh22'</p>
               </div>
             </div>
           </div><hr>

@@ -9,8 +9,11 @@
             <hr>
               <div class="form-group">
                 <label for="inputAddress">Informacion del sitio</label>
-                <textarea class="form-control" placeholder="{tipo:'galeria',imagenes:['56bcvb5545shjh65','56bcvb5545shjh66','56bcvb5545shjh67']}
+                <!--
+                <textarea class="form-control" placeholder="{tipo:'galeria',imagenes:['img-1','img-2]}
                 " name="" id="" cols="300" rows="10"></textarea>
+                -->
+                <ckeditor [(ngModel)]="model.editorData" [editor]="Editor" (chances)="editor($event)"></ckeditor>
               </div>
           </div>
             
@@ -35,17 +38,47 @@
         </div>
         <div class="modal-body">
 
-            <div *ngIf="shorcouts" class="row" >
-                <div class="col">Imagenes</div>
-                <div class="col">Galeria</div>
-                <div class="col">Enlace</div>
+            <div *ngIf="shorcouts" class="container">
+              <div class="form-group">
+                <label for="inputAddress">Shorcouts</label>
+                <div class="row">
+                  <div class="col-md-4 col-12">
+                    <label for="">Entrada Post</label>
+                    <p class="text-muted" >tipo:'entrada',id:'56bcvb5545shjh44'</p>
+                  </div>
+                  <div class="col-12">
+                    <label for="">Imagen</label>
+                    <p class="text-muted" > tipo:'imagen',id:'56bcvb5545shjh44'</p>
+                  </div>
+                  <div class="col-12">
+                    <label for="">Enlaces a descarga</label>
+                    <p class="text-muted" > tipo:'enlace',id:'56bcvb5545shjh65',titulo:'Descargar archivo' </p>
+                  </div>
+                  <div class="col-12">
+                    <label for="">Galeria </label>
+                    <p class="text-muted" >tipo:'galeria',imagenes:['56bcvb5545shjh65','56bcvb5545shjh66','56bcvb5545shjh67']</p>
+                  </div>
+                  <div class="col-12">
+                    <label for="">Menu </label>
+                    <p class="text-muted" > tipo:'menu',id:'56bcvb5545shjh22'</p>
+                  </div>
+                </div>
+              </div><hr>
             </div>
 
             <div *ngIf="galeria" class="row">
                 <div class="col-4">
-                    <img class="img-fluid"  src="../../../../assets/img/blog.jpg" alt="">
-                    <p>Id 33nsdfjk</p>
+                    <img class="img-fluid"  src="../../../../assets/img/galeria/img-1.jpg" alt="">
+                    <p class="text-title text-primary" >Id img-1</p>
                 </div>
+                <div class="col-4">
+                  <img class="img-fluid"  src="../../../../assets/img/galeria/img-2.jpg" alt="">
+                  <p class="text-title text-primary" >Id img-2</p>
+              </div>
+              <div class="col-4">
+                <img class="img-fluid"  src="../../../../assets/img/galeria/img-3.jpg" alt="">
+                <p class="text-title text-primary" >Id img-3</p>
+            </div>
             </div>
         </div>
         <div class="modal-footer">
