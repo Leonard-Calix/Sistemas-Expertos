@@ -1,0 +1,3 @@
+[0308/232011.756:ERROR:process_info.cc(118)] ReadProcessMemory bool __cdecl crashpad::(anonymous namespace)::ReadStruct(HANDLE, crashpad::WinVMAddress, T *) [T = crashpad::process_types::LDR_DATA_TABLE_ENTRY<crashpad::process_types::internal::Traits64>]: Solo se completó una parte de una solicitud ReadProcessMemory o WriteProcessMemory. (0x12B)
+[0308/232011.814:ERROR:process_info.cc(329)] VirtualQueryEx: Acceso denegado. (0x5)
+[0308/232011.814:ERROR:process_info.cc(556)] ReadMemoryInfo failed

@@ -38,9 +38,7 @@ export class CrearBlog2Component implements OnInit {
         editor.ui.view.toolbar.element,
         editor.ui.getEditableElement()
     );
-}
-
-
+}s
 
 public editor( { editor }: ChangeEvent ) {
     const data = editor.getData();

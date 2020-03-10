@@ -16,7 +16,7 @@ export class ImagenesComponent implements OnInit {
 
   archivo:FileItem[] = [];
 
-  albunes = ["Facebook", "Instagram", "Spotify", "Youtube", "Tik-tok"];
+  albunes = ["web site"];
 
 
   constructor(private http: HttpClient, private _cargaImagenes: CargaImagenesService) {

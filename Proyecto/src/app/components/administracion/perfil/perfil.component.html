@@ -5,7 +5,7 @@
             <div class="card-body">
               <div class="author">
                   <img class="img-fluid" src="../../../../assets/img/user.png" alt="..."><br><br>
-                  <h5 class="title text-center ">Leonard-94</h5>
+                  <h5 class="title text-center "> {{usuario[0].nombre}} </h5>
               </div>
             </div>
             <div class="card-footer">
@@ -46,13 +46,13 @@
                   <div class="col-md-6 px-1">
                     <div class="form-group">
                       <label>Nombre</label>
-                      <input type="text" class="form-control" placeholder="Nombre" value="Bryan Leonardo">
+                      <input type="text" class="form-control" placeholder="Nombre" value="{{ usuario[0].nombre }}">
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Apellido</label>
-                      <input type="email" class="form-control" value="Calix Velasquez" placeholder="Apellido">
+                      <input type="email" class="form-control" value="{{ usuario[0].apellido }}" placeholder="Correo">
                     </div>
                   </div>
                 </div>
@@ -60,13 +60,7 @@
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Correo</label>
-                      <input type="text" class="form-control" disabled="" placeholder="Company" value="bcalixvelasquez@gmail.com">
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-1">
-                    <div class="form-group">
-                      <label>Usuario</label>
-                      <input type="text" class="form-control" placeholder="Usuario" value="Leonard-94">
+                      <input type="text" class="form-control" disabled="" placeholder="Company" value="{{ usuario[0].correo }}">
                     </div>
                   </div>
                 </div>
@@ -74,18 +68,11 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Direccion</label>
-                      <input type="text" class="form-control" placeholder="Home Address" value="Tegucigalpa, Honduras">
+                      <input type="text" class="form-control" placeholder="Home Address" value="{{ usuario[0].direccion }}">
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label>Suscripcion</label>
-                      <input type="text" class="form-control" placeholder="" value="Basica">
-                    </div>
-                  </div>
-                </div>
+                <input type="hidden" value="{{ usuario[0]._id }}" >
                 <div class="row">
                   <div class="update ml-auto mr-auto">
                     <button type="button" class="btn btn-sm btn-success btn-round mr-5">Actualizar Perfil</button>

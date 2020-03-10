@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '@services/usuario.service';
-import { Usuario } from "../interfaces/usuario";
+import { UsuarioInterface } from '@components/interfaces/usuario.Interface';
 
 
 
@@ -12,14 +12,16 @@ import { Usuario } from "../interfaces/usuario";
 })
 export class LoginComponent implements OnInit {
 
-  usuario:Usuario = {
+  usuario:UsuarioInterface = {
     nombre: null,
     apellido: null,
     direccion: null,
     correo: null,
     contrasena: null,
     confirmacion: null,
+    role: null,
     acepta: false,
+    
   }
 
   constructor( private servicio: UsuarioService) { }

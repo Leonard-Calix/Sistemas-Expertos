@@ -14,18 +14,19 @@
                     <th scope="col card-title">#</th>
                     <th scope="col card-title">Nombre</th>
                     <th scope="col card-title">Apellido</th>
-                    <th scope="col card-title">Nombre de usuario</th>
+                    <th scope="col card-title">Direccion</th>
                     <th scope="col card-title">Correo</th>
-                    <th>Acciones</th>
+                    <th>Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let usuario of usuarios" >
                     <th scope="row">1</th>
-                    <td>Leonado</td>
-                    <td>Calix</td>
-                    <td>Correo</td>
-                    <td>Leonardo-94</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellido}}</td>
+                    <td>{{usuario.direccion}}</td>
+                    <td>{{usuario.correo}}</td>
+                    <td> <button class="btn" (click)="eliminar()" > <i class="fas fa-trash-alt text-danger"></i> </button> </td>
                   </tr>
                 </tbody>
               </table>
@@ -44,11 +45,53 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+
+          <div class="container" >
+            <div class="row" >
+              <div class="col">
+                <div class="form-group" >
+                  <label for="">Nombre</label>
+                  <input name="nombre" class="form-control" [(ngModel)]="usuario.nombre" type="text" placeholder="Ingrese el nombre">
+                </div>
+                <div class="form-group" >
+                  <label for="">Correo</label>
+                  <input name="correo" type="email" class="form-control" [(ngModel)]="usuario.correo" placeholder="Ingrese el correo" >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group" >
+                  <label for="">Apellido</label>
+                  <input name="apellido" class="form-control" [(ngModel)]="usuario.apellido" type="text" placeholder="Ingrese el apellido">
+                </div>
+                <div class="form-group" >
+                  <label for="">Direccion</label>
+                  <input name="direccion" type="text" class="form-control" [(ngModel)]="usuario.direccion" placeholder="Ingrese la direccion" >
+                </div>
+              </div>
+            </div>
+
+            
+              <div class="row">
+                <div class="col">
+                    <div class="form-group" >
+                      <label for="">Contrasenia</label>
+                      <input name="contrasena" type="password" class="form-control" [(ngModel)]="usuario.contrasena" placeholder="Ingrese la contrasenia" >
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group" >
+                      <label for="">Role</label>
+                      <input name="role" type="email" class="form-control" [(ngModel)]="usuario.role" value="admin" disabled >
+                    </div>
+                </div>
+              </div>
+            
+            
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-sm btn-primary">Save changes</button>
+          <button type="button" class="btn btn-sm btn-primary" (click)="guardarAdmin()"data-dismiss="modal" >Guardar</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

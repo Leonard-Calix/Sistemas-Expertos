@@ -91,7 +91,6 @@ import { NoFoundComponent } from './no-found/no-found.component';
     NavbarService,
     UsuarioService,
     CargaImagenesService,
-    UsuarioService
   ],
   bootstrap: [AppComponent]
 })
