@@ -34,6 +34,7 @@ import { ResumenComponent } from './components/administracion/resumen/resumen.co
 import { MenuComponent } from './components/usuario/menu/menu.component';
 import { LandingPage2Component } from './landing-page2/landing-page2.component';
 import { NoFoundComponent } from './no-found/no-found.component';
+import { PrincipalComponent } from './templates/principal/principal.component';
 
 const routes: Routes = [
     //{ path: '**', redirectTo: 'index'},
@@ -76,7 +77,9 @@ const routes: Routes = [
         { path : 'resumen', component: ResumenComponent },
 
       ]
-    }
+    },
+    { path : 'template/:id', component: PrincipalComponent },
+
     
 ];
 

@@ -1,0 +1,20 @@
+<section class="nav mb-3">
+    <app-nav-bar *ngIf="sitio[0].encabezado" [sitio]="sitio"></app-nav-bar>
+</section>
+<br><br>
+
+<main class="bg-light" >
+
+    <section class="menu mt-2 mb-2">
+        <app-nav-menu *ngIf="sitio[0].menu" [sitio]="sitio"></app-nav-menu>
+    </section>
+ 
+</main>
+
+<br><br>
+<section class="menu mt-2 mb-2">
+    <app-pie-pagina *ngIf="sitio[0].footer" [sitio]="sitio"></app-pie-pagina>
+</section>
+
+
+

@@ -1,39 +1,39 @@
 const express = require('express');
 const app = express();
-const Usuario = require('../modelo/usuarioModule');
+const Sitio = require('../modelo/sitioModule');
 const conexion = require('../modelo/database');
 
 
-app.post('/usuario/agregar', function(req ,res){
+app.post('/sitio/agregar', function(req ,res){
     let body = req.body;
 
-    let usuario = new Usuario({
-        nombre: body.nombre,
-        apellido: body.apellido,
-        correo: body.correo,
-        direccion: body.direccion,
-        contrasenia: body.contrasenia,
-        role: body.role,
+    let sitio = new Sitio({
+        titulo: body.titulo,
+        tituloMenu : body.tituloMenu,
+        url : body.url,
+        encabezado : body.encabezado,
+        footer : body.footer,
+        menu : body.menu,
+        breadcrumb: body.breadcrumb,
     });
 
-    usuario.save((error, usuarioDB) => {
+    sitio.save((error, sitioDb) => {
         
         if (error){
-            return res.status(400).json({ Ok : false });
+            return res.status(400).json(error);
         }
 
-        res.json( { Ok : true });
+        res.json(sitioDb);
     });    
 });
 
 
-
-app.get('/usuarios', function(req ,res){
+app.get('/sitios', function(req ,res){
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
   
-    Usuario.find({})
+    Sitio.find({})
     .then( (data) => {
         res.send(data);
         res.end();
@@ -45,12 +45,12 @@ app.get('/usuarios', function(req ,res){
 });
 
 
-app.get('/usuario/obtener/:id', function(req ,res){
+app.get('/sitio/obtener/:id', function(req ,res){
 
     id = req.params.id;
     console.log(id);
 
-    Usuario.find({_id:id})
+    Sitio.find({_id:id})
     .then( (data) => {
         res.send(data);
         res.end();
@@ -61,12 +61,12 @@ app.get('/usuario/obtener/:id', function(req ,res){
     });   
 });
 
-app.get('/usuario/eliminar/:id', function(req ,res){
+app.get('/sitio/eliminar/:id', function(req ,res){
 
     id = req.params.id;
     console.log(id);
 
-    Usuario.remove({_id:id})
+    Sitio.remove({_id:id})
     .then( (data) => {
         res.json( { Ok : true });
         res.end();

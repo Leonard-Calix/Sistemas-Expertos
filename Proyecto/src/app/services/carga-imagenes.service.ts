@@ -20,13 +20,9 @@ export class CargaImagenesService {
  
   
 
-  cargarImagenes(archivo){
+  cargarImagenes(formData){
 
-    let url = 'http://localhost:4300/cargarImagen';
-    this.httpCient.post(this.urlServicio+'cargarImagen' , archivo ).subscribe(datos => {
-      this.respuesta = datos;
-    });
-    return this.respuesta;
+    return this.httpCient.post('http://localhost:4300/cargarImage' , formData );
     
   }
 

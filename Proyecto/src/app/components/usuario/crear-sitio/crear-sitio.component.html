@@ -1,59 +1,58 @@
-<div class="container animated fadeIn" > 
-  <div class="card bg-light mt-4" >
+<div class="container animated fadeIn">
+  <div class="card bg-light mt-4">
     <div class="card-header m-0">Nueva pagina web</div>
     <div class="card-body">
-      <div class="row" >
-        <div class="col-md-6 col-12" >
+      <div class="row">
+        <div class="col-md-6 col-12">
           <div class="form-row">
-              <div class="col">
-                <label for=""></label><br>
-                <input type="text" class="form-contro bg-light" placeholder="Titulo">
-              </div>
-              <div class="col">
-                <label for=""></label><br>
-                <input type="text" class="form-contro bg-light" placeholder="Titulo en el menu">
-              </div>
-            </div><br>
+            <div class="col">
+              <label for=""></label><br>
+              <input type="text" [(ngModel)]="sitio.titulo" class="form-contro bg-light" placeholder="Titulo">
+            </div>
+            <div class="col">
+              <label for=""></label><br>
+              <input type="text" [(ngModel)]="sitio.tituloMenu" class="form-contro bg-light"
+                placeholder="Titulo en el menu">
+            </div>
+          </div><br>
           <div class="form-group">
             <label for="inputAddress"></label>
-            <textarea class="form-control" name="descripcion"  cols="30" rows="2"></textarea>
+            <textarea class="form-control" [(ngModel)]="sitio.descripcion" name="descripcion" cols="30"
+              rows="2"></textarea>
           </div><br>
         </div>
-        <div class="col-md-6 col-12" >
+        <div class="col-md-6 col-12">
           <div class="col">
             <label for=""></label><br>
-            <input type="text" class="form-contro bg-light" placeholder="Url">
+            <input type="text" [(ngModel)]="sitio.url" class="form-contro bg-light" placeholder="Url">
           </div><br>
           <div class="col">
             <label for="">Incluir las siguientes opciones </label><br>
-            
+
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <input [(ngModel)]="sitio.encabaezado" type="checkbox" class="custom-control-input" id="customCheck1">
               <label class="custom-control-label" for="customCheck1">Encabezado</label>
             </div>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck2">
+              <input [(ngModel)]="sitio.footer" type="checkbox" class="custom-control-input" id="customCheck2">
               <label class="custom-control-label" for="customCheck2">Pie de pagina</label>
             </div>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck3">
+              <input [(ngModel)]="sitio.menu" type="checkbox" class="custom-control-input" id="customCheck3">
               <label class="custom-control-label" for="customCheck3">Menu</label>
             </div>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck4">
+              <input [(ngModel)]="sitio.breadcrumb" type="checkbox" class="custom-control-input" id="customCheck4">
               <label class="custom-control-label" for="customCheck4">Breadcrumb</label>
             </div>
-            
           </div>
         </div>
       </div>
-        
-        <a routerLink="/index/crearSitioShourcouts" class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i> </a>
-        <button type="button" class="btn btn-sm btn-outline-primary">Cancelar</button>
+
+      <a routerLink="/index/crearSitioShourcouts" class="btn btn-sm btn-primary mr-2">Siguiente <i
+          class="fas fa-chevron-right"></i> </a>
+      <button (click)="guardar()" type="button" class="btn btn-sm btn-outline-primary">Cancelar</button>
 
     </div>
   </div>
-
-
-
 </div>

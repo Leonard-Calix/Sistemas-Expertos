@@ -38,14 +38,24 @@ import { CrearSitio2Component } from './components/usuario/crear-sitio2/crear-si
 import { FooterComponent } from './components/footer/footer.component';
 import { ResumenComponent } from './components/administracion/resumen/resumen.component';
 import { MenuComponent } from './components/usuario/menu/menu.component';
+import { LandingPage2Component } from './landing-page2/landing-page2.component';
+import { NoFoundComponent } from './no-found/no-found.component';
+import { NavBarComponent } from './templates/nav-bar/nav-bar.component';
+import { PrincipalComponent } from './templates/principal/principal.component';
 
 
 /* SERVICIOS */
 
 import { UsuarioService } from "@services/usuario.service";
 import { CargaImagenesService } from '@services/carga-imagenes.service';
-import { LandingPage2Component } from './landing-page2/landing-page2.component';
-import { NoFoundComponent } from './no-found/no-found.component';
+import { SitioService } from '@services/sitio.service';
+import { BreadcrumbComponent } from './templates/breadcrumb/breadcrumb.component';
+import { PiePaginaComponent } from './templates/pie-pagina/pie-pagina.component';
+import { NavMenuComponent } from './templates/nav-menu/nav-menu.component';
+
+
+
+
 
 
 @NgModule({
@@ -77,6 +87,11 @@ import { NoFoundComponent } from './no-found/no-found.component';
     FooterComponent,
     LandingPage2Component,
     NoFoundComponent,
+    NavBarComponent,
+    PrincipalComponent,
+    BreadcrumbComponent,
+    PiePaginaComponent,
+    NavMenuComponent,
     
   ],
   imports: [
@@ -84,13 +99,14 @@ import { NoFoundComponent } from './no-found/no-found.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CKEditorModule
-    
+    CKEditorModule,
+   
   ],
   providers: [
     NavbarService,
     UsuarioService,
     CargaImagenesService,
+    SitioService
   ],
   bootstrap: [AppComponent]
 })

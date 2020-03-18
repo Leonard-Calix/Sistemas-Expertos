@@ -10,34 +10,32 @@ import { timer } from 'rxjs';
 })
 export class SubirImagenComponent implements OnInit {
 
-  archivo: FileItem;
-  mensaje:any='';
-  seGuardo:boolean = false;
+  archivo: File;
+  res: any;
+
 
   constructor( private _cargaImagenes: CargaImagenesService ) { }
 
   ngOnInit(): void {
 
-    this.getImagenes();
-
   }
 
-  cargarImagen(e){
+  subir(){
 
-    let archivo = { nombre: e.target.files[0].name, tipo: e.target.files[0].type }
-    //console.log(archivo);
-    this.mensaje = this._cargaImagenes.cargarImagenes(archivo);
-    this.seGuardo = true;
-    
-    console.log(this.mensaje);
-
-    setTimeout(() => {
-      this.seGuardo = false;;
-    }, 2000)
+    const formData = new FormData(); 
+		formData.append('archivo', this.archivo[0], this.archivo[0].name); 
+		
+    this._cargaImagenes.cargarImagenes(formData).subscribe((res) => {
+      console.log(res);
+      this.res = res
+    });
   }
 
-  getImagenes(){
-    this._cargaImagenes.getImagenes();
+  files(e){
+    //console.log(e);
+    this.archivo = e.target.files
+    //console.log( e.target.files);
+
   }
 
 }
