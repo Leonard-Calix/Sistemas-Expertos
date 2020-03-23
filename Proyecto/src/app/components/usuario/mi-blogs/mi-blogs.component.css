@@ -1,0 +1,18 @@
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+
+td, table> thead > tr > th{
+    border-bottom: 0.5px solid steelblue !important;
+} 

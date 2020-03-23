@@ -11,6 +11,9 @@ let sitioSchema = new Schema({
     url  : {
         type: String
     },
+    descripcion: {
+        type: String
+    },
     encabezado: {
         type: Boolean
     },
@@ -22,6 +25,9 @@ let sitioSchema = new Schema({
     },
     breadcrumb :{
         type: Boolean
+    },
+    usuario: {
+        type: String
     }
 });
 

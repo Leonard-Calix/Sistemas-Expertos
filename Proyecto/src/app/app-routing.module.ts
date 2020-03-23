@@ -26,8 +26,6 @@ import { VistaBlogsComponent } from '@components/vista-blogs/vista-blogs.compone
 import { CrearSitioComponent } from './components/usuario/crear-sitio/crear-sitio.component';
 import { CrearBlogComponent } from './components/usuario/crear-blog/crear-blog.component';
 import { CrearBlog2Component } from './components/usuario/crear-blog2/crear-blog2.component';
-import { MisSitiosComponent } from './components/usuario/mis-sitios/mis-sitios.component';
-import { MisBlogsComponent } from './components/usuario/mis-blogs/mis-blogs.component';
 import { CrearSitio2Component } from './components/usuario/crear-sitio2/crear-sitio2.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResumenComponent } from './components/administracion/resumen/resumen.component';
@@ -35,6 +33,9 @@ import { MenuComponent } from './components/usuario/menu/menu.component';
 import { LandingPage2Component } from './landing-page2/landing-page2.component';
 import { NoFoundComponent } from './no-found/no-found.component';
 import { PrincipalComponent } from './templates/principal/principal.component';
+import { MiSitiosComponent } from '@components/usuario/mi-sitios/mi-sitios.component';
+import { MiBlogsComponent } from '@components/usuario/mi-blogs/mi-blogs.component';
+
 
 const routes: Routes = [
     //{ path: '**', redirectTo: 'index'},
@@ -55,10 +56,11 @@ const routes: Routes = [
         { path: 'blogs', component: VistaBlogsComponent },
         { path: 'crearSitio', component: CrearSitioComponent },
         { path: 'crearBlog', component: CrearBlogComponent },
-        { path: 'crearBlogShourcouts', component: CrearBlog2Component },
-        { path: 'misSitios', component: MisSitiosComponent },
-        { path: 'misBlogs', component: MisBlogsComponent },
-        { path: 'crearSitioShourcouts', component: CrearSitio2Component },
+        { path: 'crearBlogShourcouts/:id', component: CrearBlog2Component },
+        { path: 'crearSitioShourcouts/:id', component: CrearSitio2Component },
+        { path: 'sitiosUsuario', component: MiSitiosComponent },
+        { path: 'blogsUsuario', component: MiBlogsComponent },
+
       ]
     },
 
@@ -78,7 +80,7 @@ const routes: Routes = [
 
       ]
     },
-    { path : 'template/:id', component: PrincipalComponent },
+    { path : 'template/:id/:contenido', component: PrincipalComponent },
 
     
 ];

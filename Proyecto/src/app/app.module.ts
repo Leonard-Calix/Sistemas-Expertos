@@ -32,8 +32,6 @@ import { VistaBlogsComponent } from '@components/vista-blogs/vista-blogs.compone
 import { CrearSitioComponent } from './components/usuario/crear-sitio/crear-sitio.component';
 import { CrearBlogComponent } from './components/usuario/crear-blog/crear-blog.component';
 import { CrearBlog2Component } from './components/usuario/crear-blog2/crear-blog2.component';
-import { MisSitiosComponent } from './components/usuario/mis-sitios/mis-sitios.component';
-import { MisBlogsComponent } from './components/usuario/mis-blogs/mis-blogs.component';
 import { CrearSitio2Component } from './components/usuario/crear-sitio2/crear-sitio2.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResumenComponent } from './components/administracion/resumen/resumen.component';
@@ -52,6 +50,12 @@ import { SitioService } from '@services/sitio.service';
 import { BreadcrumbComponent } from './templates/breadcrumb/breadcrumb.component';
 import { PiePaginaComponent } from './templates/pie-pagina/pie-pagina.component';
 import { NavMenuComponent } from './templates/nav-menu/nav-menu.component';
+import { ImagenComponent } from './templates/imagen/imagen.component';
+import { GaleriaComponent } from './templates/galeria/galeria.component';
+import { MiSitiosComponent } from './components/usuario/mi-sitios/mi-sitios.component';
+import { MiBlogsComponent } from './components/usuario/mi-blogs/mi-blogs.component';
+import { BlogService } from '@services/blog.service';
+
 
 
 
@@ -81,8 +85,6 @@ import { NavMenuComponent } from './templates/nav-menu/nav-menu.component';
     CrearSitioComponent,
     CrearBlogComponent,
     CrearBlog2Component,
-    MisSitiosComponent,
-    MisBlogsComponent,
     CrearSitio2Component,
     FooterComponent,
     LandingPage2Component,
@@ -92,7 +94,11 @@ import { NavMenuComponent } from './templates/nav-menu/nav-menu.component';
     BreadcrumbComponent,
     PiePaginaComponent,
     NavMenuComponent,
-    
+    ImagenComponent,
+    GaleriaComponent,
+    MiSitiosComponent,
+    MiBlogsComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -106,7 +112,8 @@ import { NavMenuComponent } from './templates/nav-menu/nav-menu.component';
     NavbarService,
     UsuarioService,
     CargaImagenesService,
-    SitioService
+    SitioService,
+    BlogService
   ],
   bootstrap: [AppComponent]
 })

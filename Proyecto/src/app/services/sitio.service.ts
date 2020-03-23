@@ -6,10 +6,18 @@ import { HttpClient } from "@angular/common/http";
 })
 export class SitioService {
 
-  constructor( private http: HttpClient  ) { }
+  constructor( private peticion: HttpClient  ) { }
 
   ontenerUnSitio(sitio: String){
-    return this.http.get('http://localhost:4300/sitio/obtener/'+sitio);
+    return this.peticion.get('http://localhost:4300/sitio/obtener/'+sitio);
+  }
+
+  obtenerSitioUsuario(usuario: String){
+    return this.peticion.get('http://localhost:4300/sitio/buscar/'+usuario);
+  }
+
+  guardarSitio(sitio){
+    return this.peticion.post('http://localhost:4300/sitio/agregar', sitio);
   }
 
 }

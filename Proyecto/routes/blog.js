@@ -13,9 +13,10 @@ app.post('/blog/agregar', function(req, res) {
   let blog = new Blog({
       nombre: body.nombre,
       url: body.url,
-      descripcion: body.descripcion,
+      categoria: body.categorias,
       urlImage: body.urlImage,
-      comentarios: body.comentarios,
+      comentarios: body.comentario,
+      usuario: body.usuario
   });
 
   blog.save((error, blog) => {
@@ -46,7 +47,6 @@ app.get('/blogs', function(req ,res){
 app.get('/Blog/obtener/:id', function(req ,res){
 
     id = req.params.id;
-    console.log(id);
 
     Blog.find({_id:id})
     .then( (data) => {
@@ -62,7 +62,6 @@ app.get('/Blog/obtener/:id', function(req ,res){
 app.get('/blog/eliminar/:id', function(req ,res){
 
     id = req.params.id;
-    console.log(id);
 
     Blog.remove({_id:id})
     .then( (data) => {
@@ -73,6 +72,22 @@ app.get('/blog/eliminar/:id', function(req ,res){
         res.json( { Ok : false });
         res.end();
     });   
+
+});
+
+app.get('/blog/buscar/:usuario', function(req ,res){
+
+    id = req.params.usuario;
+
+    Blog.find({ usuario: id})
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(erro);
+        res.end();
+    });  
 
 });
 

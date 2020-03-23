@@ -16,6 +16,9 @@ let blogSchema = new Schema({
     },
     comentarios :{
         type: Boolean
+    },
+    usuario: {
+        type: String
     }
 });
 

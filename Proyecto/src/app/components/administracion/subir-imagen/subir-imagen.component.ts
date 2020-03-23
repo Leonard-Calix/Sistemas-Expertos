@@ -12,6 +12,7 @@ export class SubirImagenComponent implements OnInit {
 
   archivo: File;
   res: any;
+  imagenes: any[];
 
 
   constructor( private _cargaImagenes: CargaImagenesService ) { }
@@ -35,7 +36,7 @@ export class SubirImagenComponent implements OnInit {
     //console.log(e);
     this.archivo = e.target.files
     //console.log( e.target.files);
-
   }
+
 
 }

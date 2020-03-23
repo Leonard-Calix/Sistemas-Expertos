@@ -11,10 +11,13 @@ app.post('/sitio/agregar', function(req ,res){
         titulo: body.titulo,
         tituloMenu : body.tituloMenu,
         url : body.url,
+        descripcion : body.descripcion,
         encabezado : body.encabezado,
         footer : body.footer,
         menu : body.menu,
         breadcrumb: body.breadcrumb,
+        usuario: body.usuario
+
     });
 
     sitio.save((error, sitioDb) => {
@@ -48,7 +51,6 @@ app.get('/sitios', function(req ,res){
 app.get('/sitio/obtener/:id', function(req ,res){
 
     id = req.params.id;
-    console.log(id);
 
     Sitio.find({_id:id})
     .then( (data) => {
@@ -64,7 +66,6 @@ app.get('/sitio/obtener/:id', function(req ,res){
 app.get('/sitio/eliminar/:id', function(req ,res){
 
     id = req.params.id;
-    console.log(id);
 
     Sitio.remove({_id:id})
     .then( (data) => {
@@ -73,6 +74,22 @@ app.get('/sitio/eliminar/:id', function(req ,res){
     })
     .catch( (erro) => {
         res.json( { Ok : false });
+        res.end();
+    });   
+
+});
+
+app.get('/sitio/buscar/:usuario', function(req ,res){
+
+    idUsuario = req.params.usuario;
+
+    Sitio.find({usuario:idUsuario})
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(erro);
         res.end();
     });   
 

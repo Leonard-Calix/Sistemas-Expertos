@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
+import { ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'app-crear-blog2',
@@ -10,6 +12,7 @@ import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 export class CrearBlog2Component implements OnInit {
 
   public Editor = ClassicEditor;
+  blog:string;
 
   public model = {
     editorData: ''
@@ -18,7 +21,12 @@ export class CrearBlog2Component implements OnInit {
   galeria:boolean = false;
   shorcouts:boolean = false;
 
-  constructor() { }
+  constructor(private ac: ActivatedRoute) {
+    this.blog = this.ac.snapshot.paramMap.get("id");
+    console.log( this.blog );
+
+
+   }
 
   ngOnInit(): void {
   }

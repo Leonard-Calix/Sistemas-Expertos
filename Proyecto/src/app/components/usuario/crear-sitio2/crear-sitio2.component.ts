@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SitioService } from "@services/sitio.service";
 import { ActivatedRoute, Params } from '@angular/router';
+import { CargaImagenesService } from '@services/carga-imagenes.service';
 
 @Component({
   selector: 'app-crear-sitio2',
@@ -11,25 +12,29 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class CrearSitio2Component implements OnInit {
 
   public Editor = ClassicEditor;
-  contenido: string[] = [];
-  pruebas: any[] = [];
-  data: any;
+  imagenes:any[];
+ 
+ 
 
   public model = {
-    editorData: '<p>{"tipo":"enlace","url":"assets/doc.xls"} {"tipo":"imagen","url":"assets/doc.xls"}</p>'
+    editorData: '<p>{"tipo":"imagen","url":"../../../assets/img/login.jpg"}</p>'
   };
 
-  sitio: string = '5e69c9ec851701175435090e';
-
-
-
+  sitio: string ;
+  
   galeria: boolean = false;
   shorcouts: boolean = false;
 
-  constructor(private servicio: SitioService, private ac: ActivatedRoute) { }
+  constructor(private servicio: SitioService, private servicioImagenes: CargaImagenesService, private ac: ActivatedRoute) { 
+    this.sitio = this.ac.snapshot.paramMap.get("id");
+
+    console.log( this.sitio );
+    
+   }
 
   ngOnInit(): void {
     this.obtenerUno();
+    this.obtenerImagenes();
 
   }
 
@@ -49,46 +54,10 @@ export class CrearSitio2Component implements OnInit {
     });
   }
 
-  guargar() {
-    this.obtenerShorcouts();
-  }
-
-  obtenerShorcouts() {
-
-    this.contenido = this.model.editorData.split(' ');
-
-    console.log( this.model.editorData );
-
-
-    for (var i = 0; i < this.contenido.length; i++) {
-      this.contenido[i] = this.contenido[i].substr(3);
-      if (this.contenido[i] == '') {
-        this.contenido.splice(i, 1);
-      }
-    }
-
-    //console.log( JSON.parse( this.contenido ) );
-    console.log( this.contenido  );
-
-
-    for (let i = 0; i < this.contenido.length; i++) {
-        this.data = JSON.parse( this.contenido[i] );
-        this.pruebas[i] = this.data;
-        this.data = null;
-    }
-
-
-    //console.log(this.pruebas);
-
+  obtenerImagenes(){
+    this.servicioImagenes.getImagenes().subscribe((data:any) =>{
+      this.imagenes = data;
+    });
   }
 }
 
-//var str = "Apples are round, and apples are juicy."; 
-//var splitted = str.split(" ", 3); 
-//console.log(splitted)
-
-//{_tipo: "image",id: "2323"},
-
-//{_tipo: "image",id: "2323"},
-
-//{_tipo: "image",id: "2323"},

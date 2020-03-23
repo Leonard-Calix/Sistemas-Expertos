@@ -7,10 +7,9 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>
               </div><br>
             <div class="row mt-1">
-                <div *ngFor="let item of albunes" class="bg-light mb-3 col-lg-3 col-md-6 col-12 p-0">
-                    <div class="card-header text-center rounded">{{item}}</div>
+                <div *ngFor="let item of imagenes" class="bg-light mb-3 col-lg-3 col-md-6 col-12 p-0">
                     <div class="card-body">
-                        <img src="../../../../assets/img/galeria/img-1.jpg" class="img-fluid" alt="foto1">
+                        <img src="../../../../{{item.url}}" class="img-fluid rounded" alt="{{item.nombre}}">
                     </div>
                 </div>
             </div>

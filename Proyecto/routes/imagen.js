@@ -33,7 +33,7 @@ app.post('/cargarImage', function(req, res) {
     let imagen = new Image({
       nombre : archivo.name,
       extension : extension,
-      url : `src/assets/img/${archivo.name}`
+      url : `assets/img/${archivo.name}`
     });
 
     imagen.save((error, imagen) => {
@@ -64,5 +64,37 @@ app.get('/obtenerImagenes', function(req, res) {
     });
 });
 
+//OBTENER UNA IMAGEN
+
+app.get('/obtenerImagen/:id', function(req ,res){
+
+  id = req.params.id;
+  
+  Image.find({_id:id})
+  .then( (data) => {
+      res.send(data);
+      res.end();
+  })
+  .catch( (erro) => {
+      res.send(erro);
+      res.end();
+  });   
+});
+
+app.get('/imagen/eliminar/:id', function(req ,res){
+
+  id = req.params.id;
+  
+  Image.remove({_id:id})
+  .then( (data) => {
+      res.json( { Ok : true });
+      res.end();
+  })
+  .catch( (erro) => {
+      res.json( { Ok : false });
+      res.end();
+  });   
+
+});
 
 module.exports = app;

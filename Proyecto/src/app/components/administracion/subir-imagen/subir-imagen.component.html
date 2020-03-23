@@ -8,8 +8,8 @@
         <div class="custom-file">
           <input (change)="files($event)" type="file" name="archivo" class="custom-file-input" >
           <label class="custom-file-label" for="customFile">Choose file</label><br><br>
-          <div *ngIf="expression" class="alert alert-success" >
-
+          <div *ngIf="res" class="alert alert-success" >
+            Archivo sudido correctamente
           </div>
           <button type="button" (click)="subir()" class="btn btn-primary btn-sm">Subir</button>
         </div>

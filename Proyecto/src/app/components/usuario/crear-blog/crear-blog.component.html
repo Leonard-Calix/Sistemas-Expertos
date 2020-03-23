@@ -1,69 +1,64 @@
-<div class="container animated fadeIn" > 
-    <div class="card bg-light mt-4" >
-      <div class="card-header m-0">Nuevo blog</div>
-      <div class="card-body">
-        <div class="row" >
-          <div class="col-md-6 col-12" >
-            <div class="form-row">
-                <div class="col">
-                  <label for=""></label><br>
-                  <input type="text" class="form-contro bg-light" placeholder="Nombre del blog">
-                </div>
-                <div class="col">
-                  <label for=""></label><br>
-                  <input type="text" class="form-contro bg-light" placeholder="URL">
-                </div>
-              </div><br>
-            <div class="form-group">
-              <label for="inputAddress">Descripcion</label>
-              <textarea class="form-control" name="" id="" cols="30" rows="2"></textarea>
+<div class="container animated fadeIn">
+  <div class="card bg-light mt-4">
+    <div class="card-header m-0">Nuevo blog</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="form-row">
+            <div class="col">
+              <label for=""></label><br>
+              <input type="text" [(ngModel)]="blog.nombre" class="form-contro bg-light" placeholder="Nombre del blog">
+            </div>
+            <div class="col">
+              <label for=""></label><br>
+              <input type="text" [(ngModel)]="blog.url" class="form-contro bg-light" placeholder="URL">
+            </div>
+          </div><br>
+          <div class="form-group">
+            <label >Comentarios</label><br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input id="permitir" type="radio"  [(ngModel)]="blog.comentario" name="comentarios" value="true" class="custom-control-input">
+              <label class="custom-control-label" for="permitir" >Perminir</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input id="noPermitir" type="radio" [(ngModel)]="blog.comentario" name="comentarios" value="false" class="custom-control-input">
+              <label class="custom-control-label" for="noPermitir" >No permitir</label>
             </div>
           </div>
-          <div class="col-md-6 col-12" >
-            <div class="form-group">
-                <label for="inputAddress">Imagen del posts</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Subir imagen</span>
-                    </div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01">
-                      <label class="custom-file-label" for="inputGroupFile01">Selecionar Archivo</label>
-                    </div>
-                  </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Categoria</label>
-                <div class="input-group ">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option value="0">---Seleccione---</option>
-                        <option value="0">Musica</option>
-                        <option value="1">Arte</option>
-                        <option value="2">Moda</option>
-                        <option value="3">Peliculas</option>
-                        <option value="4">Ventas</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Comentarios</label><br>
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                  <label class="custom-control-label" for="customRadioInline1">Perminir</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                  <label class="custom-control-label" for="customRadioInline2">No permitir</label>
-                </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="form-group">
+            <label for="inputAddress">Imagen del posts</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Subir imagen</span>
+              </div>
+              <div class="custom-file">
+                <input (change)="subirImagen($event)" type="file" class="custom-file-input" id="inputGroupFile01">
+                <label class="custom-file-label" for="inputGroupFile01">Selecionar Archivo</label>
+              </div>
             </div>
           </div>
-        </div>     
-          <a routerLink="/index/crearBlogShourcouts" class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i></a>
-          <button type="button" class="btn btn-sm btn-outline-primary mr-2">Cancelar</button>
+          <div class="form-group">
+            <label for="inputAddress">Categoria</label>
+            <div class="input-group ">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
+              </div>
+              <select [(ngModel)]="blog.categorias" class="custom-select" id="inputGroupSelect01">
+                <option value="0">---Seleccione---</option>
+                <option value="Musica">Musica</option>
+                <option value="Arte">Arte</option>
+                <option value="Peliculas">Peliculas</option>
+                <option value="Ventas">Ventas</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
       </div>
+      <button type="button"  [disabled]="!blog.urlImagen" (click)="guardarBlog()" class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i></button>
+      <button (click)="prueba()" type="button" class="btn btn-sm btn-outline-primary mr-2">Cancelar</button>
     </div>
   </div>
-
+</div>

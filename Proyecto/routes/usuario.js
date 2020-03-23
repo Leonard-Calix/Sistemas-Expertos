@@ -48,8 +48,7 @@ app.get('/usuarios', function(req ,res){
 app.get('/usuario/obtener/:id', function(req ,res){
 
     id = req.params.id;
-    console.log(id);
-
+    
     Usuario.find({_id:id})
     .then( (data) => {
         res.send(data);
@@ -61,11 +60,10 @@ app.get('/usuario/obtener/:id', function(req ,res){
     });   
 });
 
-app.get('/usuario/eliminar/:id', function(req ,res){
+app.delete('/usuario/eliminar/:id', function(req ,res){
 
     id = req.params.id;
-    console.log(id);
-
+    
     Usuario.remove({_id:id})
     .then( (data) => {
         res.json( { Ok : true });

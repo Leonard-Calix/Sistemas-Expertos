@@ -27,12 +27,8 @@ export class CargaImagenesService {
   }
 
   getImagenes(){
-    
-    let url = 'http://localhost:4300/getImagenes';
-    this.httpCient.get(url).subscribe(datos =>{
-      this.respuesta = datos;
-    });
-    return this.respuesta;
+  
+    return this.httpCient.get('http://localhost:4300/obtenerImagenes');
   }
 
 }

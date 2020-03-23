@@ -1,30 +1,28 @@
 <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="bg-primary  border-right" id="sidebar-wrapper">
-      <nav class="ml-3 navbar navbar-dark bg-primary">
-        <a class="navbar-brand" routerLink="/admin/resumen">
+    <div class="bg-light" id="sidebar-wrapper">
+      <nav class="ml-3 navbar navbar-dark bg-light">
+        <a class="navbar-brand text-primary" routerLink="/admin/resumen">
           <i class="fab fa-1x fa-accusoft text-primary"></i> BloggerWeb
         </a>
       </nav>
       <div class="list-group list-group-flush" >
-        <a routerLink="/admin/perfil" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-user-cog mr-4"></i> Leonard-Calix </a>
-        <a routerLink="/admin/resumen" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-file mr-4"></i> Resumen</a>
-        <a routerLink="/admin/usuarios" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-users mr-4"></i> Usuarios</a>
-        <a routerLink="/admin/imagenes" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-images mr-4"></i> Archivos</a>
-        <a routerLink="/admin/subirImg" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-images mr-4"></i> Subir Archivos</a>
-        <a routerLink="/admin/paginas" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fab fa-internet-explorer mr-4"></i> Paginas web</a>
-        <a routerLink="/admin/blog" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-blog mr-4"></i> Blog</a>
-        <a routerLink="/admin/comentarios" class="list-group-item list-group-item-action text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-comments mr-4"> </i> Comentarios</a>
-        <a routerLink="/index" class="list-group-item list-group-item-action  text-white bg-primary"><i class="fa-1x text-white mr-1 fas fa-sign-out-alt mr-4"></i> Cerrar sesion</a>
+        <a routerLink="/admin/resumen" class="list-group-item list-group-item-action  text-primary bg-light"><i class="fa-1x text-primary mr-1 fas fa-file mr-4"></i> Resumen</a>
+        <a routerLink="/admin/usuarios" class="list-group-item list-group-item-action  text-primary bg-light"><i class="fa-1x text-primary mr-1 fas fa-users mr-4"></i> Usuarios</a>
+        <a routerLink="/admin/imagenes" class="list-group-item list-group-item-action  text-primary bg-light"><i class="fa-1x text-primary mr-1 fas fa-images mr-4"></i> Archivos</a>
+        <a routerLink="/admin/subirImg" class="list-group-item list-group-item-action  text-primary bg-light"><i class="fa-1x text-primary mr-1 fas fa-images mr-4"></i> Subir Archivos</a>
+        <a routerLink="/admin/paginas" class="list-group-item list-group-item-action  text-primary bg-light"><i class="fa-1x text-primary mr-1 fab fa-internet-explorer mr-4"></i> Paginas web</a>
+        <a routerLink="/admin/blog" class="list-group-item list-group-item-action  text-primary bg-light"><i class="fa-1x text-primary mr-1 fas fa-blog mr-4"></i> Blog</a>
+        <a routerLink="/admin/comentarios" class="list-group-item list-group-item-action text-primary bg-light"><i class="fa-1x text-primary mr-1 fas fa-comments mr-4"> </i> Comentarios</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-<!--
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-light border-bottom">
         <button class="btn btn-primary btn-sm" id="menu-toggle">Menu</button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +43,7 @@
           </ul>
         </div>
       </nav>
--->
+
       <div class="container-fluid">
         <router-outlet></router-outlet>
       </div>

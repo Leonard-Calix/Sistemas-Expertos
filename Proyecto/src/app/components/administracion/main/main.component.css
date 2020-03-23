@@ -52,8 +52,3 @@
     border-bottom: 1px solid white;
   } 
 
-  .fondo-slider{
-    background-image: url('../../../../assets/img/sidebar.jpg');
-    background-position: left;
-    background-color: rgba(0, 0, 0, 0.7);
-  } 
