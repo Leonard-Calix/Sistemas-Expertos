@@ -20,4 +20,8 @@ export class SitioService {
     return this.peticion.post('http://localhost:4300/sitio/agregar', sitio);
   }
 
+  guardarShorcouts(sitio){
+    return this.peticion.post('http://localhost:4300/shortcuts/sitio/agregar', sitio);
+  }
+
 }

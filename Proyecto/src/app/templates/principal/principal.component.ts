@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SitioService } from "@services/sitio.service";
+import { CargaImagenesService } from '@services/carga-imagenes.service';
 
 
 @Component({
@@ -13,24 +14,53 @@ export class PrincipalComponent implements OnInit {
   sitio:any;
   contenido:any;
   informacion:any = [];
+
+ //=====================================================//
+
   shortcutsImagen:any;
   shortcutsGaleria:any;
   shortcutsEnlace:any;
-  galeria:boolean;
-  imagen:boolean;
-  enlace:boolean;
 
-  constructor( private ac:ActivatedRoute, private servicio : SitioService  ) {
+ //=====================================================//
+
+  esGaleria:boolean;
+  esImagen:boolean;
+  esEnlace:boolean;
+
+ //=====================================================//
+
+  imagen:any;
+  imagenes:any[];
+
+
+ //=====================================================//
+
+
+
+  constructor( private ac:ActivatedRoute, private servicio : SitioService,  private seviceImagen : CargaImagenesService   ) {
+
     this.contenido =  this.ac.snapshot.params.contenido;
+
    }
 
   ngOnInit(): void {
+
+    if(this.contenido==''){
+      this.obtenerShourcouts(this.sitio);
+    }
     
     this.obtenerUno();
     this.infomacionSitio();
     this.obtenerTipos();
 
-    
+    if(this.esImagen){
+      this.obtenerImagen(this.shortcutsImagen.id);
+    }
+
+   
+
+    //console.log( this.shortcutsEnlace );
+ 
   }
 
   obtenerUno(){
@@ -43,15 +73,15 @@ export class PrincipalComponent implements OnInit {
   obtenerTipos(){
     for(let i = 0 ; i < this.informacion.length ; i++ ){
       if(this.informacion[i].tipo=='imagen'){
-        this.imagen = true;
+        this.esImagen = true;
         this.shortcutsImagen = this.informacion[i];
       }
       if(this.informacion[i].tipo=='galeria'){
-        this.galeria = true;
+        this.esGaleria = true;
         this.shortcutsGaleria = this.informacion[i];
       }
       if(this.informacion[i].tipo=='enlace'){
-        this.enlace = true;
+        this.esEnlace = true;
         this.shortcutsEnlace = this.informacion[i];
       }
     }
@@ -77,8 +107,22 @@ export class PrincipalComponent implements OnInit {
      inicio = 0;
    }
 
-    console.log( this.informacion );
+    //console.log( this.informacion );
 
   }
+
+  obtenerImagen(id){
+    this.seviceImagen.getImagen(id).subscribe((data:any) => {
+      console.log( data );
+      this.imagen = data;
+
+    });
+  }
+
+  obtenerShourcouts(sitio){
+    
+  }
+
+
 
 }

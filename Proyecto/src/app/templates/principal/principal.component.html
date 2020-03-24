@@ -1,25 +1,27 @@
-<section class="nav mb-3">
-    <app-nav-bar *ngIf="sitio[0].encabezado" [sitio]="sitio"></app-nav-bar>
-</section>
-
 <div class="bg-light" >
-    <main class="container mt-5 mb-4" >
-
-        <section class="menu mt-2 mb-2">
-            <app-nav-menu *ngIf="sitio[0].menu" [sitio]="sitio"></app-nav-menu>
-        </section>
+    <section class="nav mb-3">
+        <app-nav-bar *ngIf="sitio[0].encabezado" [sitio]="sitio"></app-nav-bar>
+    </section>
+    <br>
     
-        <app-imagen *ngIf="imagen" [urlImage]="shortcutsImagen.url" ></app-imagen>
+    <div class="bg-light" >
+        <main class="container mt-5 mb-4" >
+    
+            <section class="menu mt-2 mb-2">
+                <app-nav-menu *ngIf="sitio[0].menu" [sitio]="sitio"></app-nav-menu>
+            </section>
+        
+            <app-imagen *ngIf="esImagen" [imagen]="imagen[0]" ></app-imagen>
 
-        <app-galeria [galeria]="shortcutsGaleria" ></app-galeria>
-     
-    </main>
+            <app-enlace *ngIf="esEnlace" [enlace]="shortcutsEnlace" ></app-enlace>
+    
+            <app-galeria *ngIf="esGaleria" [galeria]="shortcutsGaleria.imagenes" ></app-galeria>
+         
+        </main>
+    </div>
+    
+    <section class="menu mt-2 mb-2">
+        <app-pie-pagina *ngIf="!sitio[0].footer" [sitio]="sitio"></app-pie-pagina>
+    </section>
 </div>
-
-
-<section class="menu mt-2 mb-2">
-    <app-pie-pagina *ngIf="!sitio[0].footer" [sitio]="sitio"></app-pie-pagina>
-</section>
-
-
 

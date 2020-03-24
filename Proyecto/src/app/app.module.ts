@@ -55,6 +55,7 @@ import { GaleriaComponent } from './templates/galeria/galeria.component';
 import { MiSitiosComponent } from './components/usuario/mi-sitios/mi-sitios.component';
 import { MiBlogsComponent } from './components/usuario/mi-blogs/mi-blogs.component';
 import { BlogService } from '@services/blog.service';
+import { EnlaceComponent } from './templates/enlace/enlace.component';
 
 
 
@@ -98,6 +99,7 @@ import { BlogService } from '@services/blog.service';
     GaleriaComponent,
     MiSitiosComponent,
     MiBlogsComponent,
+    EnlaceComponent,
   
   ],
   imports: [

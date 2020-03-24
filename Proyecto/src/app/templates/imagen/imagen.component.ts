@@ -7,13 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ImagenComponent implements OnInit {
 
-  @Input() urlImage;
+  @Input() imagen:any;
 
   constructor() { }
 
   ngOnInit(): void {
 
-    console.log(this.urlImage);
+    console.log(this.imagen.url);
 
   }
 
