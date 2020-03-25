@@ -10,4 +10,4 @@ let shorcoutsSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('ShorcoutsSitio', shorcoutsSchema);
+module.exports = mongoose.model('ShorcoutSitio', shorcoutsSchema);

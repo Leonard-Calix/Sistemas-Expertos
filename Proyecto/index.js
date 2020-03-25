@@ -15,6 +15,8 @@ app.use( require( './routes/usuario' ) );
 app.use( require( './routes/sitio' ) );
 app.use( require( './routes/imagen' ) );
 app.use( require( './routes/blog' ) );
+app.use( require( './routes/SCSitio' ) );
+
 
 
 

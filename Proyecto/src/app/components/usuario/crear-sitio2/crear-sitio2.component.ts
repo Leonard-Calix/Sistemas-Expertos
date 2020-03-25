@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SitioService } from "@services/sitio.service";
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CargaImagenesService } from '@services/carga-imagenes.service';
 
 @Component({
@@ -45,8 +45,7 @@ export class CrearSitio2Component implements OnInit {
     }
     
   ];
- 
- 
+
 
   public model = {
     //editorData: '<p>{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}</p>'
@@ -55,16 +54,28 @@ export class CrearSitio2Component implements OnInit {
   };
 
   sitio: string ;
-  
+  res: string ;
+  informacion:any = [];
+
+
   galeria: boolean = false;
   shorcouts: boolean = false;
 
-  constructor(private servicio: SitioService, private servicioImagenes: CargaImagenesService, private ac: ActivatedRoute) { 
+  sitioDB:any = {
+    shortcut: this.model.editorData,
+    sitio: this.sitio
+  };
+
+  constructor(private servicio: SitioService, private servicioImagenes: CargaImagenesService, private ac: ActivatedRoute, private router: Router) { 
+
     this.sitio = this.ac.snapshot.paramMap.get("id");
 
     console.log( this.coleccion );
     
    }
+
+  
+ 
 
   ngOnInit(): void {
     this.obtenerUno();
@@ -113,9 +124,22 @@ export class CrearSitio2Component implements OnInit {
 
   guardarShorcouts(){
 
+
+    this.sitioDB.shortcut = this.model.editorData;
+    this.sitioDB.sitio = this.sitio;
+
+    //console.log(this.sitioDB);
+
     
+    this.servicio.guardarShorcouts(this.sitioDB).subscribe( (data:any) => {
+      console.log(data);
+     
 
-
+      if(data){
+        this.router.navigate(['/index/sitiosUsuario']);
+      }
+    });
+  
   }
 
 

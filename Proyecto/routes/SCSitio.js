@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
-const ShorcoutsSitio = require('../modelo/shorcoutsSitio');
+const ShorcoutSitio = require('../modelo/shorcoutsSitioModule');
 const conexion = require('../modelo/database');
 
 app.post('/shortcuts/sitio/agregar', function(req ,res){
     let body = req.body;
 
-    let shortcuts = new ShorcoutsSitio({
+    let shortcuts = new ShorcoutSitio({
         shortcut : body.shortcut,
-        sitio : body.blog
+        sitio : body.sitio
     });
 
     shortcuts.save((error, shorcoutDB) => {
@@ -21,3 +21,35 @@ app.post('/shortcuts/sitio/agregar', function(req ,res){
     });    
 });
 
+app.delete('/shortcuts/sitio/eliminar/:id', function(req ,res){
+
+    id = req.params.id;
+
+    ShorcoutSitio.remove({_id:id})
+    .then( (data) => {
+        res.json( { Ok : true });
+        res.end();
+    })
+    .catch( (erro) => {
+        res.json( { Ok : false });
+        res.end();
+    });   
+
+});
+
+app.get('/shortcuts/sitio/obtener/:id', function(req ,res){
+
+    id = req.params.id;
+
+    ShorcoutSitio.find({sitio:id})
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(erro);
+        res.end();
+    });   
+});
+
+module.exports = app;
