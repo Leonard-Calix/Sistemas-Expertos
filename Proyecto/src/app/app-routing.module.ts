@@ -35,6 +35,7 @@ import { NoFoundComponent } from './no-found/no-found.component';
 import { PrincipalComponent } from './templates/principal/principal.component';
 import { MiSitiosComponent } from '@components/usuario/mi-sitios/mi-sitios.component';
 import { MiBlogsComponent } from '@components/usuario/mi-blogs/mi-blogs.component';
+import { CategoriaComponent } from '@components/administracion/categoria/categoria.component';
 
 
 const routes: Routes = [
@@ -77,6 +78,7 @@ const routes: Routes = [
         { path : 'nueva', component: NuevaPaginaComponent },
         { path : 'nuevo', component: NuevoBlogComponent },
         { path : 'resumen', component: ResumenComponent },
+        { path : 'categoria', component: CategoriaComponent }
 
       ]
     },

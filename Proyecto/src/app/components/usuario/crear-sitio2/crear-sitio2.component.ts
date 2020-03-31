@@ -13,6 +13,8 @@ export class CrearSitio2Component implements OnInit {
 
   public Editor = ClassicEditor;
   imagenes:any[];
+  videos:any[];
+  archivos:any[];
 
   coleccion = [
     {
@@ -29,7 +31,7 @@ export class CrearSitio2Component implements OnInit {
     },
     {
       nombre: 'Login',
-      etuqueta: '{"tipo":"galeria","id":"5e743527beb9b00b04e8616d"}'  
+      etuqueta: '{"tipo":"login","id":"5e743527beb9b00b04e8616d"}'  
     },
     {
       nombre: 'Post/Entrada',
@@ -42,6 +44,10 @@ export class CrearSitio2Component implements OnInit {
     {
       nombre: 'Breadcrumb',
       etuqueta: '{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}'  
+    },
+    {
+      nombre: 'Headers',
+      etuqueta: '{"tipo":"header","id":"5e743527beb9b00b04e8616d"}'  
     }
     
   ];
@@ -78,8 +84,11 @@ export class CrearSitio2Component implements OnInit {
  
 
   ngOnInit(): void {
+
     this.obtenerUno();
     this.obtenerImagenes();
+    this.obtenerArchivos();
+    this.obtenerVideo();
 
   }
 
@@ -102,6 +111,18 @@ export class CrearSitio2Component implements OnInit {
   obtenerImagenes(){
     this.servicioImagenes.getImagenes().subscribe((data:any) =>{
       this.imagenes = data;
+    });
+  }
+
+  obtenerArchivos(){
+    this.servicioImagenes.getArchivos().subscribe((data:any) =>{
+      this.archivos = data;
+    });
+  }
+
+  obtenerVideo(){
+    this.servicioImagenes.getVideo().subscribe((data:any) =>{
+      this.videos = data;
     });
   }
 

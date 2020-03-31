@@ -1,0 +1,6 @@
+1. npm install
+2. npm install express --save
+3. npm install cors 
+4. npm install bootstrap
+5. npm install mongoose
+6. npm install nodemon --save

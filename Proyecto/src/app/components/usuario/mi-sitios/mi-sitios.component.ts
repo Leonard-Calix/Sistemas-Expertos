@@ -8,7 +8,7 @@ import { SitioService } from '@services/sitio.service';
   styleUrls: ['./mi-sitios.component.css']
 })
 export class MiSitiosComponent implements OnInit {
-  usuarioAuntenticado: string = '5e67f7a2a85d65168874c68e';
+  usuarioAuntenticado: string = '5e7d0d16fac96b05a48d9d45';
   sitios: any [];
 
   constructor( private servicio: SitioService ) { }

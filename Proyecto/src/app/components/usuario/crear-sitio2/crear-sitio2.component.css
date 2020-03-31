@@ -5,3 +5,12 @@
 .vista{
     cursor: pointer;
 }
+
+
+.icono{
+    float: left !important;
+}
+
+.text-sm{
+    font-size: 0.7rem;
+}

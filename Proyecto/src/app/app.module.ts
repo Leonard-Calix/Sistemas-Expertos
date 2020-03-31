@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { CKEditorModule   } from '@ckeditor/ckeditor5-angular';
@@ -40,6 +40,8 @@ import { LandingPage2Component } from './landing-page2/landing-page2.component';
 import { NoFoundComponent } from './no-found/no-found.component';
 import { NavBarComponent } from './templates/nav-bar/nav-bar.component';
 import { PrincipalComponent } from './templates/principal/principal.component';
+import { Login2Component } from './templates/login/login.component';
+
 
 
 /* SERVICIOS */
@@ -56,6 +58,9 @@ import { MiSitiosComponent } from './components/usuario/mi-sitios/mi-sitios.comp
 import { MiBlogsComponent } from './components/usuario/mi-blogs/mi-blogs.component';
 import { BlogService } from '@services/blog.service';
 import { EnlaceComponent } from './templates/enlace/enlace.component';
+import { HeadersComponent } from './templates/headers/headers.component';
+import { CategoriaComponent } from './components/administracion/categoria/categoria.component';
+import { CategoriaService } from '@services/categoria.service';
 
 
 
@@ -100,6 +105,9 @@ import { EnlaceComponent } from './templates/enlace/enlace.component';
     MiSitiosComponent,
     MiBlogsComponent,
     EnlaceComponent,
+    Login2Component,
+    HeadersComponent,
+    CategoriaComponent
   
   ],
   imports: [
@@ -108,6 +116,7 @@ import { EnlaceComponent } from './templates/enlace/enlace.component';
     FormsModule,
     HttpClientModule,
     CKEditorModule,
+    ReactiveFormsModule
    
   ],
   providers: [
@@ -115,7 +124,8 @@ import { EnlaceComponent } from './templates/enlace/enlace.component';
     UsuarioService,
     CargaImagenesService,
     SitioService,
-    BlogService
+    BlogService,
+    CategoriaService
   ],
   bootstrap: [AppComponent]
 })

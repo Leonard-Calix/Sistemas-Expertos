@@ -8,6 +8,8 @@
           data-target="#exampleModalCenter">Shorcouts</button>
         <button (click)="modalGaleria()" type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
           data-target="#exampleModalCenter">Imagenes</button>
+        <button type="button" class=" ml-4 btn btn-sm btn-outline-success" data-toggle="modal"
+          data-target="#modal_archivo">Archivos</button>
         <hr>
         <div class="form-group">
           <label for="inputAddress">Informacion del sitio</label>
@@ -34,7 +36,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal Imagenes-->
 <div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -47,25 +49,57 @@
         </button>
       </div>
       <div class="modal-body modal-lg">
-        
+
         <div *ngIf="shorcouts" class="row">
-            <div *ngFor="let item of coleccion; index as i" class="col-md-4">
-              <div (click)="agregarShorcouts(i)" class="card text-white bg-primary mb-3 vista">
-                <div class="card-header">Seleccionar</div>
-                <div class="card-body">
-                  {{item.nombre}}
-                </div>
+          <div *ngFor="let item of coleccion; index as i" class="col-md-4">
+            <div (click)="agregarShorcouts(i)" class="card text-white bg-primary mb-3 vista">
+              <div class="card-header">Seleccionar</div>
+              <div class="card-body">
+                {{item.nombre}}
               </div>
             </div>
+          </div>
         </div>
 
         <div *ngIf="galeria" class="row">
           <div *ngFor="let imagen of imagenes" class="col-4">
-            <img class="img-fluid rounded pb-2" src="../../../../{{ imagen.url }}" alt="">
-            <p class="text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
+            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" src="../../../../{{ imagen.url }}" alt="">
+            <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
           </div>
         </div>
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Archivos-->
+<div class="modal fade bd-example-modal-lg " id="modal_archivo" tabindex="-1" role="dialog"
+  aria-labelledby="modal_archivoTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 *ngIf="galeria" class="modal-title" id="exampleModalLongTitle">Archivos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-lg">
+        <div class="row">
+          <div *ngFor="let item of archivos" class="bg-light col-lg-3 col-md-6 col-12 p-0 m-0">
+            <div *ngIf="item.extension=='docx' || item.extension=='pdf'" class="card-body">
+              <img *ngIf="item.extension=='docx'" src="../../../../assets/img/word.png" width="50%" class="img-fluid mb-2" alt="">
+              <img *ngIf="item.extension=='pdf'" src="../../../../assets/img/pdf.png" width="50%" class="img-fluid mb-2" alt="">
+              <p *ngIf="item.extension=='docx' || item.extension=='pdf'" class="p-2" class="text-sm text-muted">Nombre :
+                {{item.nombre}}</p>
+                <p *ngIf="item.extension=='docx' || item.extension=='pdf'" class="p-2" class="text-sm text-muted">
+                 <b>ID:</b>  {{item._id}}</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>

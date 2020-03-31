@@ -9,12 +9,14 @@ export class NavMenuComponent implements OnInit {
 
   //@Input() tituloMenu:any;
   @Input() sitio:any;
+  @Input() menu:any;
+
 
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.sitio);
+    console.log(this.menu);
   }
 
 }

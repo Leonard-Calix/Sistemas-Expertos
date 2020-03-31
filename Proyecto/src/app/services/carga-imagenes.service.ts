@@ -32,6 +32,18 @@ export class CargaImagenesService {
 
   }
 
+  getVideo(){
+  
+    return this.httpCient.get('http://localhost:4300/obtenerVideo');
+
+  }
+
+  getArchivos(){
+  
+    return this.httpCient.get('http://localhost:4300/obtenerArchivos');
+
+  }
+
   getImagen(id){
     return this.httpCient.get(`http://localhost:4300/obtenerImagen/${id}`);
   }

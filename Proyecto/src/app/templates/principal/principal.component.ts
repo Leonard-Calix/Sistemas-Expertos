@@ -11,7 +11,8 @@ import { CargaImagenesService } from '@services/carga-imagenes.service';
 })
 export class PrincipalComponent implements OnInit {
 
-  sitio: any;
+  idSitio: any;
+  sitio:any;
   contenido: any;
   informacion: any = [];
 
@@ -20,12 +21,22 @@ export class PrincipalComponent implements OnInit {
   shortcutsImagen: any;
   shortcutsGaleria: any;
   shortcutsEnlace: any;
+  shortcutsMenu: any;
+  shortcutsHeaders: any;
+
+
 
   //=====================================================//
 
-  esGaleria: boolean;
-  esImagen: boolean;
-  esEnlace: boolean;
+  esGaleria: boolean= false;
+  esImagen: boolean= false;
+  esEnlace: boolean= false;
+  esMenu: boolean= false;
+  esLogin: boolean= false;
+  esHeaders: boolean= false;
+
+
+
 
   //=====================================================//
 
@@ -38,20 +49,23 @@ export class PrincipalComponent implements OnInit {
 
   constructor(private ac: ActivatedRoute, private servicio: SitioService, private seviceImagen: CargaImagenesService) {
 
-    this.contenido = this.ac.snapshot.paramMap.get("contenido");
-    this.sitio = this.ac.snapshot.paramMap.get("id");
+   
 
   }
 
   ngOnInit(): void {
 
-    if (this.contenido.length == 1) {
-      this.obtenerShourcouts(this.sitio);
-    }
-
+    this.contenido = this.ac.snapshot.paramMap.get("contenido");
+    this.idSitio = this.ac.snapshot.paramMap.get("id");
+      
     this.obtenerUno();
-    this.infomacionSitio();
-    this.obtenerTipos();
+
+    if (this.contenido.length == 1) {
+      this.obtenerShourcouts();
+    }else{
+      this.infomacionSitio();
+      this.obtenerTipos();
+    }
 
     if (this.esImagen) {
       this.obtenerImagen(this.shortcutsImagen.id);
@@ -61,9 +75,9 @@ export class PrincipalComponent implements OnInit {
   }
 
   obtenerUno() {
-    this.servicio.ontenerUnSitio(this.sitio).subscribe((data: any) => {
-      //console.log(data);
-      this.sitio = data;
+    this.servicio.ontenerUnSitio(this.idSitio).subscribe((data: any) => {
+      console.log(data);
+      this.sitio = data[0];
     });
   }
 
@@ -80,6 +94,17 @@ export class PrincipalComponent implements OnInit {
       if (this.informacion[i].tipo == 'enlace') {
         this.esEnlace = true;
         this.shortcutsEnlace = this.informacion[i];
+      }
+      if (this.informacion[i].tipo == 'menu') {
+        this.esMenu = true;
+        this.shortcutsMenu = this.informacion[i];
+      }
+      if (this.informacion[i].tipo == 'login') {
+        this.esLogin = true;
+      }
+      if (this.informacion[i].tipo == 'header') {
+        this.esHeaders = true;
+        this.shortcutsHeaders = this.informacion[i];
       }
     }
   }
@@ -104,25 +129,30 @@ export class PrincipalComponent implements OnInit {
       inicio = 0;
     }
 
-    //console.log( this.informacion );
-
+    console.log( this.informacion );
+  
   }
 
 
   obtenerImagen(id) {
     this.seviceImagen.getImagen(id).subscribe((data: any) => {
-      console.log(data);
-      this.imagen = data;
+      this.imagen = data[0];
+      console.log(data[0]);
     });
   }
 
-  obtenerShourcouts(sitio) {
-    this.servicio.obtenerShorcouts(sitio).subscribe((data: any) => {
-      console.log( this.contenido);
+  obtenerShourcouts() {
+    this.servicio.obtenerShorcouts(this.idSitio).subscribe((data: any) => {
+      console.log(data);
       if (data) {
         this.contenido = data[0].shortcut;
         this.infomacionSitio();
         this.obtenerTipos();
+
+        if(this.esImagen){
+          this.obtenerImagen( this.shortcutsImagen.id);
+        }
+
       }
     });
   }

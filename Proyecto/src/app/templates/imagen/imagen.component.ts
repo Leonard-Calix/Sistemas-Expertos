@@ -13,7 +13,8 @@ export class ImagenComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.imagen.url);
+    console.log( 'Imagen :' + this.imagen);
+
 
   }
 

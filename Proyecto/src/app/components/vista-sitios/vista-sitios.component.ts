@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SitioService } from '@services/sitio.service';
 
 @Component({
   selector: 'app-vista-sitios',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VistaSitiosComponent implements OnInit {
 
-  constructor() { }
+  sitios:any [];
+
+  constructor( private sitioService: SitioService ) { 
+
+    this.obtenerSitios();
+
+  }
 
   ngOnInit(): void {
+  }
+
+  obtenerSitios(){
+    this.sitioService.obtenerSitios().subscribe((data:any) => {
+      this.sitios = data;
+      console.log(data);
+    });
   }
 
 }

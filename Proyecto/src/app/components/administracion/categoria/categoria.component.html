@@ -1,0 +1,45 @@
+<div class="container-fluid mt-3 animated fadeIn">
+    <div class="card bg-light mb-3">
+        <div class="card-header m-0">Categoria</div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-6 col-xs-12 col-12">
+                    <h4 class="text-center" >Listado categoria</h4>
+                    <br>
+                    <table class="table table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Numero</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of categorias; index as i" >
+                                <th scope="row">{{ i+1 }}</th>
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.descripcion}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 col-xs-12 col-12">
+                    <h4 class="text-center" >Agregar nueva categoria</h4><br>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nombre categoria</label>
+                        <input [(ngModel)]="categoria.nombre" type="text" class="form-control" placeholder="Ingrese nueva categoria">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Descripcion</label>
+                        <input [(ngModel)]="categoria.descripcion" type="text" class="form-control"placeholder="Ingrese una descripcion">
+                    </div>
+                    <button class="btn btn-sm btn-primary mr-4" (click)="guardarCatgoria();" >Agregar</button>
+                    <button class="btn btn-sm btn-outline-danger mr-4" >Cancelar</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

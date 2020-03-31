@@ -12,6 +12,10 @@ export class SitioService {
     return this.peticion.get('http://localhost:4300/sitio/obtener/'+sitio);
   }
 
+  obtenerSitios(){
+    return this.peticion.get('http://localhost:4300/sitios');
+  }
+
   obtenerSitioUsuario(usuario: String){
     return this.peticion.get('http://localhost:4300/sitio/buscar/'+usuario);
   }

@@ -18,7 +18,7 @@ app.post('/cargarImage', function(req, res) {
   let nombreCortado = archivo.name.split('.');
   let extension = nombreCortado[nombreCortado.length - 1 ];
 
-  let extenciones = ['jpg','jpeg', 'png', 'pdf'];
+  let extenciones = ['jpg','jpeg', 'png', 'pdf', 'docx', 'mp4' ];
 
   if (extenciones.indexOf( extension ) < 0) {
     return res.status(400).json({ Ok : false , error: 'Extension no valida'});    
@@ -53,7 +53,7 @@ app.post('/cargarImage', function(req, res) {
 
 app.get('/obtenerImagenes', function(req, res) {
 
-  Image.find({})
+  Image.find({extension: {  $in :  [  "png" ,  "jpg", "jpeg"  ]  } })
     .then( (data) => {
         res.send(data);
         res.end();
@@ -63,6 +63,38 @@ app.get('/obtenerImagenes', function(req, res) {
         res.end();
     });
 });
+
+
+// OBTENER ARCHIVOS
+
+app.get('/obtenerArchivos', function(req, res) {
+
+  Image.find({extension: {  $in :  [ "pdf" , "docx" ]  } })
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(error);
+        res.end();
+    });
+});
+
+// OBTENER VIDEO
+
+app.get('/obtenerVideo', function(req, res) {
+
+  Image.find({extension: 'mp4'})
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(error);
+        res.end();
+    });
+});
+
 
 //OBTENER UNA IMAGEN
 

@@ -52,4 +52,7 @@ app.get('/shortcuts/sitio/obtener/:id', function(req ,res){
     });   
 });
 
+
+
+
 module.exports = app;

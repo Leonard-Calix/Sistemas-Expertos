@@ -1,54 +1,15 @@
-
-
-<div class="container mt-3 animated fadeIn" >
-    <div class="row">
-        <div class="col-md-5 col-12 m-2" >
-            <a target="_blank" href="https://www.facebook.com">
+<div class="container mt-3 animated fadeIn">
+    <div class="row pt-2"><br><br>
+        <div *ngFor="let sitio of sitios" class="col-md-5 col-12 m-2 mr-auto ml-auto">
+            <a target="_blank" [routerLink]="['/template', sitio._id,' ']">
                 <div class="card bg-dark text-white">
-                    <img class="card-img img-fluid" src="../../../assets/img/sitios/facebook.jpg.png" alt="Card image">
+                    <img class="card-img img-fluid" src="../../../assets/img/template-sitio.png" alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-title"> <b>Facebook</b> </h5>
-                      <p class="card-text"><b>Leonard-calix</b></p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    
-        <div class="col-md-5 col-12 m-2" >
-            <a target="_blank" href="https://www.instagram.com">
-                <div class="card bg-dark text-white">
-                    <img class="card-img img-fluid" src="../../../assets/img/sitios/instagram.png" alt="Card image">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title"> <b>Instagram</b> </h5>
-                      <p class="card-text"><b>Leonard-calix</b></p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-5 col-12 m-2" >
-            <a target="_blank" href="https://www.spotify.com">
-                <div class="card bg-dark text-white">
-                    <img class="card-img img-fluid" src="../../../assets/img/sitios/spotyfi.png" alt="Card image">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title"> <b>Spotyfy</b> </h5>
-                      <p class="card-text"><b>Leonard-calix</b></p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-5 col-12 m-2" >
-            <a target="_blank" href="https://www.youtube.com">
-                <div class="card bg-dark text-white">
-                    <img class="card-img img-fluid" src="../../../assets/img/sitios/youtube.png" alt="Card image">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title"> <b>youtube</b> </h5>
-                      <p class="card-text"><b>Leonard-calix</b></p>
+                        <h5 class="text-white "> <b class="nombre-sitio">{{ sitio.titulo }}</b> </h5><br>
+                        <p class="text-white "><b class="descripcion-sitio">{{ sitio.descripcion }}</b></p>
                     </div>
                 </div>
             </a>
         </div>
     </div>
-    
 </div>

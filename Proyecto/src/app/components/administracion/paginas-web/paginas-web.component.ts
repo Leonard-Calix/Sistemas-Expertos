@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SitioService } from '@services/sitio.service';
 
 @Component({
   selector: 'app-paginas-web',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginasWebComponent implements OnInit {
 
-  constructor() { }
+  sitios:any;
+
+  constructor( private S_service: SitioService ) { }
 
   ngOnInit(): void {
+
+    this.obtnerSitio();
+  }
+
+  obtnerSitio(){
+    this.S_service.obtenerSitios().subscribe((data:any) => {
+      this.sitios = data;
+      console.log(data);
+    });
   }
 
 }
