@@ -12,9 +12,8 @@ app.post('/blog/agregar', function(req, res) {
 
   let blog = new Blog({
       nombre: body.nombre,
-      url: body.url,
       categoria: body.categorias,
-      urlImage: body.urlImage,
+      urlImagen: body.urlImagen,
       comentarios: body.comentario,
       usuario: body.usuario
   });

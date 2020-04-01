@@ -1,17 +1,13 @@
 <div class="container animated fadeIn">
   <div class="card bg-light mt-4">
-    <div class="card-header m-0">Nuevo blog</div>
+    <div class="card-header m-0">Nueva Entrada</div>
     <div class="card-body">
       <div class="row">
         <div class="col-md-6 col-12">
           <div class="form-row">
             <div class="col">
               <label for=""></label><br>
-              <input type="text" [(ngModel)]="blog.nombre" class="form-contro bg-light" placeholder="Nombre del blog">
-            </div>
-            <div class="col">
-              <label for=""></label><br>
-              <input type="text" [(ngModel)]="blog.url" class="form-contro bg-light" placeholder="URL">
+              <input type="text" [(ngModel)]="blog.nombre" class="form-contro bg-light" placeholder="Titulo de la entrada">
             </div>
           </div><br>
           <div class="form-group">
@@ -46,19 +42,15 @@
                 <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
               </div>
               <select [(ngModel)]="blog.categorias" class="custom-select" id="inputGroupSelect01">
-                <option value="0">---Seleccione---</option>
-                <option value="Musica">Musica</option>
-                <option value="Arte">Arte</option>
-                <option value="Peliculas">Peliculas</option>
-                <option value="Ventas">Ventas</option>
+                <option *ngFor="let item of categorias" value=" {{ item.nombre }} ">{{ item.nombre }}</option>
               </select>
             </div>
           </div>
 
         </div>
       </div>
-      <button type="button"  [disabled]="!blog.urlImagen" (click)="guardarBlog()" class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i></button>
-      <button (click)="prueba()" type="button" class="btn btn-sm btn-outline-primary mr-2">Cancelar</button>
+      <button type="button"  [disabled]="!blog.urlImagen" (click)="guardarBlog();" class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i></button>
+      <button type="button" class="btn btn-sm btn-outline-primary mr-2">Cancelar</button>
     </div>
   </div>
 </div>

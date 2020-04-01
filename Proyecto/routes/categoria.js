@@ -4,37 +4,54 @@ const conexion = require('../modelo/database');
 const app = express();
 
 
-app.post('/categoria/agregar', function(req, res) {
+app.post('/categoria/agregar', function (req, res) {
 
     let body = req.body;
-  
+
     let categoria = new Categoria({
         nombre: body.nombre,
-        descripcion: body.descripcion    
+        descripcion: body.descripcion
     });
 
     categoria.save((error, categoriaDB) => {
-      
-        if (error){
-            return res.status(400).json({ Ok : false });
+
+        if (error) {
+            return res.status(400).json({ Ok: false });
         }
-  
-        res.json( { Ok : true, categoria : categoriaDB  });
-    }); 
+
+        res.json({ Ok: true, categoria: categoriaDB });
+    });
 });
 
-app.get('/categoria/obtener', function(req, res) {
+app.get('/categoria/obtener', function (req, res) {
 
     Categoria.find({})
-      .then( (data) => {
-          res.send(data);
-          res.end();
-      })
-      .catch( (erro) => {
-          res.send(error);
-          res.end();
-      });
-  });
-  
+        .then((data) => {
+            res.send(data);
+            res.end();
+        })
+        .catch((erro) => {
+            res.send(error);
+            res.end();
+        });
+});
+
+app.delete('/categoria/eliminar/:id', function (req, res) {
+
+    id = req.params.id;
+
+
+    Categoria.remove({ _id: id })
+        .then((data) => {
+            res.json({ Ok: true });
+            res.end();
+        })
+        .catch((erro) => {
+            res.json({ Ok: false });
+            res.end();
+        });
+
+});
+
 
 module.exports = app;

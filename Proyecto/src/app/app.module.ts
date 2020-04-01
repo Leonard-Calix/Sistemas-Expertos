@@ -61,6 +61,8 @@ import { EnlaceComponent } from './templates/enlace/enlace.component';
 import { HeadersComponent } from './templates/headers/headers.component';
 import { CategoriaComponent } from './components/administracion/categoria/categoria.component';
 import { CategoriaService } from '@services/categoria.service';
+import { TemplateblogComponent } from './templateblog/templateblog.component';
+import { ComentariosService } from '@services/comentarios.service';
 
 
 
@@ -107,7 +109,9 @@ import { CategoriaService } from '@services/categoria.service';
     EnlaceComponent,
     Login2Component,
     HeadersComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    TemplateblogComponent,
+    ComentariosComponent
   
   ],
   imports: [
@@ -125,7 +129,8 @@ import { CategoriaService } from '@services/categoria.service';
     CargaImagenesService,
     SitioService,
     BlogService,
-    CategoriaService
+    CategoriaService,
+    ComentariosService
   ],
   bootstrap: [AppComponent]
 })

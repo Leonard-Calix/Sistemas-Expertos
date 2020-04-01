@@ -12,23 +12,30 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class CrearBlog2Component implements OnInit {
 
   public Editor = ClassicEditor;
-  blog:string;
+  idBlog:string;
+  accion:string;
 
   public model = {
-    editorData: ''
+    editorData: '<p> </p>'
   };
 
   galeria:boolean = false;
   shorcouts:boolean = false;
 
   constructor(private ac: ActivatedRoute) {
-    this.blog = this.ac.snapshot.paramMap.get("id");
-    console.log( this.blog );
+    this.idBlog = this.ac.snapshot.paramMap.get("id");
+    this.accion = this.ac.snapshot.paramMap.get("accion");
 
+    //console.log( this.idBlog );
 
    }
 
   ngOnInit(): void {
+
+    if( this.accion == 'editar'){
+      console.log("editar");
+    }
+
   }
 
   modalGaleria(){
@@ -52,6 +59,18 @@ public editor( { editor }: ChangeEvent ) {
     const data = editor.getData();
 
     console.log( data );
+}
+
+prueba(){
+  console.log(this.model.editorData);
+}
+
+guardar(){
+
+}
+
+guardarCambios(){
+
 }
 
 }

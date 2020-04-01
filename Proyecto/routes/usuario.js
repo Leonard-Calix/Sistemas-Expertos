@@ -33,7 +33,7 @@ app.get('/usuarios', function(req ,res){
     let desde = req.query.desde || 0;
     desde = Number(desde);
   
-    Usuario.find({})
+    Usuario.find({role: 'admin'})
     .then( (data) => {
         res.send(data);
         res.end();

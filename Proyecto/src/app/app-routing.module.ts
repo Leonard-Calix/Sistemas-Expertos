@@ -36,6 +36,7 @@ import { PrincipalComponent } from './templates/principal/principal.component';
 import { MiSitiosComponent } from '@components/usuario/mi-sitios/mi-sitios.component';
 import { MiBlogsComponent } from '@components/usuario/mi-blogs/mi-blogs.component';
 import { CategoriaComponent } from '@components/administracion/categoria/categoria.component';
+import { TemplateblogComponent } from './templateblog/templateblog.component';
 
 
 const routes: Routes = [
@@ -57,7 +58,7 @@ const routes: Routes = [
         { path: 'blogs', component: VistaBlogsComponent },
         { path: 'crearSitio', component: CrearSitioComponent },
         { path: 'crearBlog', component: CrearBlogComponent },
-        { path: 'crearBlogShourcouts/:id', component: CrearBlog2Component },
+        { path: 'crearBlogShourcouts/:id/:accion', component: CrearBlog2Component },
         { path: 'crearSitioShourcouts/:id', component: CrearSitio2Component },
         { path: 'sitiosUsuario', component: MiSitiosComponent },
         { path: 'blogsUsuario', component: MiBlogsComponent },
@@ -83,6 +84,10 @@ const routes: Routes = [
       ]
     },
     { path : 'template/:id/:contenido', component: PrincipalComponent },
+    { path : 'plantillaBlogs/:id/:contenido', component: TemplateblogComponent },
+
+
+    
 
     
 ];

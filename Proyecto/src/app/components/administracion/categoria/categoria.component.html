@@ -4,15 +4,16 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="col-md-6 col-xs-12 col-12">
+                <div class="col-lg-6 col-md-12 col-xs-12 col-12">
                     <h4 class="text-center" >Listado categoria</h4>
                     <br>
                     <table class="table table-sm">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Numero</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripcion</th>
+                                <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -20,11 +21,12 @@
                                 <th scope="row">{{ i+1 }}</th>
                                 <td>{{item.nombre}}</td>
                                 <td>{{item.descripcion}}</td>
+                                <td (click)="eliminarCatgoria(item._id, i)" > <button class="btn btn-delete" > <i class="fas fa-trash text-danger"></i> </button> </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-6 col-xs-12 col-12">
+                <div class="col-lg-6 col-md-12 col-xs-12 col-12">
                     <h4 class="text-center" >Agregar nueva categoria</h4><br>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nombre categoria</label>

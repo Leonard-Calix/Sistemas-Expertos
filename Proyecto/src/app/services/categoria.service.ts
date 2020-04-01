@@ -17,4 +17,8 @@ export class CategoriaService {
   guardarCategorias(categoria){
     return this.http.post(`${this.link}agregar`, categoria);
   }
+
+  eliminarCategoria(id){
+    return this.http.delete(`${this.link}eliminar/${id}`);
+  }
 }

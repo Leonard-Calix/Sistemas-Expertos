@@ -1,0 +1,22 @@
+.centrado{
+    margin:10px auto;
+    display:block;
+}
+
+.cuerpo{
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.fondo{
+    background-image: url(../../assets/img/fondo-blog-1.jpg);
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.mensaje-error {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }

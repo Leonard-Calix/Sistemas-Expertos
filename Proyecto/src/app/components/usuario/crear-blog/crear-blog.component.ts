@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CargaImagenesService } from '@services/carga-imagenes.service';
 import { Router } from '@angular/router';
 import { BlogService } from '@services/blog.service';
+import { CategoriaService } from '@services/categoria.service';
 
 @Component({
   selector: 'app-crear-blog',
@@ -13,11 +14,11 @@ export class CrearBlogComponent implements OnInit {
   galeria:boolean = false;
   shorcouts:boolean = false;
   archivo: File;
+  categorias: any;
   usuarioAutenticado:String = '5e67f7a2a85d65168874c68e';
 
   blog:any = {
     nombre: null,
-    url: null,
     comentario: 'true',
     categorias: '0',
     urlImagen: null,
@@ -25,9 +26,12 @@ export class CrearBlogComponent implements OnInit {
   }
 
 
-  constructor( private _cargaImagenes: CargaImagenesService, private router: Router, private blogServices: BlogService  ) { }
+  constructor( private _cargaImagenes: CargaImagenesService, private serviceCategorias: CategoriaService, private router: Router, private blogServices: BlogService  ) { }
 
   ngOnInit(): void {
+
+    this.obtenerCategorias();
+
   }
 
   modalGaleria(){
@@ -54,9 +58,6 @@ export class CrearBlogComponent implements OnInit {
 
     console.log(this.blog);
 
-    //this.router.navigate(['crearBlogShourcouts', ]);
-
-    //this.blogServices
   }
 
   guardarBlog(){
@@ -66,14 +67,16 @@ export class CrearBlogComponent implements OnInit {
       console.log(data);
 
       if(data.id){
-        this.router.navigate(['/index/crearBlogShourcouts', data.id ]);
+        this.router.navigate(['/index/crearBlogShourcouts', data.id, 'completar' ]);
       }
     });
 
   }
 
-  prueba(){
-    console.log(this.blog);
+  obtenerCategorias(){
+    this.serviceCategorias.obtenerCategorias().subscribe((data:any) => {
+      this.categorias = data;
+    });
   }
 
 }

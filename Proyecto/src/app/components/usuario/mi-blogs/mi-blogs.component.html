@@ -9,8 +9,8 @@
             <tr>
               <th scope="col">Numero</th>
               <th scope="col">Titulo</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">URL</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Editar</th>
               <th scope="col">Visualizar</th>
             </tr>
           </thead>
@@ -18,9 +18,9 @@
             <tr *ngFor="let blog of blogs" class="text-center">
               <td>1</td>
               <td>{{ blog.nombre }}</td>
-              <td>{{ blog.descripcion }}</td>
-              <td>{{ blog.url }}</td>
-              <td> <a target="_blank" class="btn btn-sm btn-success" [routerLink]="[ '/template', blog._id , '' ]">Visualizar</a> </td>
+              <td>{{ blog.categoria }}</td>
+              <td> <a target="_blank" class="btn btn-sm btn-warning" [routerLink]="[ '/index/crearBlogShourcouts/', blog._id , 'editar' ]">Editar</a> </td>
+              <td> <a target="_blank" class="btn btn-sm btn-success" [routerLink]="[ '/plantillaBlogs', blog._id , 'visualizar' ]">Visualizar</a> </td>
             </tr>
           </tbody>
         </table>

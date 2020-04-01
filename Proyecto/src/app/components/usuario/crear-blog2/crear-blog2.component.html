@@ -17,8 +17,10 @@
               </div>
           </div>
             
-          <button type="button" class="btn btn-sm btn-primary mr-2">Guardar</button>
-          <button type="button" class="btn btn-sm btn-danger mr-2">Cancelar</button>          
+          <button type="button" *ngIf="accion!='editar'" (click)="guardar()" class="btn btn-sm btn-primary mr-2">Guardar</button>
+          <button type="button" *ngIf="accion=='editar'" (click)="guardarCambios()" class="btn btn-sm btn-primary mr-2">Guardar cambios</button>
+          <button type="button" (click)="prueba()" class="btn btn-sm btn-danger mr-2">Cancelar</button>  
+          <a class="btn btn-sm btn-warning" target="_blank" [routerLink]="['/plantillaBlogs', idBlog, model.editorData]">Visualizar</a>
       </div>
     </div>
 </div>

@@ -29,6 +29,8 @@ categorias:any= [];
       if(data){
         this.categorias.push(data.categoria);
         console.log(data);
+        this.categoria.descripcion = '';
+        this.categoria.nombre = '';
       }
     });
 
@@ -36,8 +38,13 @@ categorias:any= [];
 
   }
 
-  eliminarCatgoria(id){
-    console.log(id);
+  eliminarCatgoria(id, indice){
+    this.servicio.eliminarCategoria(id).subscribe( (data:any) => {
+      if(data){
+        this.categorias.slice(indice, 1);
+      }
+      this.obtenerCategorias();
+    });
   }
 
   obtenerCategorias(){

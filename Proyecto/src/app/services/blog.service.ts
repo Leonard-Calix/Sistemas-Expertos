@@ -17,5 +17,13 @@ export class BlogService {
     return this.servicio.post('http://localhost:4300/blog/agregar', blog);
   }
 
+  obtenerBlog(blog){
+    return this.servicio.get(`http://localhost:4300/blog/obtener/${blog}`);
+  }
+
+  obtenerBlogs(){
+    return this.servicio.get(`http://localhost:4300/blogs`);
+  }
+
 
 }

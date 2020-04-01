@@ -5,13 +5,10 @@ let blogSchema = new Schema({
     nombre : {
         type: String
     },
-    url  : {
-        type: String
-    } ,
-    descripcion  : {
+    categoria  : {
         type: String
     },
-    urlImage: {
+    urlImagen: {
         type: String
     },
     comentarios :{

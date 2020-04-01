@@ -17,6 +17,8 @@ app.use( require( './routes/imagen' ) );
 app.use( require( './routes/blog' ) );
 app.use( require( './routes/SCSitio' ) );
 app.use( require( './routes/categoria' ) );
+app.use( require( './routes/comentario' ) );
+
 
 
 
