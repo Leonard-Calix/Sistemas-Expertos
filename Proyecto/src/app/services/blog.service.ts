@@ -25,5 +25,16 @@ export class BlogService {
     return this.servicio.get(`http://localhost:4300/blogs`);
   }
 
+  obtenerShorcustBlog(blog){
+    return this.servicio.get(`http://localhost:4300/shortcuts/blog/obtener/${blog}`);
+  }
 
+  guardarShorcustBlog(shortcuts){
+    return this.servicio.post(`http://localhost:4300/shortcuts/blog/agregar`, shortcuts);
+  }
+
+  editarShorcustBlog(blog){
+    return this.servicio.post(`http://localhost:4300/shortcuts/blog/editar`, blog);
+  }
+  
 }

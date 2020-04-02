@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { BlogService } from '@services/blog.service';
 
 
 @Component({
@@ -11,18 +12,24 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class CrearBlog2Component implements OnInit {
 
-  public Editor = ClassicEditor;
   idBlog:string;
   accion:string;
+
+  public Editor = ClassicEditor;
 
   public model = {
     editorData: '<p> </p>'
   };
 
+  blogBase = {
+    shortcut: this.model.editorData,
+    blog : this.idBlog 
+  }
+
   galeria:boolean = false;
   shorcouts:boolean = false;
 
-  constructor(private ac: ActivatedRoute) {
+  constructor(private ac: ActivatedRoute, private serviceBlog: BlogService, private router: Router) {
     this.idBlog = this.ac.snapshot.paramMap.get("id");
     this.accion = this.ac.snapshot.paramMap.get("accion");
 
@@ -34,6 +41,7 @@ export class CrearBlog2Component implements OnInit {
 
     if( this.accion == 'editar'){
       console.log("editar");
+      this.obtenerShorcoutBlog();
     }
 
   }
@@ -53,7 +61,7 @@ export class CrearBlog2Component implements OnInit {
         editor.ui.view.toolbar.element,
         editor.ui.getEditableElement()
     );
-}s
+}
 
 public editor( { editor }: ChangeEvent ) {
     const data = editor.getData();
@@ -67,10 +75,38 @@ prueba(){
 
 guardar(){
 
+  this.blogBase.shortcut = this.model.editorData;
+  this.blogBase.blog = this.idBlog;
+
+  console.log(this.blogBase);
+
+  this.serviceBlog.guardarShorcustBlog(this.blogBase).subscribe( (data:any) => {
+
+    if(data){
+      this.router.navigate(['/index/blogsUsuario']);
+    }
+    console.log(data);
+  });
+  
 }
 
 guardarCambios(){
 
+  this.blogBase.shortcut = this.model.editorData;
+  this.blogBase.blog = this.idBlog;
+
+  this.serviceBlog.editarShorcustBlog(this.blogBase).subscribe((data:any) => {
+    if(data.ok){
+      this.router.navigate(['/index/blogsUsuario']);
+    }
+  });
+}
+
+obtenerShorcoutBlog(){
+  this.serviceBlog.obtenerShorcustBlog(this.idBlog).subscribe( (data:any) =>{
+    this.model.editorData = data[0].shortcut;
+    console.log(data);
+  });
 }
 
 }

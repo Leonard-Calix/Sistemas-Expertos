@@ -111,7 +111,8 @@ import { ComentariosService } from '@services/comentarios.service';
     HeadersComponent,
     CategoriaComponent,
     TemplateblogComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    VistaBlogsComponent
   
   ],
   imports: [

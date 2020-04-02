@@ -15,8 +15,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let blog of blogs" class="text-center">
-              <td>1</td>
+            <tr *ngFor="let blog of blogs; index as i"class="text-center">
+              <td>{{ i + 1 }}</td>
               <td>{{ blog.nombre }}</td>
               <td>{{ blog.categoria }}</td>
               <td> <a target="_blank" class="btn btn-sm btn-warning" [routerLink]="[ '/index/crearBlogShourcouts/', blog._id , 'editar' ]">Editar</a> </td>

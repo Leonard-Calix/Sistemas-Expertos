@@ -8,7 +8,7 @@ import { BlogService } from '@services/blog.service';
 })
 export class MiBlogsComponent implements OnInit {
 
-  blogs: any[];
+  blogs: any[] = [];
   usuarioAuntenticado:string = '5e67f7a2a85d65168874c68e';
 
   constructor( private servicio: BlogService  ) { }
@@ -20,7 +20,7 @@ export class MiBlogsComponent implements OnInit {
   }
 
   obtenerBlogs(){
-    this.servicio.obtenerBlogUsuario(this.usuarioAuntenticado).subscribe( (data: any) => {
+    this.servicio.obtenerBlogs().subscribe( (data: any) => {
       this.blogs = data;
       console.log(data);
     });

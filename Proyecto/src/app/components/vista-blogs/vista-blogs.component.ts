@@ -7,7 +7,7 @@ import { BlogService } from '@services/blog.service';
   styleUrls: ['./vista-blogs.component.css']
 })
 export class VistaBlogsComponent implements OnInit {
-  blogs :any [];
+  blogs:any = [];
 
   constructor( private servicioBlogs :BlogService ) { }
 

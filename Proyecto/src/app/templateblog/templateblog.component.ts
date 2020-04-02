@@ -88,7 +88,6 @@ export class TemplateblogComponent implements OnInit {
       }
 
     });
-
   }
 
   obtenerComentariosBlog(blog){
@@ -99,7 +98,12 @@ export class TemplateblogComponent implements OnInit {
   }
 
   obtenerShorcuts(){
-   
+   this.servuceBlog.obtenerShorcustBlog(this.idBlog).subscribe((data:any) => {
+     this.contenido = data[0].shortcut;
+
+     this.procesarInformacion();
+   });
   }
 
+  
 }
