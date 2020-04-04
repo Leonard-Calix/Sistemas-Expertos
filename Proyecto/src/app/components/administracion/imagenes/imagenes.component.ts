@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { FileItem } from "../modelo/file-item";
 import { CargaImagenesService } from "@services/carga-imagenes.service";
+
+
+
 
 
 @Component({
@@ -11,15 +12,15 @@ import { CargaImagenesService } from "@services/carga-imagenes.service";
 })
 export class ImagenesComponent implements OnInit {
 
-  imagenes:any[];
-  archivos:any[];
-  videos:any[];
+  imagenes: any[];
+  archivos: any[];
+  videos: any[];
 
 
 
   constructor(private _cargaImagenes: CargaImagenesService) {
-    
-   }
+
+  }
 
   ngOnInit(): void {
 
@@ -28,25 +29,32 @@ export class ImagenesComponent implements OnInit {
     this.obtenerVideo();
   }
 
-  obtenerImagenes(){
-    this._cargaImagenes.getImagenes().subscribe((data: any) => {
-      this.imagenes = data;
-      console.log(data)
-    });
+  obtenerImagenes() {
+
+    setTimeout(() => {
+      this._cargaImagenes.getImagenes().subscribe((data: any) => {
+        this.imagenes = data;
+        console.log(data)
+      });
+    }, 4000);
+
+
   }
 
-  obtenerArchivos(){
+  obtenerArchivos() {
+
     this._cargaImagenes.getArchivos().subscribe((data: any) => {
       this.archivos = data;
       console.log(data)
     });
   }
 
-  obtenerVideo(){
+  obtenerVideo() {
     this._cargaImagenes.getVideo().subscribe((data: any) => {
       this.videos = data;
       console.log(data)
     });
   }
+
 
 }

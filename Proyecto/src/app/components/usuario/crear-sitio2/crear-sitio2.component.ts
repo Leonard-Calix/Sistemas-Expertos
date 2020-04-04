@@ -12,44 +12,44 @@ import { CargaImagenesService } from '@services/carga-imagenes.service';
 export class CrearSitio2Component implements OnInit {
 
   public Editor = ClassicEditor;
-  imagenes:any[];
-  videos:any[];
-  archivos:any[];
+  imagenes: any[];
+  videos: any[];
+  archivos: any[];
 
   coleccion = [
     {
       nombre: 'Imagen',
-      etuqueta: '{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}'  
+      etuqueta: '{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}'
     },
     {
       nombre: 'Galeria',
-      etuqueta: '{"tipo":"galeria","imagenes":["5e743527beb9b00b04e8616d", "5e729ca392c34821805f3053"]}'  
+      etuqueta: '{"tipo":"galeria","imagenes":["5e743527beb9b00b04e8616d", "5e729ca392c34821805f3053"]}'
     },
     {
       nombre: 'Enlaces de descarga de archivos',
-      etuqueta: '{"tipo":"enlace","id":"5e743527beb9b00b04e8616d","titulo":"Descargar archivo" }'  
+      etuqueta: '{"tipo":"enlace","id":"5e743527beb9b00b04e8616d","titulo":"Descargar archivo" }'
     },
     {
       nombre: 'Login',
-      etuqueta: '{"tipo":"login","id":"5e743527beb9b00b04e8616d"}'  
+      etuqueta: '{"tipo":"login","id":"5e743527beb9b00b04e8616d"}'
     },
     {
       nombre: 'Post/Entrada',
-      etuqueta: '{"tipo":"entrada","id":"5e743527beb9b00b04e8616d"}'  
+      etuqueta: '{"tipo":"entrada","id":"5e743527beb9b00b04e8616d"}'
     },
     {
       nombre: 'Menú',
-      etuqueta: '{"tipo":"menu","id":"5e743527beb9b00b04e8616d"}'  
+      etuqueta: '{"tipo":"menu","id":"5e743527beb9b00b04e8616d"}'
     },
     {
       nombre: 'Breadcrumb',
-      etuqueta: '{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}'  
+      etuqueta: '{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}'
     },
     {
       nombre: 'Headers',
-      etuqueta: '{"tipo":"header","id":"5e743527beb9b00b04e8616d"}'  
+      etuqueta: '{"tipo":"header","id":"5e743527beb9b00b04e8616d"}'
     }
-    
+
   ];
 
 
@@ -59,29 +59,29 @@ export class CrearSitio2Component implements OnInit {
 
   };
 
-  sitio: string ;
-  res: string ;
-  informacion:any = [];
+  sitio: string;
+  res: string;
+  informacion: any = [];
 
 
   galeria: boolean = false;
   shorcouts: boolean = false;
 
-  sitioDB:any = {
+  sitioDB: any = {
     shortcut: this.model.editorData,
     sitio: this.sitio
   };
 
-  constructor(private servicio: SitioService, private servicioImagenes: CargaImagenesService, private ac: ActivatedRoute, private router: Router) { 
+  constructor(private servicio: SitioService, private servicioImagenes: CargaImagenesService, private ac: ActivatedRoute, private router: Router) {
 
     this.sitio = this.ac.snapshot.paramMap.get("id");
 
-    console.log( this.coleccion );
-    
-   }
+    console.log(this.coleccion);
 
-  
- 
+  }
+
+
+
 
   ngOnInit(): void {
 
@@ -108,42 +108,42 @@ export class CrearSitio2Component implements OnInit {
     });
   }
 
-  obtenerImagenes(){
-    this.servicioImagenes.getImagenes().subscribe((data:any) =>{
+  obtenerImagenes() {
+    this.servicioImagenes.getImagenes().subscribe((data: any) => {
       this.imagenes = data;
     });
   }
 
-  obtenerArchivos(){
-    this.servicioImagenes.getArchivos().subscribe((data:any) =>{
+  obtenerArchivos() {
+    this.servicioImagenes.getArchivos().subscribe((data: any) => {
       this.archivos = data;
     });
   }
 
-  obtenerVideo(){
-    this.servicioImagenes.getVideo().subscribe((data:any) =>{
+  obtenerVideo() {
+    this.servicioImagenes.getVideo().subscribe((data: any) => {
       this.videos = data;
     });
   }
 
-  agregarShorcouts(indice){
+  agregarShorcouts(indice) {
 
-    if(this.model.editorData.length < 7 ){
+    if (this.model.editorData.length < 7) {
 
       let etiqueta = this.coleccion[indice].etuqueta;
       this.model.editorData = `<p>${etiqueta}</p>`;
 
-    }else{
+    } else {
 
       let actual = this.model.editorData.substring(0, this.model.editorData.length - 4);
       let etiqueta = this.coleccion[indice].etuqueta;
       this.model.editorData = `${actual}${etiqueta}</p>`;
     }
-    
+
     console.log(this.model.editorData);
   }
 
-  guardarShorcouts(){
+  guardarShorcouts() {
 
 
     this.sitioDB.shortcut = this.model.editorData;
@@ -151,17 +151,20 @@ export class CrearSitio2Component implements OnInit {
 
     //console.log(this.sitioDB);
 
-    
-    this.servicio.guardarShorcouts(this.sitioDB).subscribe( (data:any) => {
-      console.log(data);
-     
 
-      if(data){
+    this.servicio.guardarShorcouts(this.sitioDB).subscribe((data: any) => {
+      console.log(data);
+
+
+      if (data) {
         this.router.navigate(['/index/sitiosUsuario']);
       }
     });
-  
+
   }
+
+
+ 
 
 
 }

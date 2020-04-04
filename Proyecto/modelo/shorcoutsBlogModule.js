@@ -2,8 +2,14 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let shorcoutsSchema = new Schema({
-    shortcut : {
+    titulo : {
         type: String
+    },
+    imagen : {
+        type: String
+    },
+    posts : {
+        type: Array
     },
     blog : {
         type: String

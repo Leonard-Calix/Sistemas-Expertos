@@ -19,8 +19,8 @@
               <td>{{ i + 1 }}</td>
               <td>{{ blog.nombre }}</td>
               <td>{{ blog.categoria }}</td>
-              <td> <a target="_blank" class="btn btn-sm btn-warning" [routerLink]="[ '/index/crearBlogShourcouts/', blog._id , 'editar' ]">Editar</a> </td>
-              <td> <a target="_blank" class="btn btn-sm btn-success" [routerLink]="[ '/plantillaBlogs', blog._id , 'visualizar' ]">Visualizar</a> </td>
+              <td> <a target="_blank" class="btn btn-sm btn-warning" [routerLink]="[ '/index/crearBlogShourcouts/', blog._id , 'nuevo' ]">Nuevo post</a> </td>
+              <td> <a target="_blank" class="btn btn-sm btn-success" [routerLink]="[ '/plantillaBlogs', blog._id , 'visualizar', ' ' ]">Visualizar</a> </td>
             </tr>
           </tbody>
         </table>

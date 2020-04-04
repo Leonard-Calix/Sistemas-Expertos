@@ -1,91 +1,72 @@
-<div class="container animated fadeIn" > 
-    <div class="card bg-light mt-4" >
-      <div class="card-header m-0">Shorcouts</div>
-      <div class="card-body">
+<div class="container animated fadeIn">
+  <div class="card bg-light mt-4">
+    <div class="card-header m-0">Shorcouts</div>
+    <div class="card-body">
+      <div class="form-group">
+        <!-- Button trigger modal -->
+        <button (click)="modalShorcouts()" type="button" class="btn btn-sm btn-primary mr-4" data-toggle="modal"
+          data-target="#exampleModalCenter">Shorcouts</button>
+        <button (click)="modalGaleria()" type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
+          data-target="#exampleModalCenter">Imagenes</button>
+        <hr>
         <div class="form-group">
-            <!-- Button trigger modal -->
-              <button (click)="modalShorcouts()" type="button" class="btn btn-sm btn-primary mr-4" data-toggle="modal" data-target="#exampleModalCenter">Shorcouts</button>
-              <button (click)="modalGaleria()" type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">Imagenes</button>
-            <hr>
-              <div class="form-group">
-                <label for="inputAddress">Informacion del sitio</label>
-                <!--
-                <textarea class="form-control" placeholder="{tipo:'galeria',imagenes:['img-1','img-2]}
-                " name="" id="" cols="300" rows="10"></textarea>
-                -->
-                <ckeditor [(ngModel)]="model.editorData" [editor]="Editor" (chances)="editor($event)"></ckeditor>
-              </div>
-          </div>
-            
-          <button type="button" *ngIf="accion!='editar'" (click)="guardar()" class="btn btn-sm btn-primary mr-2">Guardar</button>
-          <button type="button" *ngIf="accion=='editar'" (click)="guardarCambios()" class="btn btn-sm btn-primary mr-2">Guardar cambios</button>
-          <button type="button" (click)="prueba()" class="btn btn-sm btn-danger mr-2">Cancelar</button>  
-          <a class="btn btn-sm btn-warning" target="_blank" [routerLink]="['/plantillaBlogs', idBlog, model.editorData]">Visualizar</a>
+          <label for="inputAddress">Informacion del sitio</label><br>
+          <input type="text" placeholder="Nombre de la entrada" class="form-control" required [(ngModel)]="post.titulo" >
+          <br>
+          <ckeditor [(ngModel)]="model.editorData" [editor]="Editor" (chances)="editor($event)"></ckeditor>
+        </div>
       </div>
+
+      <button type="button" *ngIf="accion!='nuevo'" (click)="guardar()"
+        class="btn btn-sm btn-primary mr-2">Guardar</button>
+      <button type="button" *ngIf="accion=='nuevo'" (click)="guardarCambios()"
+        class="btn btn-sm btn-primary mr-2">Guardar cambios</button>
+      <button type="button" class="btn btn-sm btn-danger mr-2">Cancelar</button>
+      <a class="btn btn-sm btn-warning" target="_blank"
+        [routerLink]="['/plantillaBlogs', idBlog, model.editorData, post.titulo]">Visualizar</a>
     </div>
+  </div>
 </div>
 
 
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-light">
-          <h5 *ngIf="shorcouts" class="modal-title" id="exampleModalLongTitle">Seleciones un Shorcouts</h5>
-          <h5 *ngIf="galeria" class="modal-title" id="exampleModalLongTitle">Galeria</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 *ngIf="shorcouts" class="modal-title" id="exampleModalLongTitle">Seleciones un Shorcouts</h5>
+        <h5 *ngIf="galeria" class="modal-title" id="exampleModalLongTitle">Galeria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-            <div *ngIf="shorcouts" class="container">
-              <div class="form-group">
-                <label for="inputAddress">Shorcouts</label>
-                <div class="row">
-                  <div class="col-md-4 col-12">
-                    <label for="">Entrada Post</label>
-                    <p class="text-muted" >tipo:'entrada',id:'56bcvb5545shjh44'</p>
-                  </div>
-                  <div class="col-12">
-                    <label for="">Imagen</label>
-                    <p class="text-muted" > tipo:'imagen',id:'56bcvb5545shjh44'</p>
-                  </div>
-                  <div class="col-12">
-                    <label for="">Enlaces a descarga</label>
-                    <p class="text-muted" > tipo:'enlace',id:'56bcvb5545shjh65',titulo:'Descargar archivo' </p>
-                  </div>
-                  <div class="col-12">
-                    <label for="">Galeria </label>
-                    <p class="text-muted" >tipo:'galeria',imagenes:['56bcvb5545shjh65','56bcvb5545shjh66','56bcvb5545shjh67']</p>
-                  </div>
-                  <div class="col-12">
-                    <label for="">Menu </label>
-                    <p class="text-muted" > tipo:'menu',id:'56bcvb5545shjh22'</p>
-                  </div>
-                </div>
-              </div><hr>
-            </div>
-
-            <div *ngIf="galeria" class="row">
-                <div class="col-4">
-                    <img class="img-fluid"  src="../../../../assets/img/galeria/img-1.jpg" alt="">
-                    <p class="text-title text-primary" >Id img-1</p>
-                </div>
-                <div class="col-4">
-                  <img class="img-fluid"  src="../../../../assets/img/galeria/img-2.jpg" alt="">
-                  <p class="text-title text-primary" >Id img-2</p>
+        <div *ngIf="shorcouts" class="row">
+          <div *ngFor="let item of coleccion; index as i" class="col-md-4">
+            <div (click)="agregarShorcouts(i)" class="card text-white bg-ligth mb-3 vista">
+              <div class="card-header text-primary">Seleccionar</div>
+              <div class="card-body text-primary">
+                {{item.nombre}}
               </div>
-              <div class="col-4">
-                <img class="img-fluid"  src="../../../../assets/img/galeria/img-3.jpg" alt="">
-                <p class="text-title text-primary" >Id img-3</p>
             </div>
-            </div>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+
+        <div *ngIf="galeria" class="row">
+          <div *ngFor="let imagen of imagenes" class="col-4">
+            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" src="../../../../{{ imagen.url }}" alt="">
+            <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
+          </div>
         </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
+

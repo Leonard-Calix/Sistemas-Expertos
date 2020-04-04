@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FileItem } from "../modelo/file-item";
 import { CargaImagenesService } from "@services/carga-imagenes.service";
-import { timer } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-subir-imagen',
@@ -12,7 +13,7 @@ export class SubirImagenComponent implements OnInit {
 
   archivo: File;
   res: any;
-  imagenes: any[];
+  imagenes:any = [];
 
 
   constructor( private _cargaImagenes: CargaImagenesService ) { }
@@ -30,6 +31,7 @@ export class SubirImagenComponent implements OnInit {
       console.log(res);
       this.res = res
     });
+
   }
 
   files(e){
@@ -38,5 +40,6 @@ export class SubirImagenComponent implements OnInit {
     //console.log( e.target.files);
   }
 
+  
 
 }

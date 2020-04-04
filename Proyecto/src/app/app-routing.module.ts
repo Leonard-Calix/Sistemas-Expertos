@@ -84,7 +84,7 @@ const routes: Routes = [
       ]
     },
     { path : 'template/:id/:contenido', component: PrincipalComponent },
-    { path : 'plantillaBlogs/:id/:contenido', component: TemplateblogComponent },
+    { path : 'plantillaBlogs/:id/:contenido/:titulo', component: TemplateblogComponent },
 
 
     

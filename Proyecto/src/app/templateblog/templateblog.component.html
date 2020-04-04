@@ -2,32 +2,68 @@
 
     <div class="container p-5 bg-light cuerpo  animated fadeIn">
 
-        <h2 class="text-primary text-center" >
-            {{ blog.nombre }}
+        <h2 class="text-primar">
+            <b>{{ blog.nombre }}</b>
         </h2>
-
-        <main class="row">
+        <div class="row">
             <div class="col-md-12 mb-3 mt-3 p-3">
                 <img class="img-fluid rouded centrado" src="../../{{ blog.urlImagen }}" alt="blog.nombre">
             </div>
-            <div class="row mb-3 mt-3 p-3">
-                <div id="contenido" class="col-md-12">
-                   <p *ngFor="let parrafo of informacion" class="p-2 mt-3 mb-3" >
-                       {{ parrafo }}
-                   </p>
+        </div>
+        <main>
+            <div class="row">
+
+                <div class="col-lg-8 col-md-8 col-xs-12 col-12">
+
+                    <div id="contenido" class="col-lg-12 col-md-12 col-xs-12 col-12" *ngFor="let post of posts">
+                        <div class="col-md-12 mb-1 p-3">
+                            <h4 class="text-primary text-center"><b>{{ post.titulo }}</b></h4><br>
+                            <img class="img-fluid rouded centrado" src="../../{{ post.imagen }}" alt="blog.nombre">
+                        </div>
+                        <p *ngFor="let parrafo of post.posts" class="p-2 mt-3 mb-3">
+                            {{ parrafo }}
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-12 col-12">
+                    <hr>
+                    <form class="form-inline">
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+                            placeholder="Buscar">
+                        <button type="button" class="btn btn-primary mb-2">Search</button>
+                    </form>
+                    <br>
+                    <hr>
+                    <p class="text-primary">Entradas recientes</p>
+                    <div *ngIf="blog.comentarios" class="form-group">
+                        <div class="list-group" *ngFor="let post of posts" >
+                            <li class="list-group-item-action text-primary mr-2"> {{ post.titulo }}</li>
+                        </div>
+                    </div>
+                    <hr>
+                    <p class="text-primary">Comentarios recientes</p>
+                    <div *ngIf="blog.comentarios" class="form-group">
+                        <div class="list-group">
+                            <li *ngFor="let item of comentarios" class="list-group-item list-group-item-action">
+                                <b><span class="text-primary mr-2">{{ item.usuario }} <br></span></b>
+                                {{ item.descripcion }}</li>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
         </main>
         <div *ngIf="blog.comentarios" class="form-group">
-            <textarea class="form-control p-3" name="descripcion" #descripcion="ngModel" [(ngModel)]="comentario.descripcion" placeholder="Escribe tu comentario..." rows="3" required ></textarea>
-            <div *ngIf="descripcion.errors?.required && descripcion.touched" class="mensaje-error" > <b>Campo vacio, debe de escribir un comentario para publicarlo</b> </div>
-            <button  [disabled]="descripcion.errors" class="btn btn-sm btn-primary mt-3" (click)="publicar()" >Publicar</button>
-        </div>
-        <div *ngIf="blog.comentarios" class="form-group" >
-            <h5 class="text-primary" >Comentarios</h5><br>
-            <div class="list-group">
-                <li *ngFor="let item of comentarios" class="list-group-item list-group-item-action"> <b><span class="text-primary mr-2" >{{ item.usuario }}</span></b> {{ item.descripcion }}</li>
-              </div>
+            <textarea class="form-control p-3" name="descripcion" #descripcion="ngModel"
+                [(ngModel)]="comentario.descripcion" placeholder="Escribe tu comentario..." rows="3"
+                required></textarea>
+            <div *ngIf="descripcion.errors?.required && descripcion.touched" class="mensaje-error"> <b>Campo vacio, debe
+                    de escribir un comentario para publicarlo</b> </div>
+            <button [disabled]="descripcion.errors" class="btn btn-sm btn-primary mt-3"
+                (click)="publicar()">Publicar</button>
         </div>
     </div>
 

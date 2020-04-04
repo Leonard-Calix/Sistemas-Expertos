@@ -3,6 +3,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BlogService } from '@services/blog.service';
+import { CargaImagenesService } from '@services/carga-imagenes.service';
 
 
 @Component({
@@ -12,8 +13,53 @@ import { BlogService } from '@services/blog.service';
 })
 export class CrearBlog2Component implements OnInit {
 
-  idBlog:string;
-  accion:string;
+  post = {
+    titulo: ' ',
+    imagen: '',
+    posts: '',
+    blog: ''
+  };
+
+  coleccion = [
+    {
+      nombre: 'Imagen',
+      etuqueta: '{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}'
+    },
+    {
+      nombre: 'Galeria',
+      etuqueta: '{"tipo":"galeria","imagenes":["5e743527beb9b00b04e8616d", "5e729ca392c34821805f3053"]}'
+    },
+    {
+      nombre: 'Enlaces de descarga de archivos',
+      etuqueta: '{"tipo":"enlace","id":"5e743527beb9b00b04e8616d","titulo":"Descargar archivo" }'
+    },
+    {
+      nombre: 'Login',
+      etuqueta: '{"tipo":"login","id":"5e743527beb9b00b04e8616d"}'
+    },
+    {
+      nombre: 'Post/Entrada',
+      etuqueta: '{"tipo":"entrada","id":"5e743527beb9b00b04e8616d"}'
+    },
+    {
+      nombre: 'Menú',
+      etuqueta: '{"tipo":"menu","id":"5e743527beb9b00b04e8616d"}'
+    },
+    {
+      nombre: 'Breadcrumb',
+      etuqueta: '{"tipo":"imagen","id":"5e743527beb9b00b04e8616d"}'
+    },
+    {
+      nombre: 'Headers',
+      etuqueta: '{"tipo":"header","id":"5e743527beb9b00b04e8616d"}'
+    }
+
+  ];
+
+  idBlog: string;
+  accion: string;
+  imagenes: any;
+  informacion: any = [];
 
   public Editor = ClassicEditor;
 
@@ -21,92 +67,116 @@ export class CrearBlog2Component implements OnInit {
     editorData: '<p> </p>'
   };
 
-  blogBase = {
-    shortcut: this.model.editorData,
-    blog : this.idBlog 
-  }
 
-  galeria:boolean = false;
-  shorcouts:boolean = false;
+  galeria: boolean = false;
+  shorcouts: boolean = false;
 
-  constructor(private ac: ActivatedRoute, private serviceBlog: BlogService, private router: Router) {
+  constructor(private ac: ActivatedRoute, private serviceBlog: BlogService, private router: Router, private servicioImagenes: CargaImagenesService) {
     this.idBlog = this.ac.snapshot.paramMap.get("id");
     this.accion = this.ac.snapshot.paramMap.get("accion");
 
     //console.log( this.idBlog );
 
-   }
+  }
 
   ngOnInit(): void {
 
-    if( this.accion == 'editar'){
-      console.log("editar");
-      this.obtenerShorcoutBlog();
+    if (this.accion == 'pre-visualizar') {
+
     }
+
+    this.obtenerImagenes();
 
   }
 
-  modalGaleria(){
+  modalGaleria() {
     this.shorcouts = false;
     this.galeria = true;
   }
 
-  modalShorcouts(){
+  modalShorcouts() {
     this.galeria = false;
     this.shorcouts = true;
   }
 
-  public ready( editor ) {
+  public ready(editor) {
     editor.ui.getEditableElement().parentElement.insertBefore(
-        editor.ui.view.toolbar.element,
-        editor.ui.getEditableElement()
+      editor.ui.view.toolbar.element,
+      editor.ui.getEditableElement()
     );
-}
+  }
 
-public editor( { editor }: ChangeEvent ) {
+  public editor({ editor }: ChangeEvent) {
     const data = editor.getData();
 
-    console.log( data );
-}
-
-prueba(){
-  console.log(this.model.editorData);
-}
-
-guardar(){
-
-  this.blogBase.shortcut = this.model.editorData;
-  this.blogBase.blog = this.idBlog;
-
-  console.log(this.blogBase);
-
-  this.serviceBlog.guardarShorcustBlog(this.blogBase).subscribe( (data:any) => {
-
-    if(data){
-      this.router.navigate(['/index/blogsUsuario']);
-    }
     console.log(data);
-  });
+  }
+
+  agregarShorcouts(indice) {
+
+    if (this.model.editorData.length < 7) {
+
+      let etiqueta = this.coleccion[indice].etuqueta;
+      this.model.editorData = `<p>${etiqueta}</p>`;
+
+    } else {
+
+      let actual = this.model.editorData.substring(0, this.model.editorData.length - 4);
+      let etiqueta = this.coleccion[indice].etuqueta;
+      this.model.editorData = `${actual}${etiqueta}</p>`;
+    }
+
+    console.log(this.model.editorData);
+  }
+
+
+  guardar() {
+
+    console.log(this.model.editorData);
+
+  }
+
+  guardarCambios() {
+    let parrafos = this.model.editorData.split('</p>');
+    let imagen;
+    console.log(this.model.editorData);
+
+   
+
+    for (var i = 0; i < parrafos.length; i++) {
+      if (parrafos[i] != "") {
+        this.informacion.push(parrafos[i].substr(3, parrafos[i].length));
+      }
+    }
+    imagen = JSON.parse(this.informacion[0]);
+    this.informacion.splice(0, 1);
+
+
+    this.post.posts = this.informacion;
+    this.post.blog = this.idBlog;
+    this.post.imagen = imagen.id;
+    this.post.blog = this.idBlog;
+    
+
+    //console.log(post);
+
+    this.serviceBlog.guardarShorcustBlog(this.post).subscribe((data:any) => {
+      console.log('respuesta');
+      console.log(data);
+      
+      if(data){
+        this.router.navigate(['/index/blogsUsuario']);
+      }
+    });
+
+  }
+
+  obtenerImagenes() {
+    this.servicioImagenes.getImagenes().subscribe((data: any) => {
+      this.imagenes = data;
+    });
+  }
+
+
   
-}
-
-guardarCambios(){
-
-  this.blogBase.shortcut = this.model.editorData;
-  this.blogBase.blog = this.idBlog;
-
-  this.serviceBlog.editarShorcustBlog(this.blogBase).subscribe((data:any) => {
-    if(data.ok){
-      this.router.navigate(['/index/blogsUsuario']);
-    }
-  });
-}
-
-obtenerShorcoutBlog(){
-  this.serviceBlog.obtenerShorcustBlog(this.idBlog).subscribe( (data:any) =>{
-    this.model.editorData = data[0].shortcut;
-    console.log(data);
-  });
-}
-
 }
