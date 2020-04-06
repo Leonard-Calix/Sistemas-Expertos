@@ -5,7 +5,7 @@
             <div class="card-body">
               <div class="author">
                   <img class="img-fluid" src="../../../../assets/img/user.png" alt="..."><br><br>
-                  <h5 class="title text-center "> {{usuario[0].nombre}} </h5>
+                  <h5 class="title text-center ">  </h5>
               </div>
             </div>
             <div class="card-footer">
@@ -46,13 +46,13 @@
                   <div class="col-md-6 px-1">
                     <div class="form-group">
                       <label>Nombre</label>
-                      <input type="text" class="form-control" placeholder="Nombre" value="{{ usuario[0].nombre }}">
+                      <input type="text" class="form-control" placeholder="Nombre" >
                     </div>
                   </div>
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Apellido</label>
-                      <input type="email" class="form-control" value="{{ usuario[0].apellido }}" placeholder="Correo">
+                      <input type="email" class="form-control" placeholder="Apellido">
                     </div>
                   </div>
                 </div>
@@ -60,7 +60,7 @@
                   <div class="col-md-6 pl-1">
                     <div class="form-group">
                       <label>Correo</label>
-                      <input type="text" class="form-control" disabled="" placeholder="Company" value="{{ usuario[0].correo }}">
+                      <input type="text" class="form-control" disabled="" placeholder="Company" >
                     </div>
                   </div>
                 </div>
@@ -68,11 +68,11 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Direccion</label>
-                      <input type="text" class="form-control" placeholder="Home Address" value="{{ usuario[0].direccion }}">
+                      <input type="text" class="form-control" placeholder="Home Address" >
                     </div>
                   </div>
                 </div>
-                <input type="hidden" value="{{ usuario[0]._id }}" >
+                <input type="hidden" value="" >
                 <div class="row">
                   <div class="update ml-auto mr-auto">
                     <button type="button" class="btn btn-sm btn-success btn-round mr-5">Actualizar Perfil</button>

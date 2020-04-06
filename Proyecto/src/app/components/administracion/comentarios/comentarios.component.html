@@ -1,53 +1,41 @@
-<div class="container-fluid mt-3 animated fadeIn" > 
-  <div class="card">
-    <div class="card-header">Comentarios</div>
-    <div class="card-body">
-      <div class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </div>
-      <table class="table table-sm mt-3">
-        <thead>
-          <tr>
-            <th scope="col card-title">#</th>
-            <th scope="col card-title">Comentario</th>
-            <th scope="col card-title">Usuario</th>
-            <th scope="col card-title">Sitios</th>
-            <th scope="col card-title">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of comentarios; index as i" >
-            <th scope="row">{{ i+1 }}</th>
-            <td> {{ item.descripcion }}</td>
-            <td>{{ item.usuario }}</td>
-            <td>{{ item.blog }}</td>
-            <td>
-              <button (click)="eliminar(item._id)" class="btn btn-danger btn-sm" > <i class="fas fa-trash"></i> Eliminar </button>
-          </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="container-fluid mt-3 animated fadeIn">
+
+  <div class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit">Search</button>
   </div>
+ 
+  <table class="mt-3 table table-sm">
+    <thead>
+      <tr>
+        <th scope="col"><small class="font-weight-bold">#</small></th>
+        <th scope="col"><small class="font-weight-bold">Comentario</small></th>
+        <th scope="col"><small class="font-weight-bold">Usuario</small></th>
+        <th scope="col"><small class="font-weight-bold">Blog</small></th>
+        <th scope="col"><small class="font-weight-bold">Eliminar</small></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of comentarios; index as i" class="shadow-sm p-3">
+        <td class="align-middle">
+          <span class="badge">{{ i+1 }}</span>
+        </td>
+        <td class="align-middle">
+          <span class="badge">{{ item.descripcion }}</span>
+        </td>
+        <td class="align-middle">
+          <span class="badge">{{ item.usuario}}</span>
+        </td>
+        <td class="align-middle">
+          <span class="badge">{{ item.blog}}</span>
+        </td>
+        <td class="align-middle">
+          <span class="badge badge-danger p-2" (click)="eliminar(item._id)" >
+            Eliminar <i class="fas fa-trash ml-2"></i>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

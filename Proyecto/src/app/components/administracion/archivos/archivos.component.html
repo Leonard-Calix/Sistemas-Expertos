@@ -1,0 +1,17 @@
+
+<div class="container-fluid mt-3 animated fadeIn" >
+    <h5>Archivos</h5>
+    <div class="row">
+        <div *ngFor="let item of archivos" class="bg-light col-lg-3 col-md-6 col-12 p-0 m-0">
+            <div *ngIf="item.extension=='docx' || item.extension=='pdf'" class="card-body">
+                <img *ngIf="item.extension=='docx'" src="../../../../assets/img/word.png" width="30%"
+                    class="img-fluid ml-4 mb-2" alt="">
+                <img *ngIf="item.extension=='pdf'" src="../../../../assets/img/pdf.png" width="30%"
+                    class="img-fluid ml-4 mb-2" alt="">
+                <p *ngIf="item.extension=='docx' || item.extension=='pdf'" class="p-2" class="text-sm text-muted text-sm">
+                    {{item.nombre}}</p>
+            </div>
+        </div>
+    </div>
+    
+</div> 

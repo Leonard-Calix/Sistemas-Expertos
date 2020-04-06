@@ -2256,14 +2256,14 @@
   
   .btn-primary {
     color: #fff;
-    background: linear-gradient(45deg,#4527a0 ,#283593  100%);;
+    background-color: rgb(1, 87, 155);;
     border-color: #1976d2;
   }
   
   .btn-primary:hover {
     color: #fff;
-    background: linear-gradient(45deg,#4f2fb1 ,#2e3a94  100%);;
-    border-color: #4f2fb1;
+    background-color: rgb(1, 87, 155);;
+    border-color: rgb(1, 87, 155);
   }
   
   .btn-primary:focus, .btn-primary.focus {
@@ -6205,7 +6205,7 @@
   }
   
   .bg-primary {
-    background: -webkit-linear-gradient(45deg,#4527a0 ,#283593  100%) !important;
+    background-color: rgb(1, 87, 155) !important;
   }
   
   a.bg-primary:hover, a.bg-primary:focus,

@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './components/principal/app.component';
 import { NavbarComponent } from '@components/navbar/navbar.component';
 import { NavbarService } from '@services/navbar.service';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/administracion/main/main.component';
@@ -37,6 +36,8 @@ import { MiSitiosComponent } from '@components/usuario/mi-sitios/mi-sitios.compo
 import { MiBlogsComponent } from '@components/usuario/mi-blogs/mi-blogs.component';
 import { CategoriaComponent } from '@components/administracion/categoria/categoria.component';
 import { TemplateblogComponent } from './templateblog/templateblog.component';
+import { ArchivosComponent } from '@components/administracion/archivos/archivos.component';
+import { VideosComponent } from '@components/administracion/videos/videos.component';
 
 
 const routes: Routes = [
@@ -71,7 +72,9 @@ const routes: Routes = [
         { path : 'admin', pathMatch: 'full', redirectTo: 'admin/resumen' },
         { path : 'comentarios', component:  ComentariosComponent },
         { path : 'imagenes', component:  ImagenesComponent },
-        { path : 'subirImg', component:  SubirImagenComponent },
+        { path : 'documentos', component:  ArchivosComponent },
+        { path : 'videos', component:  VideosComponent },
+        { path : 'subirArchivo', component:  SubirImagenComponent },
         { path : 'usuarios', component: UsuariosComponent },
         { path : 'perfil', component: PerfilComponent },
         { path : 'paginas', component: PaginasWebComponent },

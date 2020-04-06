@@ -14,7 +14,7 @@ export class PerfilComponent implements OnInit {
   constructor( private servicio: UsuarioService ) { }
 
   ngOnInit(): void {
-    this.obtenerUsuario()
+    //this.obtenerUsuario()
   }
 
 

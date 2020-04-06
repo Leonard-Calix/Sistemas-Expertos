@@ -1,43 +1,12 @@
-<div class="container-fluid mt-3 animated fadeIn">
-    <div class="card bg-light mb-3">
-        <div class="card-header m-0">Archivos</div>
-        <div class="card-body">
-            <div class="form-inline mb-2 my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Nombre del archivo" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>
-            </div><br>
-            <h5>Imagenes</h5>
-            <div class="row mt-1">
-                <div *ngFor="let img of imagenes" class="bg-light col-lg-3 col-md-6 col-12 p-0">
-                    <div *ngIf="img.extension=='jpg' || img.extension=='png' || img.extension=='jpeg'" class="card-body">
-                        <img src="../../../../{{img.url}}" class="img-fluid rounded" alt="{{img.nombre}}">
-                        <p class="p-2 text-sm" class="text-sm text-muted">{{img.nombre}}</p>
-                    </div>
-                </div>
+<app-loading *ngIf="loading" ></app-loading>
+<div class="container-fluid mt-3 animated fadeIn" *ngIf="!loading">
+    <h5>Imagenes</h5>
+    <div class="row mt-1">
+        <div *ngFor="let img of imagenes" class="bg-light col-lg-3 col-md-6 col-12 p-0">
+            <div *ngIf="img.extension=='jpg' || img.extension=='png' || img.extension=='jpeg'" class="card-body">
+                <img src="../../../../{{img.url}}" class="img-fluid rounded" alt="{{img.nombre}}">
+                <p class="p-2 text-sm" class="text-sm text-muted">{{img.nombre}}</p>
             </div>
-
-            <h5>Archivos</h5>
-            <div class="row">
-                <div *ngFor="let item of archivos" class="bg-light col-lg-3 col-md-6 col-12 p-0 m-0">
-                    <div *ngIf="item.extension=='docx' || item.extension=='pdf'" class="card-body">
-                        <img *ngIf="item.extension=='docx'" src="../../../../assets/img/word.png" width="50%"
-                            class="img-fluid ml-4 mb-2" alt="">
-                        <img *ngIf="item.extension=='pdf'" src="../../../../assets/img/pdf.png" width="50%"
-                            class="img-fluid ml-4 mb-2" alt="">
-                        <p *ngIf="item.extension=='docx' || item.extension=='pdf'" class="p-2"
-                            class="text-sm text-muted text-sm">{{item.nombre}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <h5>Videos</h5>
-            <div class="row">
-                <div *ngFor="let video of videos" class="bg-light col-lg-4 col-md-6 col-12 p-0 m-0">
-                    <video class="ml-2" *ngIf="video.extension=='mp4'" src="../../../../{{video.url}}" width="320" height="240"controls></video>
-                    <p *ngIf="video.extension=='mp4'" class="p-2" class="text-sm text-muted">{{video.nombre}}</p>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>

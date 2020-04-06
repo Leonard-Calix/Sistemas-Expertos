@@ -11,7 +11,6 @@ import { AppComponent } from './components/principal/app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from '@components/navbar/navbar.component';
 import { NavbarService } from '@services/navbar.service';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -63,6 +62,9 @@ import { CategoriaComponent } from './components/administracion/categoria/catego
 import { CategoriaService } from '@services/categoria.service';
 import { TemplateblogComponent } from './templateblog/templateblog.component';
 import { ComentariosService } from '@services/comentarios.service';
+import { ArchivosComponent } from './components/administracion/archivos/archivos.component';
+import { VideosComponent } from './components/administracion/videos/videos.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
@@ -74,7 +76,6 @@ import { ComentariosService } from '@services/comentarios.service';
   declarations: [
     AppComponent,
     NavbarComponent,
-    LandingPageComponent,
     CrearUsuarioComponent,
     LoginComponent,
     MainComponent,
@@ -112,7 +113,10 @@ import { ComentariosService } from '@services/comentarios.service';
     CategoriaComponent,
     TemplateblogComponent,
     ComentariosComponent,
-    VistaBlogsComponent
+    VistaBlogsComponent,
+    ArchivosComponent,
+    VideosComponent,
+    LoadingComponent
   
   ],
   imports: [

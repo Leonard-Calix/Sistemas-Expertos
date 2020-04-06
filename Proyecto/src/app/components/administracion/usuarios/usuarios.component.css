@@ -1,0 +1,29 @@
+.avatar {
+    max-width: 35px;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0 .5rem;
+  }
+  
+  table thead th {
+    border: 0 !important;
+  }
+  
+  table tbody tr {
+    background-color: var(--light);
+  }
+  
+  table tbody td {
+    border-top: 0 !important;
+    line-height: 1.2;
+  }
+  
+  table tbody tr {
+    padding: 10px !important;
+  }
+
+  .badge-danger{
+    cursor: pointer;
+  }

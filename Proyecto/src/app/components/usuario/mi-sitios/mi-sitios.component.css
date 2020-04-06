@@ -8,11 +8,23 @@
 
 
 table {
-    display: table;
     border-collapse: separate;
-    border-spacing: 0px;
-}
-
-td, table> thead > tr > th{
-    border-bottom: 0.5px solid steelblue !important;
-} 
+    border-spacing: 0 .5rem;
+  }
+  
+  table thead th {
+    border: 0 !important;
+  }
+  
+  table tbody tr {
+    background-color: var(--light);
+  }
+  
+  table tbody td {
+    border-top: 0 !important;
+    line-height: 1.2;
+  }
+  
+  table tbody tr {
+    padding: 10px !important;
+  }

@@ -13,33 +13,54 @@ export class SubirImagenComponent implements OnInit {
 
   archivo: File;
   res: any;
-  imagenes:any = [];
+  imagenes: any = [];
+  carga: boolean = false;
+  progreso: number;
+
+  file: any = {
+    nombre: '',
+    tamaño: '',
+    tipo: ''
+  }
 
 
-  constructor( private _cargaImagenes: CargaImagenesService ) { }
+  constructor(private _cargaImagenes: CargaImagenesService) { }
 
   ngOnInit(): void {
 
   }
 
-  subir(){
+  subir() {
+       
+      const formData = new FormData();
+      formData.append('archivo', this.archivo[0], this.archivo[0].name);
 
-    const formData = new FormData(); 
-		formData.append('archivo', this.archivo[0], this.archivo[0].name); 
-		
-    this._cargaImagenes.cargarImagenes(formData).subscribe((res) => {
-      console.log(res);
-      this.res = res
-    });
+      this._cargaImagenes.cargarImagenes(formData).subscribe((res) => {
+        console.log(res);
+        this.res = res
+        this.progreso = 100;
 
+      });
+      
   }
 
-  files(e){
+  files(e) {
     //console.log(e);
     this.archivo = e.target.files
-    //console.log( e.target.files);
+    console.log(e.target.files);
+    this.carga = true;
+    this.file.nombre = this.archivo[0].name;
+    this.file.tamano = this.archivo[0].size;
+    this.file.tipo = this.archivo[0].type;
+
+  }
+  cancelar() {
+    this.carga = false;
   }
 
-  
+  conteo(inicio){
+    let c = inicio;
+    inicio = inicio + 10;
+  }
 
 }
