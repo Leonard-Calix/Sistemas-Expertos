@@ -78,6 +78,7 @@ import { LoadingComponent } from './loading/loading.component';
     NavbarComponent,
     CrearUsuarioComponent,
     LoginComponent,
+    LoginAdminComponent,
     MainComponent,
     ImagenesComponent,
     SubirImagenComponent,

@@ -38,6 +38,8 @@ import { CategoriaComponent } from '@components/administracion/categoria/categor
 import { TemplateblogComponent } from './templateblog/templateblog.component';
 import { ArchivosComponent } from '@components/administracion/archivos/archivos.component';
 import { VideosComponent } from '@components/administracion/videos/videos.component';
+import { AuthenticationGuard } from './guardianes/authentication.guard';
+import { AuthenticationUserGuard } from './guardianes/authentication-user.guard';
 
 
 const routes: Routes = [
@@ -54,20 +56,20 @@ const routes: Routes = [
     
     { path: 'index', component: IndexComponent ,
       children:[
-        { path: 'perfil', component : PerfilComponent },
+        { path: 'perfil', component : PerfilComponent, canActivate: [AuthenticationUserGuard] },
         { path: 'sitios', component: VistaSitiosComponent },
         { path: 'blogs', component: VistaBlogsComponent },
-        { path: 'crearSitio', component: CrearSitioComponent },
-        { path: 'crearBlog', component: CrearBlogComponent },
-        { path: 'crearBlogShourcouts/:id/:accion', component: CrearBlog2Component },
-        { path: 'crearSitioShourcouts/:id', component: CrearSitio2Component },
-        { path: 'sitiosUsuario', component: MiSitiosComponent },
-        { path: 'blogsUsuario', component: MiBlogsComponent },
+        { path: 'crearSitio', component: CrearSitioComponent, canActivate: [AuthenticationUserGuard] },
+        { path: 'crearBlog', component: CrearBlogComponent, canActivate: [AuthenticationUserGuard] },
+        { path: 'crearBlogShourcouts/:id/:accion', component: CrearBlog2Component, canActivate: [AuthenticationUserGuard] },
+        { path: 'crearSitioShourcouts/:id', component: CrearSitio2Component, canActivate: [AuthenticationUserGuard] },
+        { path: 'sitiosUsuario', component: MiSitiosComponent, canActivate: [AuthenticationUserGuard] },
+        { path: 'blogsUsuario', component: MiBlogsComponent, canActivate: [AuthenticationUserGuard] },
 
       ]
     },
 
-    { path: 'admin', component: MainComponent,
+    { path: 'admin', component: MainComponent, canActivate: [AuthenticationGuard],
       children:[
         { path : 'admin', pathMatch: 'full', redirectTo: 'admin/resumen' },
         { path : 'comentarios', component:  ComentariosComponent },

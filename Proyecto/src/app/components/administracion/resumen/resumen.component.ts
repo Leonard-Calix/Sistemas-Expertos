@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Component({
   selector: 'app-resumen',
@@ -7,9 +8,12 @@ import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 })
 export class ResumenComponent implements OnInit {
 
-  constructor(private renderer:Renderer2, private elemento:ElementRef) { }
+  constructor(private servicio:AuthenticationService) {
+    
+   }
 
   ngOnInit(): void {
+
 
   }
 

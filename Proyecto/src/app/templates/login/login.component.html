@@ -1,22 +1,24 @@
 <div class="bg-light mt-3" style="width: 100%;">
     <br><br>
     <div class="mr-auto ml-auto bg-dark p-5 mt-5 rounded" style="width: 400px ">
-        <form ng >
+        <div >
             <h3 class="card-title text-center text-white mb-5">Iniciar sesión</h3>
             <div class="form-group">
                 <label class="text-white" for="exampleInputEmail1 text-white">Correo electronico</label>
-                <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input [(ngModel)]="usuario.correo" type="email" class="form-control "  aria-describedby="emailHelp">
             </div>
+
             <div class="form-group">
                 <label class="text-white" for="exampleInputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input [(ngModel)]="usuario.contrasenia" type="password" class="form-control" >
             </div>
+
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label text-white" for="customCheck1">Recuerdame</label><br>
             </div><br>
 
-            <button type="submit" class="btn btn-sm btn-outline-warning">Iniciar</button>
-        </form>
+            <button (click)="login()" type="button" class="btn btn-sm btn-outline-warning">Iniciar</button>
+        </div>
     </div>
 </div>

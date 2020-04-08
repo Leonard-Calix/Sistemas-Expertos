@@ -1,13 +1,13 @@
-<div class="container animated fadeIn">
-  <div class="card bg-light mt-4">
-    <div class="card-header m-0">Nueva Entrada</div>
-    <div class="card-body">
+<div class="container animated fadeIn p-5">
+ 
+    <h4>Nuevo blog</h4><br>
+    
       <div class="row">
         <div class="col-md-6 col-12">
           <div class="form-row">
             <div class="col">
               <label for=""></label><br>
-              <input type="text" [(ngModel)]="blog.nombre" class="form-contro bg-light" placeholder="Titulo de la entrada">
+              <input type="text" [(ngModel)]="blog.nombre" class="form-contro bg-light" placeholder="nombre del blog">
             </div>
           </div><br>
           <div class="form-group">
@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-6 col-12">
           <div class="form-group">
-            <label for="inputAddress">Imagen del posts</label>
+            <label for="inputAddress">Imagen del blog</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">Subir imagen</span>
@@ -48,9 +48,8 @@
           </div>
 
         </div>
-      </div>
+     
       <button type="button"  [disabled]="!blog.urlImagen" (click)="guardarBlog();" class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i></button>
       <button type="button" class="btn btn-sm btn-outline-primary mr-2">Cancelar</button>
-    </div>
-  </div>
+    
 </div>

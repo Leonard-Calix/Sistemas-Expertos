@@ -13,13 +13,14 @@ import { CargaImagenesService } from '@services/carga-imagenes.service';
 export class TemplateblogComponent implements OnInit {
 
   idBlog: String;
-  blog: any;
+  blog:any;
   contenido: String;
   informacion: any = [];
   usuarioAutenticado = '5e8413332644382b2ce9d1cc';
   informacionUsuario: any;
   comentarios: any;
   posts: any = [];
+  header:any;
 
   comentario = {
     descripcion: '',
@@ -63,6 +64,7 @@ export class TemplateblogComponent implements OnInit {
       //console.log(this.blog)
       this.obtenerComentariosBlog(this.blog.nombre);
 
+      this.obtenerImagenHeader(data[0].urlImagen);
     });
   }
 
@@ -153,6 +155,13 @@ export class TemplateblogComponent implements OnInit {
   obtenerImagen(id) {
     this.imagenService.getImagen(id).subscribe((data: any) => {
       this.post.imagen = data[0].url;
+    });
+  }
+
+  obtenerImagenHeader(id) {
+    this.imagenService.getImagen(id).subscribe((data: any) => {
+      this.header = data[0].url;
+      //console.log(data);
     });
   }
 

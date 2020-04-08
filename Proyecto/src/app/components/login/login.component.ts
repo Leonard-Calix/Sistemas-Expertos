@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '@services/usuario.service';
-import { UsuarioInterface } from '@components/interfaces/usuario.Interface';
+import { AuthenticationService } from '@services/authentication.service';
+import { Router } from '@angular/router';
 
 
 
@@ -12,31 +13,43 @@ import { UsuarioInterface } from '@components/interfaces/usuario.Interface';
 })
 export class LoginComponent implements OnInit {
 
-  usuario:UsuarioInterface = {
-    nombre: null,
-    apellido: null,
-    direccion: null,
-    correo: null,
-    contrasena: null,
-    confirmacion: null,
-    role: null,
-    acepta: false,
-    
+  usuario:any = {
+    correo: '',
+    contrasenia: ''  
   }
+  error = false;
 
-  constructor( private servicio: UsuarioService) { }
+  constructor( private servicio: UsuarioService, private auth: AuthenticationService, private router:Router ) { }
 
   ngOnInit(): void {
   }
 
   
 
-  login(formulario:NgForm){
+  login(){
 
-    console.log("foma completa" , formulario);
-    //console.log("foma valores" , formulario.value);
+    console.log(this.usuario);
 
-    //this.servicio.getUser();
+    this.auth.loginCliente(this.usuario).subscribe( (data:any) => {
+      if(data.length > 0){
+        console.log(data);
+        this.auth.setEsCliente();
+        this.auth.setUsuario(data[0]._id);
+
+        this.auth.getUsuario();
+        this.auth.getEsCliente();
+
+        this.router.navigate(['/index/perfil']);
+
+
+      }else{
+        console.log(data);
+        this.error = true;
+      }
+
+    });;
+
+
 
   }
 

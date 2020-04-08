@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from "@services/usuario.service";
+import { AuthenticationService } from '@services/authentication.service';
+
 
 @Component({
   selector: 'app-perfil',
@@ -8,19 +10,18 @@ import { UsuarioService } from "@services/usuario.service";
 })
 export class PerfilComponent implements OnInit {
 
-  id:String = '5e67f7a2a85d65168874c68e';
   usuario:any;
 
-  constructor( private servicio: UsuarioService ) { }
+  constructor( private servicio: UsuarioService, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
-    //this.obtenerUsuario()
+    this.obtenerUsuario();
   }
 
 
   obtenerUsuario(){
-    this.servicio.obtenerUsuario(this.id).subscribe((data:any) =>{
-      this.usuario = data;
+    this.servicio.obtenerUsuario(this.auth.userId ).subscribe((data:any) =>{
+      this.usuario = data[0];
       console.log(this.usuario);
     });
   }

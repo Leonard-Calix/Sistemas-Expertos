@@ -42,7 +42,7 @@ app.post('/cargarImage', function (req, res) {
         return res.status(400).json({ Ok: false });
       }
 
-      res.json({ Ok: true, mensaje: 'Imagen subida correctamente', UrlImagen: imagen.url });
+      res.json({ Ok: true, mensaje: 'Imagen subida correctamente', id: imagen._id });
      
     });
 

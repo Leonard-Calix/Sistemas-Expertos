@@ -9,9 +9,18 @@ export class Login2Component implements OnInit {
 
   @Input() nombre:any;
 
+  usuario = {
+    correo: ' ',
+    contrasenia: ' '
+  }
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+    console.log( this.usuario );
   }
 
 }

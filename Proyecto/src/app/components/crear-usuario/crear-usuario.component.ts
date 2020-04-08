@@ -21,7 +21,7 @@ export class CrearUsuarioComponent implements OnInit {
     correo: null,
     contrasena: null,
     confirmacion: null,
-    role : null,
+    role : 'normal',
     acepta: false,
 
   }

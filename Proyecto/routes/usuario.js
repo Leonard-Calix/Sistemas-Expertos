@@ -44,6 +44,20 @@ app.get('/usuarios', function(req ,res){
     });   
 });
 
+app.get('/usuarioClientes', function(req ,res){
+ 
+    Usuario.find({role: 'normal'})
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(error);
+        res.end();
+    });   
+});
+
+
 
 app.get('/usuario/obtener/:id', function(req ,res){
 
@@ -74,6 +88,38 @@ app.delete('/usuario/eliminar/:id', function(req ,res){
         res.end();
     });   
 
+});
+
+
+app.post('/usuario/admin/login', function(req ,res){
+  
+    let body = req.body;
+
+    Usuario.find({role: 'admin', correo: body.correo, contrasenia: body.contrasenia })
+    .then( (data) => {
+        res.send(data);
+        //res.send({ 'idUsuario' : data[0]._id });
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(error);
+        res.end();
+    });   
+});
+
+app.post('/usuario/cliente/login', function(req ,res){
+  
+    let body = req.body;
+
+    Usuario.find({role: 'normal', correo: body.correo, contrasenia: body.contrasenia })
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(error);
+        res.end();
+    });   
 });
 
 module.exports = app;

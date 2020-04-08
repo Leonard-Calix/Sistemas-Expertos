@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@services/authentication.service';
 
 
 @Component({
@@ -9,18 +10,40 @@ import { Router } from '@angular/router';
 })
 export class LoginAdminComponent implements OnInit {
 
+  correo = ' ';
+  contrasenia: ' '; 
+  error = false;
 
-  constructor( private router:Router ) { }
+  constructor( private router:Router, private auth: AuthenticationService ) { }
 
   ngOnInit(): void {
+
   }
 
   login(){
 
-    console.log("metodo de login");
+    let usuario = {
+      correo: this.correo,
+      contrasenia: this.contrasenia
+    }
 
-    //this.router.navigate(['/admin/resumen']);
+    this.auth.loginAdmin(usuario).subscribe( (data:any) => {
 
+      if(data.length > 0){
+        console.log(data);
+
+        this.auth.setEsAdmin();
+        this.auth.setUsuario(data[0]._id);
+        this.auth.getEsAdmin();
+        this.auth.getUsuario();
+
+        this.router.navigate(['/admin/resumen']);
+
+      }else{
+        this.error = true;
+      }
+
+    });
 
   }
 
