@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '@services/blog.service';
 import { SitioService } from '@services/sitio.service';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Component({
   selector: 'app-mi-sitios',
@@ -8,14 +9,16 @@ import { SitioService } from '@services/sitio.service';
   styleUrls: ['./mi-sitios.component.css']
 })
 export class MiSitiosComponent implements OnInit {
-  usuarioAuntenticado: string = '5e7d0d16fac96b05a48d9d45';
+  usuarioAuntenticado: string;
   sitios: any [];
 
-  constructor( private servicio: SitioService ) { }
+  constructor( private servicio: SitioService, private auth: AuthenticationService ) { }
 
   ngOnInit(): void {
 
+    this.usuarioAuntenticado = this.auth.userId;
     this.obtenerSitios();
+    
 
   }
 

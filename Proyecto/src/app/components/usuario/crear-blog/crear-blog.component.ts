@@ -3,6 +3,7 @@ import { CargaImagenesService } from '@services/carga-imagenes.service';
 import { Router } from '@angular/router';
 import { BlogService } from '@services/blog.service';
 import { CategoriaService } from '@services/categoria.service';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Component({
   selector: 'app-crear-blog',
@@ -15,18 +16,18 @@ export class CrearBlogComponent implements OnInit {
   shorcouts:boolean = false;
   archivo: File;
   categorias: any;
-  usuarioAutenticado:String = '5e67f7a2a85d65168874c68e';
+  
 
   blog:any = {
     nombre: null,
     comentario: 'true',
     categorias: '0',
     urlImagen: null,
-    usuario: this.usuarioAutenticado
+    usuario: ''
   }
 
 
-  constructor( private _cargaImagenes: CargaImagenesService, private serviceCategorias: CategoriaService, private router: Router, private blogServices: BlogService  ) { }
+  constructor( private _cargaImagenes: CargaImagenesService, private serviceCategorias: CategoriaService, private router: Router, private blogServices: BlogService, private auth: AuthenticationService  ) { }
 
   ngOnInit(): void {
 
@@ -61,7 +62,9 @@ export class CrearBlogComponent implements OnInit {
   }
 
   guardarBlog(){
+    this.blog.usuario = this.auth.userId;
     console.log(this.blog);
+
 
     this.blogServices.guardarBlog(this.blog).subscribe((data:any)=>{
       console.log(data);

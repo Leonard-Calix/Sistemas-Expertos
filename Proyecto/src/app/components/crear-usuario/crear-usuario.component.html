@@ -35,7 +35,7 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4"></label>
-              <input type="password" class="form-contro" placeholder="Contrasenia" [(ngModel)]="usuario.contrasena" minlength="6"  name="contrasena" required #contrasena="ngModel" >
+              <input type="password" class="form-contro" placeholder="Contrasenia" [(ngModel)]="usuario.contrasena" minlength="6"  name="contrasenia" required #contrasena="ngModel" >
               <div *ngIf="contrasena.errors?.required && contrasena.touched" class="mensaje-error" >Este campo es requerido</div>
               <div *ngIf="contrasena.errors?.minlength" class="mensaje-error" >la contrasena debes de ser por lo menos {{ contrasena.errors.minlength.requiredLength }} caracteres</div>
             </div>

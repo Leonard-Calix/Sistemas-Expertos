@@ -1,6 +1,10 @@
 <div class="container animated fadeIn p-5">
   
-    <h4>Nueva pagina web</h4>
+    <h4>Nueva pagina web</h4><br>
+
+    <div class="alert alert-warning">
+      Complete los campos para poder agregar una PAGINA WEB
+    </div>
     
 
       <div class="row">
@@ -8,11 +12,11 @@
           <div class="form-row">
             <div class="col">
               <label for=""></label><br>
-              <input type="text" [(ngModel)]="sitio.titulo" class="form-contro bg-light" placeholder="Titulo">
+              <input type="text" [(ngModel)]="sitio.titulo" class="form-contro" placeholder="Titulo">
             </div>
             <div class="col">
               <label for=""></label><br>
-              <input type="text" [(ngModel)]="sitio.tituloMenu" class="form-contro bg-light"
+              <input type="text" [(ngModel)]="sitio.tituloMenu" class="form-contro"
                 placeholder="Titulo en el menu">
             </div>
           </div><br>
@@ -25,7 +29,7 @@
         <div class="col-md-6 col-12">
           <div class="col">
             <label for=""></label><br>
-            <input type="text" [(ngModel)]="sitio.url" class="form-contro bg-light" placeholder="Url">
+            <input type="text" [(ngModel)]="sitio.url" class="form-contro" placeholder="Url">
           </div><br>
           <div class="col">
             <label for="">Incluir las siguientes opciones </label><br>

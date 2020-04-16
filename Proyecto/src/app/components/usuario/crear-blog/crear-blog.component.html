@@ -1,55 +1,61 @@
 <div class="container animated fadeIn p-5">
- 
-    <h4>Nuevo blog</h4><br>
-    
-      <div class="row">
-        <div class="col-md-6 col-12">
-          <div class="form-row">
-            <div class="col">
-              <label for=""></label><br>
-              <input type="text" [(ngModel)]="blog.nombre" class="form-contro bg-light" placeholder="nombre del blog">
-            </div>
-          </div><br>
-          <div class="form-group">
-            <label >Comentarios</label><br>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input id="permitir" type="radio"  [(ngModel)]="blog.comentario" name="comentarios" value="true" class="custom-control-input">
-              <label class="custom-control-label" for="permitir" >Perminir</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input id="noPermitir" type="radio" [(ngModel)]="blog.comentario" name="comentarios" value="false" class="custom-control-input">
-              <label class="custom-control-label" for="noPermitir" >No permitir</label>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12">
-          <div class="form-group">
-            <label for="inputAddress">Imagen del blog</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Subir imagen</span>
-              </div>
-              <div class="custom-file">
-                <input (change)="subirImagen($event)" type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Selecionar Archivo</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputAddress">Categoria</label>
-            <div class="input-group ">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
-              </div>
-              <select [(ngModel)]="blog.categorias" class="custom-select" id="inputGroupSelect01">
-                <option *ngFor="let item of categorias" value=" {{ item.nombre }} ">{{ item.nombre }}</option>
-              </select>
-            </div>
-          </div>
+  <h4>Nuevo blog</h4><br>
 
+  <div class="alert alert-warning">
+    Complete los campos para poder agregar un nuevo BLOG
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-12">
+      <div class="form-row">
+        <div class="col">
+          <label for=""></label><br>
+          <input type="text" [(ngModel)]="blog.nombre" class="form-contro" placeholder="Nombre del blog">
         </div>
-     
-      <button type="button"  [disabled]="!blog.urlImagen" (click)="guardarBlog();" class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i></button>
-      <button type="button" class="btn btn-sm btn-outline-primary mr-2">Cancelar</button>
-    
-</div>
+      </div><br>
+      <div class="form-group">
+        <label>Comentarios</label><br>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input id="permitir" type="radio" [(ngModel)]="blog.comentario" name="comentarios" value="true"
+            class="custom-control-input">
+          <label class="custom-control-label" for="permitir">Perminir</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input id="noPermitir" type="radio" [(ngModel)]="blog.comentario" name="comentarios" value="false"
+            class="custom-control-input">
+          <label class="custom-control-label" for="noPermitir">No permitir</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-12">
+      <div class="form-group">
+        <label for="inputAddress">Imagen del blog</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Subir imagen</span>
+          </div>
+          <div class="custom-file">
+            <input (change)="subirImagen($event)" type="file" class="custom-file-input" id="inputGroupFile01">
+            <label class="custom-file-label" for="inputGroupFile01">Selecionar Archivo</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Categoria</label>
+        <div class="input-group ">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
+          </div>
+          <select [(ngModel)]="blog.categorias" class="custom-select" id="inputGroupSelect01">
+            <option *ngFor="let item of categorias" value=" {{ item.nombre }} ">{{ item.nombre }}</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <button type="button" [disabled]="!blog.urlImagen" (click)="guardarBlog();"
+      class="btn btn-sm btn-primary mr-2">Siguiente <i class="fas fa-chevron-right"></i></button>
+    <button type="button" class="btn btn-sm btn-outline-primary mr-2">Cancelar</button>
+
+  </div>

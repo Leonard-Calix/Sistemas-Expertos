@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UsuarioInterface } from "../interfaces/usuario.Interface";
 import { UsuarioService } from "@services/usuario.service";
+import { AuthenticationService } from '@services/authentication.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class CrearUsuarioComponent implements OnInit {
 
   }
 
-  constructor( private activatedRoute: ActivatedRoute, private router:Router, private servicesUsuario:UsuarioService ) { 
+  constructor( private activatedRoute: ActivatedRoute, private router:Router, private servicesUsuario:UsuarioService, private auth:AuthenticationService ) { 
     
   }
 
@@ -40,8 +41,14 @@ export class CrearUsuarioComponent implements OnInit {
     //console.log(this.usuario);
 
     this.servicesUsuario.addUsuario(this.usuario).subscribe((res: any )=> {
-      if (res.Ok) {
-        console.log(res.Ok);
+      if (res) {
+        console.log(res.id);
+
+        this.auth.setEsCliente();
+        this.auth.setUsuario(res.id);
+        this.auth.getEsCliente();
+        this.auth.getUsuario();
+        
         this.router.navigate(['/index/perfil']);   
       }
     });

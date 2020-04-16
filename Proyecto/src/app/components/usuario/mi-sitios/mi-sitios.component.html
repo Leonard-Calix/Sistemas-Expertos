@@ -2,7 +2,10 @@
   <br><br>
   <h3>Mis Sitios web </h3>
   <br>
-  <table class="mt-3 table">
+  <div class="alert alert-warning"  *ngIf="sitios.length == 0" >
+    No tiene sitios web aun creados <br><br> ¿ Desea crear uno ? <a class="btn btn-sm btn-primary" routerLink="/index/crearSitio">Crear sitio ahora</a>
+  </div>
+  <table class="mt-3 table" *ngIf="sitios.length > 0"  >
     <thead>
       <tr>
         <th scope="col"><small class="font-weight-bold">#</small></th>

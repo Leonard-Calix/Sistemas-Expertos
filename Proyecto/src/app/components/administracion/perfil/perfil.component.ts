@@ -12,7 +12,9 @@ export class PerfilComponent implements OnInit {
 
   usuario:any;
 
-  constructor( private servicio: UsuarioService, private auth: AuthenticationService) { }
+  constructor( private servicio: UsuarioService, private auth: AuthenticationService) {
+    this.auth.getUsuario();
+   }
 
   ngOnInit(): void {
     this.obtenerUsuario();

@@ -1,5 +1,11 @@
-<div class="container animated fadeIn pt-5">
-  <table class="mt-3 table">
+<div class="container animated fadeIn">
+  <br><br>
+  <h3>Mis blogs </h3>
+  <br>
+  <div class="alert alert-warning"  *ngIf="blogs.length == 0" >
+    No tiene blogs aun creados <br><br> ¿ Desea crear uno ? <a class="btn btn-sm btn-primary" routerLink="/index/crearBlog">Crear blog ahora</a>
+  </div>
+  <table *ngIf="blogs.length > 0" class="mt-3 table">
     <thead>
       <tr>
         <th scope="col"><small class="font-weight-bold">#</small></th>

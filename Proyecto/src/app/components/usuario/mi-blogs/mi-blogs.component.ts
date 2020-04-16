@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '@services/blog.service';
+import { AuthenticationService } from '@services/authentication.service';
+
 
 @Component({
   selector: 'app-mi-blogs',
@@ -9,18 +11,20 @@ import { BlogService } from '@services/blog.service';
 export class MiBlogsComponent implements OnInit {
 
   blogs: any[] = [];
-  usuarioAuntenticado:string = '5e67f7a2a85d65168874c68e';
+  usuarioAuntenticado:string;
 
-  constructor( private servicio: BlogService  ) { }
+  constructor( private servicio: BlogService, private auth: AuthenticationService  ) { }
 
   ngOnInit(): void {
+
+    this.usuarioAuntenticado = this.auth.userId;
 
     this.obtenerBlogs();
 
   }
 
   obtenerBlogs(){
-    this.servicio.obtenerBlogs().subscribe( (data: any) => {
+    this.servicio.obtenerBlogUsuario(this.usuarioAuntenticado).subscribe( (data: any) => {
       this.blogs = data;
       console.log(data);
     });

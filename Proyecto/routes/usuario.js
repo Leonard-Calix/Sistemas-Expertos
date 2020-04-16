@@ -12,7 +12,7 @@ app.post('/usuario/agregar', function(req ,res){
         apellido: body.apellido,
         correo: body.correo,
         direccion: body.direccion,
-        contrasenia: body.contrasenia,
+        contrasenia: body.contrasena,
         role: body.role,
     });
 
@@ -22,7 +22,7 @@ app.post('/usuario/agregar', function(req ,res){
             return res.status(400).json({ Ok : false });
         }
 
-        res.json( { Ok : true });
+        res.json( { id : usuarioDB._id });
     });    
 });
 

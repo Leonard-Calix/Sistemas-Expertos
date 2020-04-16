@@ -23,11 +23,17 @@ export class ImagenesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.obtenerImagenes();
 
     setTimeout(() => {
-      this.loading = false;
+
+    this.loading = false;
+
+
+
     }, 1500);
+
+
+    this.obtenerImagenes();
 
 
   }

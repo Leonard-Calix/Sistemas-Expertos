@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SitioService } from '@services/sitio.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '@services/authentication.service';
 
 @Component({
   selector: 'app-crear-sitio',
@@ -8,8 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./crear-sitio.component.css']
 })
 export class CrearSitioComponent implements OnInit {
-
-  usuarioAutenticado:String = '5e7d0d16fac96b05a48d9d45';
 
   sitio:any = {
     titulo : null,
@@ -20,16 +19,17 @@ export class CrearSitioComponent implements OnInit {
     menu : null,
     footer : null,
     breadcrumb :null,
-    usuario: this.usuarioAutenticado
+    usuario: ''
   }
   
 
-  constructor( private servicio: SitioService, private router: Router ) { }
+  constructor( private servicio: SitioService, private router: Router, private auth: AuthenticationService ) { }
 
   ngOnInit(): void {
   }
 
   guardar(){
+    this.sitio.usuario =  this.auth.userId;
 
     //console.log( this.sitio );
 
