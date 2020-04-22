@@ -11,7 +11,7 @@ Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular
 
 # Modulos necesarios para el Back-End
 
-###### Paso 1 instalar node :
+## Paso 1 instalar node :
 ```
 *npm install* 
 
@@ -40,7 +40,7 @@ Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular
 
 # Modulos necesarios para el Front-End
 
-###### Paso 6 Instalar bootstrap  :
+## Paso 6 Instalar bootstrap  :
 ```
  *npm install bootstrap*
 
