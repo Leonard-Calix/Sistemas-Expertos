@@ -2,10 +2,10 @@
 
 ###### Paso 1:
 Instalar Node JS.
-Para instalar Node JS accede al siguiente enlace [NodeJS](https://nodejs.org/).
+Para instalar Node JS. accede al siguiente enlace [NodeJS](https://nodejs.org/).
 
 ###### Paso 2:
-Instalar el cli de Angular JS 
+Instalar el cli de Angular JS. 
 Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular.io/).
 
 
