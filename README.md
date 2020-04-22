@@ -5,13 +5,13 @@ Instalar Node JS.
 Para instalar Node JS accede al siguiente enlace [NodeJS](https://nodejs.org/).
 
 ###### Paso 2:
-Instalar el cli de Angular JS. 
+Instalar el cli de Angular JS 
 Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular.io/).
 
 
-# Modulos necesarios para el Back-End
+### Modulos necesarios para el Back-End
 
-## Paso 1 instalar node :
+###### Paso 1 instalar node :
 ```
 *npm install* 
 
@@ -38,9 +38,9 @@ Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular
 
 ```
 
-# Modulos necesarios para el Front-End
+### Modulos necesarios para el Front-End
 
-## Paso 6 Instalar bootstrap  :
+###### Paso 6 Instalar bootstrap  :
 ```
  *npm install bootstrap*
 
