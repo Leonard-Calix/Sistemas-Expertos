@@ -13,28 +13,28 @@ Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular
 
 ###### Paso 1 instalar node :
 ```
-*npm install* 
+npm install 
 
 ```
 
 ###### Paso 2 Instalar express :
 ```
-*npm install espress --save*
+npm install espress --save
 
 ```
 ###### Paso 3 Instalar mongoose :
 ```
-*npm install mongoose*
+npm install mongoose
 
 ```
 ###### Paso 4 Instalar cors :
 ```
-*npm install cors*
+npm install cors
 
 ```
 ###### Paso 5 Instalar nodemon  :
 ```
-*npm install cors*
+npm install cors
 
 ```
 
@@ -42,22 +42,22 @@ Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular
 
 ###### Paso 6 Instalar bootstrap  :
 ```
- *npm install bootstrap*
+ npm install bootstrap
 
 ```
 ###### Paso 7 Instalar JQuery :
 ```
- *npm install jquery*
+ npm install jquery
 
 ```
 ###### Paso 8 Instalar Poper.js  :
 ```
- *npm install popper.js*
+ npm install popper.js
 
 ```
 ###### Paso 9 Instalar bootstrap  :
 ```
- *npm install font-awesome --save*
+ npm install font-awesome --save
 
 ```
 
