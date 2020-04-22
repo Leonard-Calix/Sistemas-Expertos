@@ -1,0 +1,32 @@
+<div class="container-fluid mt-3 animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12">
+
+      <div class="card text-center">
+        <div class="card-body">
+          <input (change)="files($event)" type="file" name="archivo" class="custom-file-input d-none" #imputFlie>
+          <img class="img-fluid img-subir mr-auto ml-auto" src="https://img.icons8.com/cotton/2x/upload.png"
+            (click)="imputFlie.click()">
+          <h5 class="card-title">Seleciona un archivo</h5>
+        </div>
+        <div *ngIf="carga" class="card-footer bg-white">
+          <br>
+          <div *ngIf="progreso==100" class="alert alert-success" role="alert">
+            Archivo subido correctamente  <b> <a class="text-success" routerLink="/admin/imagenes">Ir a galeria</a> </b> 
+          </div>
+          <button type="button" [disabled]="!carga" (click)="subir()"
+            class="btn btn-primary btn-sm mr-3 mr-5">Subir</button>
+          <button type="button" (click)="cancelar()" class="btn btn-danger btn-sm ml-5">Cancelar</button>
+          <br>
+          <div class="col-12 mt-3 p-3">
+            <div *ngIf="carga" class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+                aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': progreso + '%'}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

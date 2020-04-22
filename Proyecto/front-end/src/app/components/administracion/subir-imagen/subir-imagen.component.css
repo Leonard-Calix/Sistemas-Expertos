@@ -1,0 +1,43 @@
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 .5rem;
+  }
+  
+  table thead th {
+    border: 0 !important;
+  }
+  
+  table tbody tr {
+    background-color: var(--light);
+  }
+  
+  table tbody td {
+    border-top: 0 !important;
+    line-height: 1.2;
+  }
+  
+  table tbody tr {
+    padding: 10px !important;
+  }
+
+  .d-none{
+    display: none;
+  }
+
+  .img-subir {
+    width: 15%;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.card-body:hover{
+    border: 0.75px #01579B dashed !important;
+    border-style: dashed;
+    transition: .15s ease-in-out, box-shadow .15s ease-in-out;
+    cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+}
