@@ -1,59 +1,63 @@
-# Bloggerweb
+###  Bloggerweb
 
 ###### Paso 1:
-Instalar Node JS del siguiente enlace [NodeJS](https://nodejs.org/).
+Instalar Node JS.
+Para instalar Node JS accede al siguiente enlace [NodeJS](https://nodejs.org/).
 
 ###### Paso 2:
-Instalar el cli de Angular JS [Angular JS](https://angular.io/).
+Instalar el cli de Angular JS. 
+Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular.io/).
 
 
-# Back-End
+# Modulos necesarios para el Back-End
 
 ###### Paso 1 instalar node :
-Instalar las dependencias de node 
-Usa `npm install` para enumerar todos los archivos nuevos o modificados que aún no han sido confirmados.
+```
+*npm install* 
+
+```
 
 ###### Paso 2 Instalar express :
 ```
-npm install espress --save
+*npm install espress --save*
 
 ```
 ###### Paso 3 Instalar mongoose :
 ```
-npm install mongoose
+*npm install mongoose*
 
 ```
 ###### Paso 4 Instalar cors :
 ```
-npm install cors
+*npm install cors*
 
 ```
 ###### Paso 5 Instalar nodemon  :
 ```
-npm install cors
+*npm install cors*
 
 ```
 
-# Front-End
+# Modulos necesarios para el Front-End
 
-###### Paso 1 Instalar bootstrap  :
+###### Paso 6 Instalar bootstrap  :
 ```
- npm install bootstrap
-
-```
-###### Paso 2 Instalar JQuery :
-```
- npm install jquery
+ *npm install bootstrap*
 
 ```
-###### Paso 1 Instalar Poper.js  :
+###### Paso 7 Instalar JQuery :
 ```
- npm install popper.js
+ *npm install jquery*
 
 ```
-###### Paso 1 Instalar bootstrap  :
+###### Paso 8 Instalar Poper.js  :
 ```
- npm install font-awesome --save
+ *npm install popper.js*
+
+```
+###### Paso 9 Instalar bootstrap  :
+```
+ *npm install font-awesome --save*
 
 ```
 
