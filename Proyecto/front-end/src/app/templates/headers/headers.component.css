@@ -92,3 +92,13 @@
         .mastfoot {
             color: rgba(255, 255, 255, .5);
         }
+
+        .fondo{
+            background-attachment: fixed; 
+        background-size: cover; 
+        background-position: center center;
+
+        }
+
+        
+        

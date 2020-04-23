@@ -1,29 +1,57 @@
-<app-headers *ngIf="esHeaders" [imagen]="shortcutsHeaders" [sitio]="idSitio" ></app-headers>
+<app-headers *ngIf="esHeaders" [imagen]="shortcutsHeaders" [sitio]="idSitio"></app-headers>
 
-<div class="bg-light" >
-    <section  *ngIf="sitio.encabezado" class="nav mb-3">
+<div class="bg-light">
+    <section *ngIf="sitio.encabezado" class="nav mb-3">
         <app-nav-bar *ngIf="sitio.encabezado" [sitio]="sitio"></app-nav-bar>
     </section>
     <br>
 
-    <div class="bg-light" >
-        <main class="container mt-3 mb-4 pt-5" >
+    <div class="container">
+        <app-imagen *ngIf="esImagen" [imagen]="imagen"></app-imagen>
+    </div>
 
-            <app-imagen *ngIf="esImagen" [imagen]="imagen" ></app-imagen>          
+    <div *ngIf="sitio.menu" class="bg-light">
+        <main class="container mt-3 mb-4 pt-5">
 
-            <app-login2 *ngIf="esLogin" ></app-login2>   
+            <app-login2 *ngIf="esLogin"></app-login2>
 
-            <app-enlace *ngIf="esEnlace" [enlace]="shortcutsEnlace" ></app-enlace>
-    
-            <app-galeria *ngIf="esGaleria" [galeria]="shortcutsGaleria.imagenes" ></app-galeria>
-            
+            <app-enlace *ngIf="esEnlace" [enlace]="shortcutsEnlace"></app-enlace>
+
+            <app-galeria *ngIf="esGaleria" [galeria]="shortcutsGaleria.imagenes"></app-galeria>
+
         </main>
     </div>
-    
+
+
+    <div *ngIf="!sitio.menu && informacionMenu.length > 0 ">
+        <div class="container mt-5">
+            <ul class="nav nav-tabs justify-content-center bg-light rounded p-3" id="myTab" role="tablist">
+
+                <li *ngFor="let item of informacionMenu" class="nav-item">
+                    <a class="nav-link" id="{{ item.tipo }}-tab" data-toggle="tab" href="#{{ item.tipo }}" role="tab"
+                        aria-controls="item.tipo" aria-selected="true"> <span class="text-uppercase text-dark">
+                            {{ item.tipo }} </span> </a>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+                <div *ngFor="let contenido of informacionMenu" class="tab-pane fade show " id="{{ contenido.tipo }}"
+                    role="tabpanel">
+
+                    <app-login2 class="p-2" *ngIf="contenido.tipo=='login' "></app-login2>
+
+                    <app-enlace *ngIf="contenido.tipo=='enlace' " [enlace]="shortcutsEnlace"></app-enlace>
+
+                    <app-galeria *ngIf="contenido.tipo=='galeria' " [galeria]="shortcutsGaleria.imagenes"></app-galeria>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <section class="menu mt-2 mb-2">
         <app-pie-pagina *ngIf="sitio.footer" [sitio]="sitio"></app-pie-pagina>
     </section>
 
 </div>
-
-

@@ -34,8 +34,6 @@
 
 
 
-
-
 <!-- Modal Imagenes-->
 <div class="modal fade bd-example-modal-lg " id="exampleModalCenter" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -63,11 +61,11 @@
 
         <div *ngIf="galeria" class="row">
           <div *ngFor="let imagen of imagenes" class="col-4">
-            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" src="../../../../{{ imagen.url }}" alt="">
+            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" [src]=" 'http://localhost:4300/'+ imagen.url" alt="">
             <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
           </div>
         </div>
-
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>

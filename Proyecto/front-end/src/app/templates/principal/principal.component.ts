@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SitioService } from "@services/sitio.service";
 import { CargaImagenesService } from '@services/carga-imagenes.service';
+import { log } from 'util';
 
 
 @Component({
@@ -12,9 +13,11 @@ import { CargaImagenesService } from '@services/carga-imagenes.service';
 export class PrincipalComponent implements OnInit {
 
   idSitio: any;
-  sitio:any;
+  sitio: any;
   contenido: any;
   informacion: any = [];
+  informacionMenu: any= [];
+
 
   //=====================================================//
 
@@ -28,12 +31,12 @@ export class PrincipalComponent implements OnInit {
 
   //=====================================================//
 
-  esGaleria: boolean= false;
-  esImagen: boolean= false;
-  esEnlace: boolean= false;
-  esMenu: boolean= false;
-  esLogin: boolean= false;
-  esHeaders: boolean= false;
+  esGaleria: boolean = false;
+  esImagen: boolean = false;
+  esEnlace: boolean = false;
+  esMenu: boolean = false;
+  esLogin: boolean = false;
+  esHeaders: boolean = false;
 
 
 
@@ -49,7 +52,7 @@ export class PrincipalComponent implements OnInit {
 
   constructor(private ac: ActivatedRoute, private servicio: SitioService, private seviceImagen: CargaImagenesService) {
 
-   
+
 
   }
 
@@ -57,12 +60,12 @@ export class PrincipalComponent implements OnInit {
 
     this.contenido = this.ac.snapshot.paramMap.get("contenido");
     this.idSitio = this.ac.snapshot.paramMap.get("id");
-      
+
     this.obtenerUno();
 
     if (this.contenido.length == 1) {
       this.obtenerShourcouts();
-    }else{
+    } else {
       this.infomacionSitio();
       this.obtenerTipos();
     }
@@ -71,12 +74,12 @@ export class PrincipalComponent implements OnInit {
       this.obtenerImagen(this.shortcutsImagen.id);
     }
     //console.log( this.shortcutsEnlace );
-
+    
   }
 
   obtenerUno() {
     this.servicio.ontenerUnSitio(this.idSitio).subscribe((data: any) => {
-      console.log(data);
+      //console.log(data);
       this.sitio = data[0];
     });
   }
@@ -90,10 +93,12 @@ export class PrincipalComponent implements OnInit {
       if (this.informacion[i].tipo == 'galeria') {
         this.esGaleria = true;
         this.shortcutsGaleria = this.informacion[i];
+        this.informacionMenu.push(this.informacion[i]);
       }
       if (this.informacion[i].tipo == 'enlace') {
         this.esEnlace = true;
         this.shortcutsEnlace = this.informacion[i];
+        this.informacionMenu.push(this.informacion[i]);       
       }
       if (this.informacion[i].tipo == 'menu') {
         this.esMenu = true;
@@ -101,6 +106,8 @@ export class PrincipalComponent implements OnInit {
       }
       if (this.informacion[i].tipo == 'login') {
         this.esLogin = true;
+        this.informacionMenu.push(this.informacion[i]);
+
       }
       if (this.informacion[i].tipo == 'header') {
         this.esHeaders = true;
@@ -130,32 +137,32 @@ export class PrincipalComponent implements OnInit {
     }
 
     console.log( this.informacion );
-  
+
   }
 
 
   obtenerImagen(id) {
     this.seviceImagen.getImagen(id).subscribe((data: any) => {
       this.imagen = data[0];
-      console.log(data[0]);
+      //console.log(data[0]);
     });
   }
 
   obtenerShourcouts() {
     this.servicio.obtenerShorcouts(this.idSitio).subscribe((data: any) => {
-      console.log(data);
+      //console.log(data);
       if (data) {
         this.contenido = data[0].shortcut;
         this.infomacionSitio();
         this.obtenerTipos();
 
-        if(this.esImagen){
-          this.obtenerImagen( this.shortcutsImagen.id);
+        if (this.esImagen) {
+          this.obtenerImagen(this.shortcutsImagen.id);
         }
 
       }
     });
   }
 
-
+  
 }

@@ -24,7 +24,7 @@ export class HeadersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.sitio);
+    //console.log(this.sitio);
     //console.log(this.imagen);
 
     this.obtenerInfo();
@@ -34,14 +34,14 @@ export class HeadersComponent implements OnInit {
   obtenerInfo(){
     this.servicio.ontenerUnSitio(this.sitio).subscribe((data:any) => {
       this.info = data[0];
-      //console.log(data[0]);
+      console.log(data[0]);
     });
   }
 
   obtenerImagen(){
     this.servicioImagen.getImagen(this.imagen.id).subscribe( (data:any) => {
-      this.img = data[0].url;
-      console.log(this.img);
+      this.img = 'http://localhost:4300/'+data[0].url;
+      //console.log(this.img);
 
     }
     );
