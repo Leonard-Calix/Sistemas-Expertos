@@ -10,7 +10,7 @@
         <app-imagen *ngIf="esImagen" [imagen]="imagen"></app-imagen>
     </div>
 
-    <div *ngIf="sitio.menu" class="bg-light">
+    <div *ngIf="!sitio.menu" class="bg-light">
         <main class="container mt-3 mb-4 pt-5">
 
             <app-login2 *ngIf="esLogin"></app-login2>
@@ -23,7 +23,7 @@
     </div>
 
 
-    <div *ngIf="!sitio.menu && informacionMenu.length > 0 ">
+    <div *ngIf="sitio.menu && informacionMenu.length > 0 ">
         <div class="container mt-5">
             <ul class="nav nav-tabs justify-content-center bg-light rounded p-3" id="myTab" role="tablist">
 

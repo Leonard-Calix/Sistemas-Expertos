@@ -25,4 +25,11 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
- 
+button:disabled{
+    pointer-events: auto! important;
+    cursor: not-allowed! important;
+}
+textarea:disabled{
+    pointer-events: auto! important;
+    cursor: not-allowed! important;
+}

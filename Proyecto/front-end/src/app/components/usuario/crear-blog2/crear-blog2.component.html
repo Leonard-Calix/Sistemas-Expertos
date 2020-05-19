@@ -10,7 +10,7 @@
           data-target="#exampleModalCenter">Imagenes</button>
         <hr>
         <div class="form-group">
-          <label for="inputAddress">Informacion del sitio</label><br>
+          <label >Informacion del sitio</label><br>
           <input type="text" placeholder="Nombre de la entrada" class="form-control" required [(ngModel)]="post.titulo" >
           <br>
           <ckeditor [(ngModel)]="model.editorData" [editor]="Editor" (chances)="editor($event)"></ckeditor>

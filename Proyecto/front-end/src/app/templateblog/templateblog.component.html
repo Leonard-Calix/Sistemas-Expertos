@@ -7,7 +7,7 @@
         </h2>
         <div class="row">
             <div class="col-md-12 mb-3 mt-3 p-3">
-                <img class="img-fluid rounded centrado" src="../../{{ header }}" alt="blog.nombre">
+                <img class="img-fluid rounded centrado" [src]="'http://localhost:4300/' + blog.urlImagen" alt="{{ blog.urlImagen }}">
             </div>
         </div>
         <main>
@@ -18,7 +18,7 @@
                     <div id="contenido" class="col-lg-12 col-md-12 col-xs-12 col-12" *ngFor="let post of posts">
                         <div class="col-md-12 mb-1 p-3">
                             <h4 class="text-primary text-center"><b>{{ post.titulo }}</b></h4><br>
-                            <img class="img-fluid rounded centrado" src="../../{{ post.imagen }}" alt="blog.nombre">
+                            <img class="img-fluid rounded centrado" [src]=" 'http://localhost:4300/' + post.imagen" alt="blog.nombre">
                         </div>
                         <p *ngFor="let parrafo of post.posts" class="p-2 mt-3 mb-3">
                             {{ parrafo }}
@@ -57,12 +57,12 @@
 
         </main>
         <div *ngIf="blog.comentarios" class="form-group">
-            <textarea class="form-control p-3" name="descripcion" #descripcion="ngModel"
+            <textarea [disabled]="contenido!='visualizar'" class="form-control p-3" name="descripcion" #descripcion="ngModel"
                 [(ngModel)]="comentario.descripcion" placeholder="Escribe tu comentario..." rows="3"
                 required></textarea>
             <div *ngIf="descripcion.errors?.required && descripcion.touched" class="mensaje-error"> <b>Campo vacio, debe
                     de escribir un comentario para publicarlo</b> </div>
-            <button [disabled]="descripcion.errors" class="btn btn-sm btn-primary mt-3"
+            <button [disabled]="descripcion.errors || contenido!='visualizar'" class="btn btn-sm btn-primary mt-3"
                 (click)="publicar()">Publicar</button>
         </div>
     </div>

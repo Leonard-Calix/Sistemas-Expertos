@@ -20,6 +20,6 @@ app.use( require( './routes/categoria' ) );
 app.use( require( './routes/comentario' ) );
 
 app.listen('4300',function(){
-    console.log('Servidor levantado... en el PUERTO 4300')
+    console.log('Servidor levantado... en el PUERTO 4300!')
 });
 

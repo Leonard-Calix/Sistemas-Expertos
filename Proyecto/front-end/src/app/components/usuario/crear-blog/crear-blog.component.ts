@@ -54,7 +54,7 @@ export class CrearBlogComponent implements OnInit {
 
     this._cargaImagenes.cargarImagenes(formData).subscribe((res :any) => {
       console.log(res);
-      this.blog.urlImagen = res.id;
+      this.blog.urlImagen = res.imagen.url;
     });
 
     console.log(this.blog);

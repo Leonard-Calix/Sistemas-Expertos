@@ -76,7 +76,7 @@ export class CrearSitio2Component implements OnInit {
 
     this.sitio = this.ac.snapshot.paramMap.get("id");
 
-    console.log(this.coleccion);
+    //console.log(this.coleccion);
 
   }
 
@@ -104,7 +104,7 @@ export class CrearSitio2Component implements OnInit {
 
   obtenerUno() {
     this.servicio.ontenerUnSitio(this.sitio).subscribe((data: any) => {
-      console.log(data);
+      //console.log(data);
     });
   }
 

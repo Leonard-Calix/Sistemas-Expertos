@@ -24,7 +24,7 @@ export class PerfilComponent implements OnInit {
   obtenerUsuario(){
     this.servicio.obtenerUsuario(this.auth.userId ).subscribe((data:any) =>{
       this.usuario = data[0];
-      console.log(this.usuario);
+      //console.log(this.usuario);
     });
   }
 

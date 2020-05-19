@@ -15,6 +15,7 @@ export class TemplateblogComponent implements OnInit {
   idBlog: String;
   blog:any;
   contenido: String;
+  titulo: String;
   informacion: any = [];
   usuarioAutenticado = '5e8413332644382b2ce9d1cc';
   informacionUsuario: any;
@@ -35,15 +36,23 @@ export class TemplateblogComponent implements OnInit {
     idBlog: this.idBlog
   }
 
-  constructor(private ac: ActivatedRoute, private servuceBlog: BlogService, private servicesUsuario: UsuarioService, private servicioComentario: ComentariosService, private imagenService: CargaImagenesService) {
-    this.idBlog = this.ac.snapshot.paramMap.get("id");
-    this.contenido = this.ac.snapshot.paramMap.get("contenido");
+  constructor(private ac: ActivatedRoute, private servuceBlog: BlogService, 
+              private servicesUsuario: UsuarioService, 
+              private servicioComentario: ComentariosService, 
+              private imagenService: CargaImagenesService
+              ) {
+   
+
 
   }
 
   ngOnInit(): void {
 
-    this.obtenerBlog();
+    this.idBlog = this.ac.snapshot.paramMap.get("id");
+    this.contenido = this.ac.snapshot.paramMap.get("contenido");
+
+    //console.log( this.titulo );
+
     /*
         if (this.contenido == 'visualizar') {
           this.obtenerPost();
@@ -53,6 +62,7 @@ export class TemplateblogComponent implements OnInit {
           this.obtenerPost();
         }
     */
+    this.obtenerBlog();
     this.obtenerPost();
     this.obtenerUsuario();
 
@@ -63,8 +73,7 @@ export class TemplateblogComponent implements OnInit {
       this.blog = data[0];
       //console.log(this.blog)
       this.obtenerComentariosBlog(this.blog.nombre);
-
-      this.obtenerImagenHeader(data[0].urlImagen);
+      //this.obtenerImagenHeader(data[0].urlImagen);
     });
   }
 
@@ -84,7 +93,7 @@ export class TemplateblogComponent implements OnInit {
         this.informacion.push(parrafos[i].substr(3, parrafos[i].length));
       }
     }
-    console.log(this.informacion);
+    //console.log(this.informacion);
   }
 
   publicar() {
@@ -137,6 +146,8 @@ export class TemplateblogComponent implements OnInit {
       }
     }
 
+    console.log(this.informacion);
+
     imagen = JSON.parse(this.informacion[0]);
     this.informacion.splice(0, 1);
 
@@ -148,7 +159,7 @@ export class TemplateblogComponent implements OnInit {
 
     this.posts.push(this.post);
 
-    console.log(this.posts);
+    console.log('Procesar data',this.posts);
 
   }
 
@@ -161,7 +172,7 @@ export class TemplateblogComponent implements OnInit {
   obtenerImagenHeader(id) {
     this.imagenService.getImagen(id).subscribe((data: any) => {
       this.header = data[0].url;
-      //console.log(data);
+      console.log('header', data);
     });
   }
 

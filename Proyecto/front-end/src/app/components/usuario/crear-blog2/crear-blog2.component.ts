@@ -60,7 +60,8 @@ export class CrearBlog2Component implements OnInit {
   accion: string;
   imagenes: any;
   informacion: any = [];
-
+  info:any = [];
+  
   public Editor = ClassicEditor;
 
   public model = {
@@ -71,7 +72,8 @@ export class CrearBlog2Component implements OnInit {
   galeria: boolean = false;
   shorcouts: boolean = false;
 
-  constructor(private ac: ActivatedRoute, private serviceBlog: BlogService, private router: Router, private servicioImagenes: CargaImagenesService) {
+  constructor(private ac: ActivatedRoute, 
+              private serviceBlog: BlogService, private router: Router, private servicioImagenes: CargaImagenesService) {
     this.idBlog = this.ac.snapshot.paramMap.get("id");
     this.accion = this.ac.snapshot.paramMap.get("accion");
 
@@ -109,7 +111,7 @@ export class CrearBlog2Component implements OnInit {
   public editor({ editor }: ChangeEvent) {
     const data = editor.getData();
 
-    console.log(data);
+    //console.log(data);
   }
 
   agregarShorcouts(indice) {
@@ -126,20 +128,42 @@ export class CrearBlog2Component implements OnInit {
       this.model.editorData = `${actual}${etiqueta}</p>`;
     }
 
-    console.log(this.model.editorData);
+    //console.log(this.model.editorData);
   }
 
 
   guardar() {
 
-    console.log(this.model.editorData);
+
+    //console.log( 'Contenido:  ' ,this.obtenerImagenPosts(this.model.editorData));
+
+    this.obtenerImagenPosts(this.model.editorData);
+
+    let imagen:any = JSON.parse(this.info[0]);
+
+    console.log(this.info);
+
+    this.post.imagen = imagen.id;
+    this.post.posts = this.info[1];
+    this.post.blog = this.idBlog;
+
+    console.log( 'Contenido: a enviar ' ,this.post);
+
+    
+    this.serviceBlog.guardarShorcustBlog(this.post).subscribe((data:any) => {
+      if (data) {
+        this.router.navigate(['/index/blogsUsuario']);
+        //console.log(data);
+      }
+    });;
+
 
   }
 
   guardarCambios() {
     let parrafos = this.model.editorData.split('</p>');
     let imagen;
-    console.log(this.model.editorData);
+    //console.log(this.model.editorData);
 
    
 
@@ -162,7 +186,7 @@ export class CrearBlog2Component implements OnInit {
 
     this.serviceBlog.guardarShorcustBlog(this.post).subscribe((data:any) => {
       console.log('respuesta');
-      console.log(data);
+      //console.log(data);
       
       if(data){
         this.router.navigate(['/index/blogsUsuario']);
@@ -177,6 +201,17 @@ export class CrearBlog2Component implements OnInit {
     });
   }
 
+  obtenerImagenPosts(data){
 
+    var parrafo = data.split('</p>');
+
+    for (var i = 0; i < parrafo.length; i++) {
+      if (parrafo[i] != "") {
+        this.info.push( parrafo[i].substr(3, parrafo[i].length));
+      }
+    }
+  }
+
+  
   
 }
