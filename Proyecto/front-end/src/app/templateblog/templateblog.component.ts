@@ -4,6 +4,7 @@ import { BlogService } from '@services/blog.service';
 import { UsuarioService } from '@services/usuario.service';
 import { ComentariosService } from '@services/comentarios.service';
 import { CargaImagenesService } from '@services/carga-imagenes.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-templateblog',
@@ -17,11 +18,12 @@ export class TemplateblogComponent implements OnInit {
   contenido: String;
   titulo: String;
   informacion: any = [];
-  usuarioAutenticado = '5e8413332644382b2ce9d1cc';
+  usuarioAutenticado: any;
   informacionUsuario: any;
   comentarios: any;
   posts: any = [];
   header:any;
+  logeado = false;
 
   comentario = {
     descripcion: '',
@@ -39,7 +41,8 @@ export class TemplateblogComponent implements OnInit {
   constructor(private ac: ActivatedRoute, private servuceBlog: BlogService, 
               private servicesUsuario: UsuarioService, 
               private servicioComentario: ComentariosService, 
-              private imagenService: CargaImagenesService
+              private imagenService: CargaImagenesService,
+              private authService:AuthenticationService
               ) {
    
 
@@ -51,7 +54,17 @@ export class TemplateblogComponent implements OnInit {
     this.idBlog = this.ac.snapshot.paramMap.get("id");
     this.contenido = this.ac.snapshot.paramMap.get("contenido");
 
-    //console.log( this.titulo );
+    if (this.authService.esLogeado) {
+      this.logeado = this.authService.esLogeado;
+      this.authService.getUsuario();
+      this.usuarioAutenticado = this.authService.userId;
+
+      console.log('Usario autenticado' , this.authService.userId );
+
+    }
+
+  
+
 
     /*
         if (this.contenido == 'visualizar') {

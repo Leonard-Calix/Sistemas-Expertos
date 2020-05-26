@@ -57,12 +57,12 @@
 
         </main>
         <div *ngIf="blog.comentarios" class="form-group">
-            <textarea [disabled]="contenido!='visualizar'" class="form-control p-3" name="descripcion" #descripcion="ngModel"
+            <textarea [disabled]="contenido!='visualizar' || !logeado" class="form-control p-3" name="descripcion" #descripcion="ngModel"
                 [(ngModel)]="comentario.descripcion" placeholder="Escribe tu comentario..." rows="3"
                 required></textarea>
             <div *ngIf="descripcion.errors?.required && descripcion.touched" class="mensaje-error"> <b>Campo vacio, debe
                     de escribir un comentario para publicarlo</b> </div>
-            <button [disabled]="descripcion.errors || contenido!='visualizar'" class="btn btn-sm btn-primary mt-3"
+            <button [disabled]="descripcion.errors || contenido!='visualizar' || !logeado" class="btn btn-sm btn-primary mt-3"
                 (click)="publicar()">Publicar</button>
         </div>
     </div>

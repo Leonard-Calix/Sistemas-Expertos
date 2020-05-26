@@ -18,6 +18,10 @@ export class AuthenticationService {
     this.getEsAdmin();
     this.getEsCliente();
 
+    if(this.userId){
+      this.esLogeado = true;
+    }
+
   }
 
 
@@ -25,6 +29,7 @@ export class AuthenticationService {
     this.localStorage.removeItem('usuario');
     this.localStorage.removeItem('EsAdmin');
     this.esAdmin = false;
+    this.esLogeado = false;
   }
 
   loginAdmin(user){
@@ -37,6 +42,7 @@ export class AuthenticationService {
 
   getEsAdmin(){
     this.esAdmin = Boolean(this.localStorage.getItem('EsAdmin'));
+    
   }
 
   setUsuario(id: string){
@@ -64,6 +70,7 @@ export class AuthenticationService {
     this.localStorage.removeItem('usuario');
     this.localStorage.removeItem('EsCliente');
     this.esCliente = false;
+    this.esLogeado = false;
   }
 
 
