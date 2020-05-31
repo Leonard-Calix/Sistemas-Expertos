@@ -1,8 +1,7 @@
 <div class="container-fluid mt-3 animated fadeIn">
 
-  <div class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit">Search</button>
+  <div class="form-inline my-2 my-lg-0 col-md-12">
+    <input (keyup)="busqueda(parametro.value)" #parametro class="form-control mr-sm-2 col-md-12" type="search" placeholder="Search" aria-label="Search">
   </div>
  
   <table class="mt-3 table table-sm">
@@ -37,5 +36,13 @@
       </tr>
     </tbody>
   </table>
+  <div>
+    <div *ngIf="comentarios.length==0" class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">No hay coincidencias!</h4>
+      <p>No hay resultados para tu consulta de de busqueda.</p>
+      <hr>
+      <p class="mb-0">El termino que ingresaste no arrojo ningun resultado. Es posible que lo hayas escrito incorrectamente.</p>
+    </div>
+  </div>
 
 </div>

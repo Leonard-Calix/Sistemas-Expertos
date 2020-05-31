@@ -10,7 +10,7 @@ export class ComentariosComponent implements OnInit {
 
   constructor( private serviceComentario: ComentariosService) { }
 
-  comentarios:any;
+  comentarios:any = [];
 
   ngOnInit(): void {
 
@@ -20,12 +20,41 @@ export class ComentariosComponent implements OnInit {
 
   eliminar(id){
     console.log("borrando " + id);
+    this.serviceComentario.eliminarComentario(id).subscribe((data:any)=>{
+      console.log(data);
+      if (data.ok) {
+        this.obtenerComentarios();
+      }
+      
+    });
   }
 
   obtenerComentarios(){
     this.serviceComentario.obtenerComentarios().subscribe( (data:any) =>{
       this.comentarios = data;
+      console.log(data);
+      
     });;
+  }
+
+  busqueda(parametro: string){
+    //console.log(parametro);
+
+    if (parametro.length == 0) {
+      this.obtenerComentarios();
+    }else{
+      this.serviceComentario.realizarBusqueda(parametro).subscribe( (data:any) => {
+        this.comentarios = data
+        console.log(data);  
+      });
+    }
+
+
+    
+    
+
+    
+    
   }
 
 }

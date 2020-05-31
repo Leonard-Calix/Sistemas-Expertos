@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
     console.log(this.usuario);
 
     this.auth.loginCliente(this.usuario).subscribe( (data:any) => {
-      if(data.length > 0){
+      if(data.ok){
         console.log(data);
         this.auth.setEsCliente();
-        this.auth.setUsuario(data[0]._id);
+        this.auth.setUsuario(data.id);
 
         this.auth.getUsuario();
         this.auth.getEsCliente();

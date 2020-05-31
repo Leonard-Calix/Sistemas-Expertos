@@ -8,17 +8,17 @@ export class CategoriaService {
 
   constructor( private http: HttpClient ) { }
 
-  link:string = 'http://localhost:4300/categoria/';
+  link:string = 'http://192.168.0.16:4300/categoria/';
 
   obtenerCategorias(){
-    return this.http.get(`${this.link}obtener`);
+    return this.http.get(`${this.link}`);
   }
 
   guardarCategorias(categoria){
-    return this.http.post(`${this.link}agregar`, categoria);
+    return this.http.post(`${this.link}`, categoria);
   }
 
   eliminarCategoria(id){
-    return this.http.delete(`${this.link}eliminar/${id}`);
+    return this.http.delete(`${this.link}/${id}`);
   }
 }

@@ -25,7 +25,7 @@ export class GaleriaComponent implements OnInit {
   obtenerImagenes(){
 
     for (let i = 0; i < this.galeria.length; i++) {
-      this.servicioImagenes.getImagen(this.galeria[i]).subscribe((imagen:any) => {
+      this.servicioImagenes.obtenerImagen(this.galeria[i]).subscribe((imagen:any) => {
         //console.log(imagen[0]);
         //temp.push(imagen[0]);
         this.imagenes.push(imagen[0]);

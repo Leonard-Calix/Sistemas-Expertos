@@ -142,7 +142,7 @@ export class PrincipalComponent implements OnInit {
 
 
   obtenerImagen(id) {
-    this.seviceImagen.getImagen(id).subscribe((data: any) => {
+    this.seviceImagen.obtenerImagen(id).subscribe((data: any) => {
       this.imagen = data[0];
       //console.log(data[0]);
     });

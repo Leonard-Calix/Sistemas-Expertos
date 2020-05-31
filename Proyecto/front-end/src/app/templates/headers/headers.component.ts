@@ -39,7 +39,7 @@ export class HeadersComponent implements OnInit {
   }
 
   obtenerImagen(){
-    this.servicioImagen.getImagen(this.imagen.id).subscribe( (data:any) => {
+    this.servicioImagen.obtenerImagen(this.imagen.id).subscribe( (data:any) => {
       this.img = 'http://localhost:4300/'+data[0].url;
       //console.log(this.img);
 

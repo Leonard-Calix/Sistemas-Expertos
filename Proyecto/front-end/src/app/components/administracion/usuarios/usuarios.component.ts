@@ -11,19 +11,21 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class UsuariosComponent implements OnInit  {
 
-  usuarios: any[]= [];
+  usuarios: any = [];
 
   usuario:UsuarioInterface = {
-    nombre: null,
-    apellido: null,
-    direccion: null,
-    correo: null,
-    contrasena: null,
-    confirmacion: null,
+    nombre: '',
+    apellido: '',
+    direccion: '',
+    correo: '',
+    contrasena: '',
+    confirmacion: '',
     role : 'admin',
-    acepta: false,
+    acepta: false
 
   }
+
+  inicio = 0;
 
   constructor(private servicioUsuario:UsuarioService, private router:Router )   {
   }
@@ -33,20 +35,32 @@ export class UsuariosComponent implements OnInit  {
   }
 
   getUsuarios(){
-    this.servicioUsuario.getUsuarios().subscribe(( data: any) => (this.usuarios = data  ) );
+    this.servicioUsuario.obtenerUsuarios(this.inicio).subscribe(( data: any) => {
+      this.usuarios = data 
+      console.log(data);
+    });
   }
 
-  eliminar(){
-    console.log('metodo para eliminar');
+  eliminar(idUsuario){
+    console.log('metodo para eliminar' , idUsuario );
+    this.servicioUsuario.eliminarUsuario(idUsuario).subscribe( (data:any) => {
+      console.log(data);
+      if (data.ok) {
+        this.inicio = 0 ;
+        this.getUsuarios();
+      }
+    });
   }
   guardarAdmin(){
     console.log(this.usuario);
-    this.servicioUsuario.addUsuario(this.usuario).subscribe((data: any) => {
-      //console.log(data);
-      if(data.Ok){
-        this.router.navigate(['/admin/usuarios']);
+    this.servicioUsuario.agregarUsuario(this.usuario).subscribe((data: any) => {
+      console.log(data);
+      if(data.id){
+        //this.router.navigate(['/admin/usuarios']);
         this.getUsuarios();
         this.limpiarUsuario(this.usuario);
+        this.inicio = 0;
+        this.getUsuarios();
       }
     });
   }

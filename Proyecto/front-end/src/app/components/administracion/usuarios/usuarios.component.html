@@ -18,13 +18,13 @@
           <img src="../../../../assets/img/user-perfil.jpg" class="img-fluid rounded-circle avatar" alt="https://generated.photos/" />
         </td>
         <td>
-          <span class="d-block">{{ user.nombre }}</span><small class="text-muted">{{ user.correo }}</small>
+          <span class="d-block">{{ user.nombre }} {{ user.apellido }}</span><small class="text-muted">{{ user.correo }}</small>
         </td>
         <td class="align-middle">
           <span class="badge">{{ user.direccion}}</span>
         </td>
         <td class="align-middle">
-          <span class="badge badge-danger p-2" (click)="eliminar()" >Eliminar <i class="fas fa-trash ml-2"></i></span>
+          <span class="badge badge-danger p-2" (click)="eliminar(user._id)" >Eliminar <i class="fas fa-trash ml-2"></i></span>
         </td>
       </tr>
     </tbody>
@@ -50,8 +50,7 @@
             <div class="col">
               <div class="form-group">
                 <label for="">Nombre</label>
-                <input name="nombre" class="form-control" [(ngModel)]="usuario.nombre" type="text"
-                  placeholder="Ingrese el nombre">
+                <input name="nombre" class="form-control" [(ngModel)]="usuario.nombre" type="text" placeholder="Ingrese el nombre">
               </div>
               <div class="form-group">
                 <label for="">Correo</label>

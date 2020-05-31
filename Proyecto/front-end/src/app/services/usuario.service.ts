@@ -24,22 +24,22 @@ export class UsuarioService {
 
   constructor( private http:HttpClient ) { }
   
-  getUsuarios(){
-
-    return this.http.get('http://localhost:4300/usuarios');
-      
+  obtenerUsuarios(data){
+    return this.http.get('http://192.168.0.16:4300/usuario');
   }
 
-  addUsuario(usuario){
-    return this.http.post('http://localhost:4300/usuario/agregar', usuario );
+  agregarUsuario(usuario){
+    return this.http.post('http://192.168.0.16:4300/usuario', usuario );
   }
 
   obtenerUsuario(id){
-    return this.http.get(`http://localhost:4300/usuario/obtener/`+id);
+    return this.http.get(`http://192.168.0.16:4300/usuario/`+id);
   }
 
-  eliminar(id){
-    return this.http.delete('http://localhost:4300/usuario/eliminar/'+id );
+  eliminarUsuario(id){
+    return this.http.delete('http://192.168.0.16:4300/usuario/'+id );
   }
+
+  
  
 }

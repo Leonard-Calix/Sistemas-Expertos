@@ -69,7 +69,7 @@ const routes: Routes = [
       ]
     },
 
-    { path: 'admin', component: MainComponent, canActivate: [AuthenticationGuard],
+    { path: 'admin', component: MainComponent,
       children:[
         { path : 'admin', pathMatch: 'full', redirectTo: 'admin/resumen' },
         { path : 'comentarios', component:  ComentariosComponent },

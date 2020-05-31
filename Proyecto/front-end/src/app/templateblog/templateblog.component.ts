@@ -177,13 +177,13 @@ export class TemplateblogComponent implements OnInit {
   }
 
   obtenerImagen(id) {
-    this.imagenService.getImagen(id).subscribe((data: any) => {
+    this.imagenService.obtenerImagen(id).subscribe((data: any) => {
       this.post.imagen = data[0].url;
     });
   }
 
   obtenerImagenHeader(id) {
-    this.imagenService.getImagen(id).subscribe((data: any) => {
+    this.imagenService.obtenerImagen(id).subscribe((data: any) => {
       this.header = data[0].url;
       console.log('header', data);
     });

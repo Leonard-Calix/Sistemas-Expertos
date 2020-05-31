@@ -23,7 +23,7 @@ export class EnlaceComponent implements OnInit {
   }
 
   obtenerArchivo(){
-    this.servicio.getImagen(this.enlace.id).subscribe((data:any) => {
+    this.servicio.obtenerImagen(this.enlace.id).subscribe((data:any) => {
       this.archivo = data;
       console.log( data);
       
