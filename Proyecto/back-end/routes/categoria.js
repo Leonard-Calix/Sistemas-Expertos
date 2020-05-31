@@ -1,10 +1,10 @@
 const express = require('express');
 const Categoria = require('../modelo/categoriaModule');
 const conexion = require('../modelo/database');
-const app = express();
+const router = express.Router();
 
 
-app.post('/categoria/agregar', function (req, res) {
+router.post('/', function (req, res) {
 
     let body = req.body;
 
@@ -23,7 +23,7 @@ app.post('/categoria/agregar', function (req, res) {
     });
 });
 
-app.get('/categoria/obtener', function (req, res) {
+router.get('/', function (req, res) {
 
     Categoria.find({})
         .then((data) => {
@@ -36,7 +36,7 @@ app.get('/categoria/obtener', function (req, res) {
         });
 });
 
-app.delete('/categoria/eliminar/:id', function (req, res) {
+router.delete('/:id', function (req, res) {
 
     id = req.params.id;
 
@@ -54,4 +54,4 @@ app.delete('/categoria/eliminar/:id', function (req, res) {
 });
 
 
-module.exports = app;
+module.exports = router;

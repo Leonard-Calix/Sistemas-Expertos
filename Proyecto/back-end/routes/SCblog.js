@@ -1,12 +1,11 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 const ShorcoutsBlog = require('../modelo/shorcoutsBlogModule');
 const Image = require('../modelo/imagenModule');
 const conexion = require('../modelo/database');
 
-app.post('/shortcuts/blog/agregar', function (req, res) {
+router.post('/', function (req, res) {
     let body = req.body;
-    let urlImagen = '';
 
     Image.find({ _id: body.imagen })
         .then((data) => {
@@ -59,9 +58,9 @@ app.post('/shortcuts/blog/agregar', function (req, res) {
 
 });
 
-app.get('/shortcuts/blog/obtener/:id', function (req, res) {
+router.get('/:idBlog', function (req, res) {
 
-    id = req.params.id;
+    id = req.params.idBlog;
 
     ShorcoutsBlog.find({ blog: id })
         .then((data) => {
@@ -74,7 +73,8 @@ app.get('/shortcuts/blog/obtener/:id', function (req, res) {
         });
 });
 
-app.post('/shortcuts/blog/editar', function (req, res) {
+
+router.put('/', function (req, res) {
 
     ShorcoutsBlog.update({ blog: req.body.blog }, { shortcut: req.body.shortcut })
         .then((data) => {
@@ -101,4 +101,4 @@ function obtenerImagen(id, Image) {
 }
 
 
-module.exports = app;
+module.exports = router;

@@ -1,10 +1,10 @@
 const express = require('express');
 const Comentario = require('../modelo/comentarioModule');
+var router = express.Router();
 const conexion = require('../modelo/database');
-const app = express();
 
 
-app.post('/comentario/agregar', function (req, res) {
+router.post('/', function (req, res) {
 
     let body = req.body;
 
@@ -25,7 +25,7 @@ app.post('/comentario/agregar', function (req, res) {
 
 });
 
-app.get('/comentario/obtener', function (req, res) {
+router.get('/', function (req, res) {
 
     Comentario.find({})
         .then((data) => {
@@ -40,23 +40,23 @@ app.get('/comentario/obtener', function (req, res) {
 });
 
 
-app.delete('/comentario/eliminar/:id', function(req ,res){
+router.delete('/:id', function(req ,res){
 
     id = req.params.id;
 
     Comentario.remove({_id:id})
     .then( (data) => {
-        res.json( { Ok : true });
+        res.json( { ok : true });
         res.end();
     })
     .catch( (erro) => {
-        res.json( { Ok : false });
+        res.json( { ok : false });
         res.end();
     });   
 
 });
 
-app.get('/comentario/obtener/:blog', function(req ,res){
+router.get('/:blog', function(req ,res){
 
     blog = req.params.blog;
 
@@ -72,4 +72,4 @@ app.get('/comentario/obtener/:blog', function(req ,res){
 
 });
 
-module.exports = app;
+module.exports = router;

@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 const Sitio = require('../modelo/sitioModule');
 const conexion = require('../modelo/database');
 
 
-app.post('/sitio/agregar', function(req ,res){
+router.post('/', function(req ,res){
     let body = req.body;
 
     let sitio = new Sitio({
@@ -31,7 +31,7 @@ app.post('/sitio/agregar', function(req ,res){
 });
 
 
-app.get('/sitios', function(req ,res){
+router.get('/', function(req ,res){
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
@@ -48,7 +48,7 @@ app.get('/sitios', function(req ,res){
 });
 
 
-app.get('/sitio/obtener/:id', function(req ,res){
+router.get('/:id', function(req ,res){
 
     id = req.params.id;
 
@@ -63,7 +63,7 @@ app.get('/sitio/obtener/:id', function(req ,res){
     });   
 });
 
-app.get('/sitio/eliminar/:id', function(req ,res){
+router.get('/:id', function(req ,res){
 
     id = req.params.id;
 
@@ -79,7 +79,7 @@ app.get('/sitio/eliminar/:id', function(req ,res){
 
 });
 
-app.get('/sitio/buscar/:usuario', function(req ,res){
+router.get('/usuario/:usuario', function(req ,res){
 
     idUsuario = req.params.usuario;
 
@@ -95,4 +95,4 @@ app.get('/sitio/buscar/:usuario', function(req ,res){
 
 });
 
-module.exports = app;
+module.exports = router;

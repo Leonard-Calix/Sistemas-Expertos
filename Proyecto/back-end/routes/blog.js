@@ -1,12 +1,12 @@
 const express = require('express');
 const Blog = require('../modelo/blogModule');
 const conexion = require('../modelo/database');
-const app = express();
+const router = express.Router();
 
 
 // GUARDAR BLOG
 
-app.post('/blog/agregar', function(req, res) {
+router.post('/', function(req, res) {
 
   let body = req.body;
 
@@ -29,7 +29,7 @@ app.post('/blog/agregar', function(req, res) {
 
 });
 
-app.get('/blogs', function(req ,res){
+router.get('/', function(req ,res){
 
 
   Blog.find({})
@@ -43,7 +43,7 @@ app.get('/blogs', function(req ,res){
   });   
 });
 
-app.get('/Blog/obtener/:id', function(req ,res){
+router.get('/:id', function(req ,res){
 
     id = req.params.id;
 
@@ -58,7 +58,7 @@ app.get('/Blog/obtener/:id', function(req ,res){
     });   
 });
 
-app.get('/blog/eliminar/:id', function(req ,res){
+router.delete('/:id', function(req ,res){
 
     id = req.params.id;
 
@@ -74,7 +74,7 @@ app.get('/blog/eliminar/:id', function(req ,res){
 
 });
 
-app.get('/blog/buscar/:usuario', function(req ,res){
+router.get('/usuario/:usuario', function(req ,res){
 
     id = req.params.usuario;
 
@@ -92,4 +92,4 @@ app.get('/blog/buscar/:usuario', function(req ,res){
 
 
 
-module.exports = app;
+module.exports = router;

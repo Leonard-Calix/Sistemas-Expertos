@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
+router = express.Router();
 const Usuario = require('../modelo/usuarioModule');
 const conexion = require('../modelo/database');
+var bcryptjs = require('bcryptjs');
 
+// ============================================
+//   Agregar un usuario
+// ============================================
 
-app.post('/usuario/agregar', function(req ,res){
+app.post('/', function(req ,res){
     let body = req.body;
 
     let usuario = new Usuario({
@@ -12,39 +17,47 @@ app.post('/usuario/agregar', function(req ,res){
         apellido: body.apellido,
         correo: body.correo,
         direccion: body.direccion,
-        contrasenia: body.contrasena,
+        contrasenia:  bcryptjs.hashSync(body.contrasenia, 10),
         role: body.role,
     });
 
     usuario.save((error, usuarioDB) => {
         
         if (error){
-            return res.status(400).json({ Ok : false });
+            return res.status(400).json({ ok : false });
         }
 
         res.json( { id : usuarioDB._id });
     });    
 });
 
+// ============================================
+//   obtener usuarios
+// ============================================
 
-
-app.get('/usuarios', function(req ,res){
+app.get('/', function(req ,res){
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
   
-    Usuario.find({role: 'admin'})
+    Usuario.find({role: 'admin'}, { nombre:true, apellido:true, correo: true, direccion: true, _id:true })
+    .skip(desde)
+    .limit(5)
     .then( (data) => {
         res.send(data);
         res.end();
     })
-    .catch( (erro) => {
+    .catch( (error) => {
         res.send(error);
         res.end();
     });   
 });
 
-app.get('/usuarioClientes', function(req ,res){
+// ============================================
+//   Agregar un clientes
+// ============================================
+
+app.get('/clientes', function(req ,res){
  
     Usuario.find({role: 'normal'})
     .then( (data) => {
@@ -57,9 +70,11 @@ app.get('/usuarioClientes', function(req ,res){
     });   
 });
 
+// ============================================
+//   Obtener un usuario
+// ============================================
 
-
-app.get('/usuario/obtener/:id', function(req ,res){
+app.get('/:id', function(req ,res){
 
     id = req.params.id;
     
@@ -74,52 +89,24 @@ app.get('/usuario/obtener/:id', function(req ,res){
     });   
 });
 
-app.delete('/usuario/eliminar/:id', function(req ,res){
+// ============================================
+//   borrar un usuario
+// ============================================
+
+app.delete('/:id', function(req ,res){
 
     id = req.params.id;
     
     Usuario.remove({_id:id})
     .then( (data) => {
-        res.json( { Ok : true });
+        res.json( { ok : true });
         res.end();
     })
     .catch( (erro) => {
-        res.json( { Ok : false });
+        res.json( { ok : false });
         res.end();
     });   
 
-});
-
-
-app.post('/usuario/admin/login', function(req ,res){
-  
-    let body = req.body;
-
-    Usuario.find({role: 'admin', correo: body.correo, contrasenia: body.contrasenia })
-    .then( (data) => {
-        res.send(data);
-        //res.send({ 'idUsuario' : data[0]._id });
-        res.end();
-    })
-    .catch( (erro) => {
-        res.send(error);
-        res.end();
-    });   
-});
-
-app.post('/usuario/cliente/login', function(req ,res){
-  
-    let body = req.body;
-
-    Usuario.find({role: 'normal', correo: body.correo, contrasenia: body.contrasenia })
-    .then( (data) => {
-        res.send(data);
-        res.end();
-    })
-    .catch( (erro) => {
-        res.send(error);
-        res.end();
-    });   
 });
 
 module.exports = app;

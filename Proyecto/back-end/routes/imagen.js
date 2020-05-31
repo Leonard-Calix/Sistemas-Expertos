@@ -1,14 +1,19 @@
 const express = require('express');
+const router = express.Router();
 const fileUpload = require('express-fileupload');
 const Image = require('../modelo/imagenModule');
 const conexion = require('../modelo/database');
-const app = express();
+const path = require('path');
+const fs = require('fs');
 
+var app = express();
 app.use(fileUpload());
 
-// GUARDAR IMAGENES
+// ============================================
+//   Cargar archivos
+// ============================================
 
-app.post('/cargarImage', function (req, res) {
+router.post('/', function (req, res) {
 
   if (!req.files) {
     return res.status(400).json({ Ok: false, error: 'No se seleciono un archivo' });
@@ -26,14 +31,14 @@ app.post('/cargarImage', function (req, res) {
 
 
   // Use the mv() method to place the file somewhere on your server
-  archivo.mv(`www/imagenes/${archivo.name}`, function (err) {
+  archivo.mv(`archivos/${archivo.name}`, function (err) {
     if (err)
       return res.status(500).json(err);
 
     let imagen = new Image({
       nombre: archivo.name,
       extension: extension,
-      url: `imagenes/${archivo.name}`
+      url: `archivos/${archivo.name}`
     });
 
     imagen.save((error, imagen) => {
@@ -43,18 +48,24 @@ app.post('/cargarImage', function (req, res) {
       }
 
       res.json({ Ok: true, mensaje: 'Imagen subida correctamente', imagen });
-     
+
     });
 
   });
 });
 
 
-// OBTENER IMAGENES
+// ============================================
+//   Obtener imagenes
+// ============================================
 
-app.get('/obtenerImagenes', function (req, res) {
+router.get('/imagenes', function (req, res) {
+  let inicio = req.query.inicio || 0;
+  inicio = Number(inicio);
 
   Image.find({ extension: { $in: ["png", "jpg", "jpeg"] } })
+    .skip(inicio)
+    .limit(3)
     .then((data) => {
       res.send(data);
       res.end();
@@ -65,10 +76,11 @@ app.get('/obtenerImagenes', function (req, res) {
     });
 });
 
+// ============================================
+//   Obtener imagen por documentos
+// ============================================
 
-// OBTENER ARCHIVOS
-
-app.get('/obtenerArchivos', function (req, res) {
+router.get('/documentos', function (req, res) {
 
   Image.find({ extension: { $in: ["pdf", "docx"] } })
     .then((data) => {
@@ -81,9 +93,11 @@ app.get('/obtenerArchivos', function (req, res) {
     });
 });
 
-// OBTENER VIDEO
+/// ============================================
+//   Obtener imagen videos
+// ============================================
 
-app.get('/obtenerVideo', function (req, res) {
+router.get('/videos', function (req, res) {
 
   Image.find({ extension: 'mp4' })
     .then((data) => {
@@ -97,9 +111,11 @@ app.get('/obtenerVideo', function (req, res) {
 });
 
 
-//OBTENER UNA IMAGEN
+// ============================================
+//   Obtener imagen por id
+// ============================================
 
-app.get('/obtenerImagen/:id', function (req, res) {
+router.get('/imagen/:id', function (req, res) {
 
   id = req.params.id;
 
@@ -114,20 +130,37 @@ app.get('/obtenerImagen/:id', function (req, res) {
     });
 });
 
-app.get('/imagen/eliminar/:id', function (req, res) {
+// ============================================
+//   Obtener imagen po nombre
+// ============================================
 
-  id = req.params.id;
+router.get('/:img', function (req, res) {
 
-  Image.remove({ _id: id })
-    .then((data) => {
-      res.json({ Ok: true });
-      res.end();
-    })
-    .catch((erro) => {
-      res.json({ Ok: false });
-      res.end();
-    });
+  img = req.params.img;
+
+  var pathIMagen = path.resolve(__dirname, `../archivos/${img}`);
+
+  if (fs.existsSync(pathIMagen)) {
+    res.sendFile(pathIMagen);
+  } else {
+    var pathINoMagen = path.resolve(__dirname, `../archivos/no-image.png`);
+    res.sendFile(pathINoMagen);
+  }
 
 });
 
-module.exports = app;
+// ============================================
+//   Eliminar archivos
+// ============================================
+
+router.delete('/:nombre', (req, res) => {
+
+  res.status(200).json({
+    ok: true,
+    mensale: 'Funciona'
+  });
+
+});
+
+
+module.exports = router;
