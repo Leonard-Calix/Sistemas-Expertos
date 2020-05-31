@@ -6,11 +6,9 @@ var serverIndex = require('serve-index');
 
 
 var app = express();
-app.use(express.static('www'));
 app.use(express.static(__dirname + '/'));
 app.use('/archivos', serverIndex(__dirname + '/archivos'));
 app.use(cors());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
