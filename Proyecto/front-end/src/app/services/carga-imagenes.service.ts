@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CargaImagenesService {
 
-  private CARPETA_IMAGENES = 'img';
-
-  urlServicio:string = 'http://localhost:4300/';
+  urlServicio:string = 'http://192.168.0.16:4300/';
 
   constructor(private httpCient:HttpClient) { }
-
-  respuesta:any = '';
-
 
   ngOnInit(): void {
   }
@@ -22,30 +18,30 @@ export class CargaImagenesService {
 
   cargarImagenes(formData){
 
-    return this.httpCient.post('http://localhost:4300/cargarImage' , formData );
+    return this.httpCient.post('http://192.168.0.16:4300/archivos' , formData );
     
   }
 
-  getImagenes(){
+  obtenerImagenes(data):Observable<any>{
   
-    return this.httpCient.get('http://localhost:4300/obtenerImagenes');
+    return this.httpCient.get('http://192.168.0.16:4300/archivos/imagenes?inicio='+data);
 
   }
 
   getVideo(){
   
-    return this.httpCient.get('http://localhost:4300/obtenerVideo');
+    return this.httpCient.get('http://192.168.0.16:4300/archivos/videos');
 
   }
 
-  getArchivos(){
+  obtenerArchivos(){
   
-    return this.httpCient.get('http://localhost:4300/obtenerArchivos');
+    return this.httpCient.get('http://192.168.0.16:4300/archivos/documentos');
 
   }
 
-  getImagen(id){
-    return this.httpCient.get(`http://localhost:4300/obtenerImagen/${id}`);
+  obtenerImagen(id){
+    return this.httpCient.get(`http://localhost:4300/archivos/imagen/${id}`);
   }
 
 }

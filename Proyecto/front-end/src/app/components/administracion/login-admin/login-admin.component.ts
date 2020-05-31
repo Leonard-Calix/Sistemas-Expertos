@@ -33,7 +33,7 @@ export class LoginAdminComponent implements OnInit {
         console.log(data);
 
         this.auth.setEsAdmin();
-        this.auth.setUsuario(data[0]._id);
+        this.auth.setUsuario(data[0].id);
         this.auth.getEsAdmin();
         this.auth.getUsuario();
 

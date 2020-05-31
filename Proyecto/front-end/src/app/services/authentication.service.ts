@@ -33,7 +33,7 @@ export class AuthenticationService {
   }
 
   loginAdmin(user){
-    return this.http.post('http://localhost:4300/usuario/admin/login', user);
+    return this.http.post('http://192.168.0.16:4300/usuario/admin/login', user);
   }
 
   setEsAdmin(){
@@ -55,7 +55,7 @@ export class AuthenticationService {
   /////////////////////////////////////////////////////////////////////////////////////
 
   loginCliente(user){
-    return this.http.post('http://localhost:4300/usuario/cliente/login', user);
+    return this.http.post('http://192.168.0.16:4300/login/cliente', user);
   }
 
   getEsCliente(){

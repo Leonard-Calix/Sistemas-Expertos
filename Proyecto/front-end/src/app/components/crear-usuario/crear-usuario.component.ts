@@ -40,7 +40,7 @@ export class CrearUsuarioComponent implements OnInit {
     //console.log("foma valores" , formulario.value);
     //console.log(this.usuario);
 
-    this.servicesUsuario.addUsuario(this.usuario).subscribe((res: any )=> {
+    this.servicesUsuario.agregarUsuario(this.usuario).subscribe((res: any )=> {
       if (res) {
         console.log(res.id);
 

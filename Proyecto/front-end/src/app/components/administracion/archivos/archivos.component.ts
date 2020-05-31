@@ -19,7 +19,7 @@ export class ArchivosComponent implements OnInit {
   
   obtenerArchivos() {
 
-    this._cargaImagenes.getArchivos().subscribe((data: any) => {
+    this._cargaImagenes.obtenerArchivos().subscribe((data: any) => {
       this.archivos = data;
       console.log(data)
     });

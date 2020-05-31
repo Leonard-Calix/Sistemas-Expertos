@@ -196,7 +196,7 @@ export class CrearBlog2Component implements OnInit {
   }
 
   obtenerImagenes() {
-    this.servicioImagenes.getImagenes().subscribe((data: any) => {
+    this.servicioImagenes.obtenerImagenes(0).subscribe((data: any) => {
       this.imagenes = data;
     });
   }
