@@ -109,18 +109,7 @@ router.get('/:img', function (req, res) {
 
 });
 
-// ============================================
-//   Eliminar archivos
-// ============================================
 
-router.delete('/:nombre', (req, res) => {
-
-  res.status(200).json({
-    ok: true,
-    mensale: 'Funciona'
-  });
-
-});
 
 
 module.exports = router;

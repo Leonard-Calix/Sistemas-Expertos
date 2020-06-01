@@ -1,6 +1,9 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
+var fs = require('fs');
+var path = require('path');
+
 
 const Image = require('../modelo/imagenModule');
 const conexion = require('../modelo/database');
@@ -52,6 +55,36 @@ app.post('/', function (req, res) {
     });
 
   });
+
+});
+
+// ============================================
+//   Eliminar archivos
+// ============================================
+
+app.delete('/:nombre', (req, res) => {
+
+  Image.remove({ nombre: req.params.nombre }, {})
+    .then(result => {
+
+      let pathImagen = './archivos/' + req.params.nombre;
+
+      if (fs.existsSync(pathImagen)) {
+        fs.unlink(pathImagen)
+        return res.status(200).json({
+          ok: true,
+          mensaje: result
+        });
+      }
+
+      res.status(400).json({ ok: false, mensaje: 'fallo' });
+
+    }).catch(error => {
+      res.status(400).json({
+        ok: false,
+        mensaje: error
+      });
+    });
 
 });
 
