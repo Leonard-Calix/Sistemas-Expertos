@@ -20,7 +20,7 @@ export class CrearUsuarioComponent implements OnInit {
     apellido: null,
     direccion: null,
     correo: null,
-    contrasena: null,
+    contrasenia: null,
     confirmacion: null,
     role : 'normal',
     acepta: false,

@@ -7,7 +7,7 @@
         </h2>
         <div class="row">
             <div class="col-md-12 mb-3 mt-3 p-3">
-                <img class="img-fluid rounded centrado" [src]="'http://localhost:4300/' + blog.urlImagen" alt="{{ blog.urlImagen }}">
+                <img class="img-fluid rounded centrado" [src]="'http://192.168.0.16:4300/' + blog.urlImagen" alt="{{ blog.urlImagen }}">
             </div>
         </div>
         <main>
@@ -18,7 +18,7 @@
                     <div id="contenido" class="col-lg-12 col-md-12 col-xs-12 col-12" *ngFor="let post of posts">
                         <div class="col-md-12 mb-1 p-3">
                             <h4 class="text-primary text-center"><b>{{ post.titulo }}</b></h4><br>
-                            <img class="img-fluid rounded centrado" [src]=" 'http://localhost:4300/' + post.imagen" alt="blog.nombre">
+                            <img class="img-fluid rounded centrado" [src]=" 'http://192.168.0.16:4300/' + post.imagen" alt="blog.nombre">
                         </div>
                         <p *ngFor="let parrafo of post.posts" class="p-2 mt-3 mb-3">
                             {{ parrafo }}

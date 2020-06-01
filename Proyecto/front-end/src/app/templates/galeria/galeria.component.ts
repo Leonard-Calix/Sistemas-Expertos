@@ -26,10 +26,10 @@ export class GaleriaComponent implements OnInit {
 
     for (let i = 0; i < this.galeria.length; i++) {
       this.servicioImagenes.obtenerImagen(this.galeria[i]).subscribe((imagen:any) => {
-        //console.log(imagen[0]);
+        console.log(imagen);
         //temp.push(imagen[0]);
-        this.imagenes.push(imagen[0]);
-        console.log(this.imagenes);
+        this.imagenes.push(imagen);
+        //console.log(this.imagenes);
       });
     };
   }

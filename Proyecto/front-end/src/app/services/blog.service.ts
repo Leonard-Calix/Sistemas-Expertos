@@ -36,5 +36,9 @@ export class BlogService {
   editarShorcustBlog(blog){
     return this.servicio.put(`http://192.168.0.16:4300/shortcuts/blog`, blog);
   }
+
+  obtenerBlogCategoria(categoria){
+    return this.servicio.get(`http://192.168.0.16:4300/blog/categoria/${categoria}`);
+  }
   
 }

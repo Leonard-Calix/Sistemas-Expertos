@@ -20,8 +20,8 @@ export class CrearBlogComponent implements OnInit {
 
   blog:any = {
     nombre: null,
-    comentario: 'true',
-    categorias: '0',
+    comentarios: 'true',
+    categoria: '0',
     urlImagen: null,
     usuario: ''
   }

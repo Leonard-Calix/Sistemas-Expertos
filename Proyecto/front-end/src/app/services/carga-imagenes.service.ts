@@ -41,7 +41,7 @@ export class CargaImagenesService {
   }
 
   obtenerImagen(id){
-    return this.httpCient.get(`http://localhost:4300/archivos/imagen/${id}`);
+    return this.httpCient.get(`http://192.168.0.16:4300/archivos/imagen/${id}`);
   }
 
 }

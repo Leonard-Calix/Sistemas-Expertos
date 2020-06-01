@@ -16,12 +16,12 @@
       <div class="form-group">
         <label>Comentarios</label><br>
         <div class="custom-control custom-radio custom-control-inline">
-          <input id="permitir" type="radio" [(ngModel)]="blog.comentario" name="comentarios" value="true"
+          <input id="permitir" type="radio" [(ngModel)]="blog.comentarios" name="comentarios" value="true"
             class="custom-control-input">
           <label class="custom-control-label" for="permitir">Perminir</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
-          <input id="noPermitir" type="radio" [(ngModel)]="blog.comentario" name="comentarios" value="false"
+          <input id="noPermitir" type="radio" [(ngModel)]="blog.comentarios" name="comentarios" value="false"
             class="custom-control-input">
           <label class="custom-control-label" for="noPermitir">No permitir</label>
         </div>
@@ -46,7 +46,7 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
           </div>
-          <select [(ngModel)]="blog.categorias" class="custom-select" id="inputGroupSelect01">
+          <select [(ngModel)]="blog.categoria" class="custom-select" id="inputGroupSelect01">
             <option *ngFor="let item of categorias" value=" {{ item.nombre }} ">{{ item.nombre }}</option>
           </select>
         </div>

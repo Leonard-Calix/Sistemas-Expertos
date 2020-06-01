@@ -11,10 +11,13 @@ export class ComentariosComponent implements OnInit {
   constructor( private serviceComentario: ComentariosService) { }
 
   comentarios:any = [];
+  cantidad: any;
+  desde: any;
 
   ngOnInit(): void {
 
     this.obtenerComentarios();
+    this.desde = 0;
   }
 
 
@@ -30,8 +33,10 @@ export class ComentariosComponent implements OnInit {
   }
 
   obtenerComentarios(){
-    this.serviceComentario.obtenerComentarios().subscribe( (data:any) =>{
-      this.comentarios = data;
+    this.serviceComentario.obtenerComentarios(this.desde).subscribe( (data:any) =>{
+      this.comentarios = data.comentarios;
+      this.cantidad = data.cantidad;
+
       console.log(data);
       
     });;
@@ -48,13 +53,24 @@ export class ComentariosComponent implements OnInit {
         console.log(data);  
       });
     }
+        
+  }
 
+ 
+  cambiar(valor : number){
+    let temp = this.desde + valor;
 
-    
-    
+    if (temp >= this.cantidad) {
+      return;
+    }
 
-    
-    
+    if (temp < 0) {
+      return;
+    }
+ 
+    this.desde += valor;
+    this.obtenerComentarios();
+
   }
 
 }

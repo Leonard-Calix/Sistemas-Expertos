@@ -4,6 +4,7 @@ import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BlogService } from '@services/blog.service';
 import { CargaImagenesService } from '@services/carga-imagenes.service';
+import swal from 'sweetalert';
 
 
 @Component({
@@ -59,8 +60,10 @@ export class CrearBlog2Component implements OnInit {
   idBlog: string;
   accion: string;
   imagenes: any;
+  cantidadImagenes:number;
   informacion: any = [];
   info:any = [];
+  inicio:number;
   
   public Editor = ClassicEditor;
 
@@ -87,6 +90,7 @@ export class CrearBlog2Component implements OnInit {
 
     }
 
+    this.inicio = 0;
     this.obtenerImagenes();
 
   }
@@ -188,6 +192,9 @@ export class CrearBlog2Component implements OnInit {
       console.log('respuesta');
       //console.log(data);
       
+      swal('Importante',`Nuevo post agregado con exito`, 'success');
+
+
       if(data){
         this.router.navigate(['/index/blogsUsuario']);
       }
@@ -196,8 +203,9 @@ export class CrearBlog2Component implements OnInit {
   }
 
   obtenerImagenes() {
-    this.servicioImagenes.obtenerImagenes(0).subscribe((data: any) => {
-      this.imagenes = data;
+    this.servicioImagenes.obtenerImagenes(this.inicio).subscribe((data: any) => {
+      this.imagenes = data.imagenes;
+      this.cantidadImagenes = data.cantidad; 
     });
   }
 
@@ -212,6 +220,21 @@ export class CrearBlog2Component implements OnInit {
     }
   }
 
+  cambiar(valor : number){
+    let desde = this.inicio + valor;
+
+    if (desde >= this.cantidadImagenes) {
+      return;
+    }
+
+    if (desde < 0) {
+      return;
+    }
+ 
+    this.inicio += valor;
+    this.obtenerImagenes();
+
+  }
   
   
 }

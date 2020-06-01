@@ -26,7 +26,7 @@ export class MiBlogsComponent implements OnInit {
   obtenerBlogs(){
     this.servicio.obtenerBlogUsuario(this.usuarioAuntenticado).subscribe( (data: any) => {
       this.blogs = data;
-      //console.log(data);
+      console.log(data);
     });
   }
 

@@ -15,8 +15,8 @@ export class ComentariosService {
     return this.http.post(`${this.url}`, comentario);
   }
 
-  obtenerComentarios(){
-    return this.http.get(`${this.url}`);
+  obtenerComentarios(desde){
+    return this.http.get(`${this.url}?inicio=${desde}`);
   }
 
   obtenerComentariosBlog(blog){
