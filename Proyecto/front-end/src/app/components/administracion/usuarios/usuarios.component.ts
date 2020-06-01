@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '@services/usuario.service';
 import { UsuarioInterface } from "../../interfaces/usuario.Interface";
 import { Router } from "@angular/router";
-import { Route } from '@angular/compiler/src/core';
+//import swal from 'sweetalert';
 
 @Component({
   selector: 'app-usuarios',
@@ -18,7 +18,7 @@ export class UsuariosComponent implements OnInit  {
     apellido: '',
     direccion: '',
     correo: '',
-    contrasena: '',
+    contrasenia: '',
     confirmacion: '',
     role : 'admin',
     acepta: false
@@ -47,6 +47,7 @@ export class UsuariosComponent implements OnInit  {
       console.log(data);
       if (data.ok) {
         this.inicio = 0 ;
+        //swal('Importante','Usuario eliminado con exito', 'success');
         this.getUsuarios();
       }
     });
@@ -57,6 +58,8 @@ export class UsuariosComponent implements OnInit  {
       console.log(data);
       if(data.id){
         //this.router.navigate(['/admin/usuarios']);
+        //swal('Importante',`Usuario ${ this.usuario.nombre } guardado con exito`, 'success');
+
         this.getUsuarios();
         this.limpiarUsuario(this.usuario);
         this.inicio = 0;
@@ -70,7 +73,7 @@ export class UsuariosComponent implements OnInit  {
     this.usuario.apellido = null;
     this.usuario.direccion = null;
     this.usuario.correo = null;
-    this.usuario.contrasena = null;  
+    this.usuario.contrasenia = null;  
   }
 
 }

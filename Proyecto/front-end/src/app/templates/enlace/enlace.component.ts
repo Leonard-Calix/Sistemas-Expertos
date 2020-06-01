@@ -17,7 +17,7 @@ export class EnlaceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log( this.enlace.titulo );
+    console.log('Informacion enlace : ', this.enlace.titulo );
     this.obtenerArchivo();
 
   }

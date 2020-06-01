@@ -2,3 +2,8 @@
     margin-left: auto !important;
     margin-right: auto !important;
   }
+
+  img{
+    display:block;
+    margin:auto;
+    }

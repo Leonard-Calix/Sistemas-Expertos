@@ -14,7 +14,7 @@ export class UsuarioService {
     apellido: null,
     direccion: null,
     correo: null,
-    contrasena: null,
+    contrasenia: null,
     confirmacion: null,
     role : 'usuario',
     acepta: false,
@@ -28,8 +28,8 @@ export class UsuarioService {
     return this.http.get('http://192.168.0.16:4300/usuario');
   }
 
-  agregarUsuario(usuario){
-    return this.http.post('http://192.168.0.16:4300/usuario', usuario );
+  agregarUsuario(data){
+    return this.http.post('http://192.168.0.16:4300/usuario', data );
   }
 
   obtenerUsuario(id){

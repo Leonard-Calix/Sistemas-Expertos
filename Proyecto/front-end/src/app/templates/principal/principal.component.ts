@@ -72,6 +72,8 @@ export class PrincipalComponent implements OnInit {
 
     if (this.esImagen) {
       this.obtenerImagen(this.shortcutsImagen.id);
+      console.log( this.shortcutsImagen );
+
     }
     //console.log( this.shortcutsEnlace );
     
@@ -143,14 +145,14 @@ export class PrincipalComponent implements OnInit {
 
   obtenerImagen(id) {
     this.seviceImagen.obtenerImagen(id).subscribe((data: any) => {
-      this.imagen = data[0];
-      //console.log(data[0]);
+      this.imagen = data;
+      console.log('imagen ', data);
     });
   }
 
   obtenerShourcouts() {
     this.servicio.obtenerShorcouts(this.idSitio).subscribe((data: any) => {
-      //console.log(data);
+      console.log(data);
       if (data) {
         this.contenido = data[0].shortcut;
         this.infomacionSitio();

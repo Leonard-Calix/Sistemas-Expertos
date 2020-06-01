@@ -1,0 +1,10 @@
+.fondo{
+
+    height: 88vh !important;
+    width: 100%;
+
+}
+
+.puntero{
+    cursor: pointer;
+}

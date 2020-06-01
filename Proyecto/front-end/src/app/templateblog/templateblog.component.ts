@@ -31,7 +31,7 @@ export class TemplateblogComponent implements OnInit {
     usuario: ''
   }
 
-  post = {
+  post: any = {
     titulo: '',
     imagen: '',
     posts: '',

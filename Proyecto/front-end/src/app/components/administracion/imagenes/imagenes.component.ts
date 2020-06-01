@@ -12,7 +12,8 @@ export class ImagenesComponent implements OnInit {
   loading:boolean;
   imagenSelecionada :any;
   desde:number;
-  cantidadRegistros;
+  cantidadImagenes;
+  inicio;
 
   constructor(private _cargaImagenes: CargaImagenesService) {
 
@@ -33,33 +34,31 @@ export class ImagenesComponent implements OnInit {
 
     this.desde = 0;
     this.obtenerImagenes();
-    this.cantidadRegistros = this.imagenes.length;
 
 
   }
 
-  siguiente(){
-    this.desde += 3;
+  cambiar(valor : number){
+    let desde = this.desde + valor;
 
-   
+    if (desde >= this.cantidadImagenes) {
+      return;
+    }
+
+    if (desde < 0) {
+      return;
+    }
+ 
+    this.desde += valor;
     this.obtenerImagenes();
-    
 
   }
-
-  anterior(){
-    this.desde -= 3;
-
-    this.obtenerImagenes();
-    
-
-  }
-
 
   obtenerImagenes() {
     this.imagenes = []
       this._cargaImagenes.obtenerImagenes(this.desde).subscribe((data: any) => {
-        this.imagenes = data;
+        this.imagenes = data.imagenes;
+        this.cantidadImagenes = data.cantidad;
         console.log(data)
       });
   }

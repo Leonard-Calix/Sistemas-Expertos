@@ -13,7 +13,7 @@
     </div>
 </div>
 -->
-
+<!--
 <div class="row">
     <div *ngFor="let img of imagenes" class="animated fadeIn card text-white col-lg-3 col-md-6 col-12 col-md-3 p-0 m-4">
         <img [src]="'http://192.168.0.16:4300/archivos/' + img.nombre" class="img-fluid" alt="{{img.nombre}}">
@@ -26,14 +26,18 @@
         </div>
     </div>
 </div>
-
+-->
 <br><br>
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li (click)="siguiente()" class="page-item"> <button class="page-link" >Siguiente</button></li>
-      <li (click)="anterior()" class="page-item"> <button class="page-link" >Anterior</button></li>
-    </ul>
-  </nav>
+<div  class="row">
+    <div *ngFor="let imagen of imagenes" class="col-4 animated fadeIn">
+      <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" [src]="'http://192.168.0.16:4300/' + imagen.url"  alt="">
+      <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
+    </div>
+  </div>
+  <div class="row container-fluid">
+    <button (click)="cambiar(3)" class="btn-primary btn-sm" >Siguiente</button>
+    <button (click)="cambiar(-3)" class="btn-primary btn-sm ml-auto" >Anterior</button>          
+  </div>
 
 
 

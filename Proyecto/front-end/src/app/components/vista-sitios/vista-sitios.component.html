@@ -1,4 +1,4 @@
-<div class="container mt-3 animated fadeIn">
+<div class="container mt-3 animated fadeIn d-none">
     <div class="row pt-2"><br><br>
         <div *ngFor="let sitio of sitios" class="col-md-5 col-12 m-2 mr-auto ml-auto">
             <a target="_blank" [routerLink]="['/template', sitio._id,' ']">
@@ -12,4 +12,43 @@
             </a>
         </div>
     </div>
+</div>
+
+<div class="pt-5 fondo bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="container mt-3 animated fadeIn">
+                    <div class="row pt-2"><br><br>
+                        <div *ngFor="let sitio of sitios" class="col-md-6 col-12 mb-3">
+                            <a target="_blank" [routerLink]="['/template', sitio._id,' ']">
+                                <div class="card bg-dark text-white">
+                                    <img class="card-img img-fluid" src="../../../assets/img/template-sitio.png"
+                                        alt="Card image">
+                                    <div class="card-img-overlay">
+                                        <h5 class="text-white "> <b class="nombre-sitio">{{ sitio.titulo }}</b> </h5>
+                                        <br>
+                                        <p class="text-white "><b class="descripcion-sitio">{{ sitio.descripcion }}</b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 d-none d-sm-block d-none d-md-block mt-3">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Categorias</h4>
+                    </div>
+                    <ul class="list-group list-group-flush bg-white">
+                        <li class="list-group-item puntero">Todos los blogs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

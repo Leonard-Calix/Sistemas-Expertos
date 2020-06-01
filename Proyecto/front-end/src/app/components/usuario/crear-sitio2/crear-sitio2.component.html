@@ -60,12 +60,18 @@
         </div>
 
         <div *ngIf="galeria" class="row">
-          <div *ngFor="let imagen of imagenes" class="col-4">
-            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" [src]=" 'http://localhost:4300/'+ imagen.url" alt="">
-            <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
+          <div *ngFor="let imagen of imagenes animated fadeIn" class="col-4">
+            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'"
+              class="img-fluid rounded pb-2" [src]=" 'http://192.168.0.16:4300/'+ imagen.url" alt="">
+            <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'"
+              class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
           </div>
         </div>
-        
+        <div class="row container-fluid">
+          <button (click)="cambiar(3)" class="btn-primary btn-sm">Siguiente</button>
+          <button (click)="cambiar(-3)" class="btn-primary btn-sm ml-auto">Anterior</button>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
@@ -89,15 +95,18 @@
         <div class="row">
           <div *ngFor="let item of archivos" class="bg-light col-lg-3 col-md-6 col-12 p-0 m-0">
             <div *ngIf="item.extension=='docx' || item.extension=='pdf'" class="card-body">
-              <img *ngIf="item.extension=='docx'" src="../../../../assets/img/word.png" width="50%" class="img-fluid mb-2" alt="">
-              <img *ngIf="item.extension=='pdf'" src="../../../../assets/img/pdf.png" width="50%" class="img-fluid mb-2" alt="">
+              <img *ngIf="item.extension=='docx'" src="../../../../assets/img/word.png" width="50%"
+                class="img-fluid mb-2" alt="">
+              <img *ngIf="item.extension=='pdf'" src="../../../../assets/img/pdf.png" width="50%" class="img-fluid mb-2"
+                alt="">
               <p *ngIf="item.extension=='docx' || item.extension=='pdf'" class="p-2" class="text-sm text-muted">Nombre :
                 {{item.nombre}}</p>
-                <p *ngIf="item.extension=='docx' || item.extension=='pdf'" class="p-2" class="text-sm text-muted">
-                 <b>ID:</b>  {{item._id}}</p>
+              <p *ngIf="item.extension=='docx' || item.extension=='pdf'" class="p-2" class="text-sm text-muted">
+                <b>ID:</b> {{item._id}}</p>
             </div>
           </div>
         </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>

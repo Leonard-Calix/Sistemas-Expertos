@@ -1,19 +1,64 @@
-
-<div class="container mt-3 animated fadeIn" >
+<div class="container mt-3 animated fadeIn d-none">
     <div class="row">
 
-        <div class="col-md-5 col-12 m-2" *ngFor="let blog of blogs"  >
-            <a  [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" target="_blank">
+        <div class="col-md-5 col-12 m-2" *ngFor="let blog of blogs">
+            <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" target="_blank">
                 <div class="card bg-dark text-white">
-                    <img class="card-img img-fluid" src="../../../assets/img/img-8.jpg" alt="Card image">
+                    <img class="card-img img-fluid" [src]="'http://192.168.0.16:4300/' + blog.urlImagen"
+                        alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-title"> <b>{{ blog.nombre }}</b> </h5>
-                      <p class="card-text"><b>{{ blog.descripcion }}</b></p>
+                        <h5 class="card-title"> <b>{{ blog.nombre }}</b> </h5>
+                        <p class="card-text"><b>{{ blog.descripcion }}</b></p>
                     </div>
                 </div>
             </a>
         </div>
 
-    </div> 
+    </div>
 </div>
 
+<div class="pt-5 fondo bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-12">
+                <div class="row">
+                    <div class="col-md-6 col-12 animated fadeIn" *ngFor="let blog of blogs">
+                        <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" target="_blank">
+                            <div class="card bg-dark text-white">
+                                <img class="card-img img-fluid" [src]="'http://192.168.0.16:4300/' + blog.urlImagen"
+                                    alt="Card image">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title"><b>{{ blog.nombre }}</b> </h5>
+                                    <p class="card-text"><b>{{ blog.descripcion }}</b></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="blogs.length==0" class="row">
+                    <div class="col-12">
+                        <div  class="animated fadeIn alert alert-danger" role="alert">
+                            <h4 class="alert-heading">No hay resultados para esta categoriacrar</h4>
+                            <p>No se encontraron blog de esta categoria.</p>
+                            <hr>
+                            <p>Seleccione otra categoria.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 d-none d-sm-block d-none d-md-block">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Categorias</h4>
+                    </div>
+                    <ul class="list-group list-group-flush bg-white">
+                        <li (click)="mostrarTodo()" class="list-group-item puntero">Todos los blogs</li>
+                        <li *ngFor="let cat of categorias" (click)="cambiarCategoria(cat.nombre)"
+                            class="list-group-item puntero">{{ cat.nombre }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

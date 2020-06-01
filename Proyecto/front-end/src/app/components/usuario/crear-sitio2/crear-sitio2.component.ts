@@ -3,6 +3,8 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SitioService } from "@services/sitio.service";
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CargaImagenesService } from '@services/carga-imagenes.service';
+//import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-crear-sitio2',
@@ -15,6 +17,8 @@ export class CrearSitio2Component implements OnInit {
   imagenes: any[];
   videos: any[];
   archivos: any[];
+  inicio:number = 0;
+  cantidadImagenes: number;
 
   coleccion = [
     {
@@ -109,8 +113,9 @@ export class CrearSitio2Component implements OnInit {
   }
 
   obtenerImagenes() {
-    this.servicioImagenes.obtenerImagenes(0).subscribe((data: any) => {
-      this.imagenes = data;
+    this.servicioImagenes.obtenerImagenes(this.inicio).subscribe((data: any) => {
+      this.imagenes = data.imagenes;
+      this.cantidadImagenes = data.cantidad;
     });
   }
 
@@ -157,9 +162,29 @@ export class CrearSitio2Component implements OnInit {
 
 
       if (data) {
+
+      //swal('Importante',`Nuevo sitio agregado con exito`, 'success');
+
+
         this.router.navigate(['/index/sitiosUsuario']);
       }
     });
+
+  }
+
+  cambiar(valor : number){
+    let desde = this.inicio + valor;
+
+    if (desde >= this.cantidadImagenes) {
+      return;
+    }
+
+    if (desde < 0) {
+      return;
+    }
+ 
+    this.inicio += valor;
+    this.obtenerImagenes();
 
   }
 
