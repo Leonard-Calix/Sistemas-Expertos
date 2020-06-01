@@ -1,5 +1,4 @@
 var express = require('express');
-const fileUpload = require('express-fileupload');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var serverIndex = require('serve-index');
@@ -15,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // importar rutas
 
+var rutaUpload = require('./routes/cargas');
 var rutaUsuario = require('./routes/usuario');
 var rutaSitio = require('./routes/sitio');
 var rutaImagenes = require('./routes/imagen');
@@ -28,6 +28,7 @@ var busquedaBusqueda = require('./routes/busqueda');
 
 
 app.use('/archivos', rutaImagenes);
+app.use('/upload', rutaUpload);
 app.use('/usuario', rutaUsuario);
 app.use('/sitio', rutaSitio);
 app.use('/shortcuts/sitio', rutaSCSitio);

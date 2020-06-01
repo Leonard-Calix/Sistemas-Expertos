@@ -27,10 +27,25 @@ router.post('/', function (req, res) {
 
 router.get('/', function (req, res) {
 
+    let inicio = req.query.inicio || 0;
+    inicio = Number(inicio);
+
     Comentario.find({})
+        .skip(inicio)
+        .limit(5)
         .then((data) => {
-            res.send(data);
-            res.end();
+
+            Comentario.countDocuments((err, cantidad) => {
+
+                res.json({
+                    comentarios: data,
+                    cantidad
+                });
+                res.end();
+
+            });
+
+           
         })
         .catch((erro) => {
             res.send(error);

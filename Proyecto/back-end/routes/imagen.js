@@ -9,57 +9,13 @@ const fs = require('fs');
 var app = express();
 app.use(fileUpload());
 
-// ============================================
-//   Cargar archivos
-// ============================================
-
-router.post('/', function (req, res) {
-
-  if (!req.files) {
-    return res.status(400).json({ Ok: false, error: 'No se seleciono un archivo' });
-  }
-
-  let archivo = req.files.archivo;
-  let nombreCortado = archivo.name.split('.');
-  let extension = nombreCortado[nombreCortado.length - 1];
-
-  let extenciones = ['jpg', 'jpeg', 'png', 'pdf', 'docx', 'mp4'];
-
-  if (extenciones.indexOf(extension) < 0) {
-    return res.status(400).json({ Ok: false, error: 'Extension no valida' });
-  }
-
-
-  // Use the mv() method to place the file somewhere on your server
-  archivo.mv(`archivos/${archivo.name}`, function (err) {
-    if (err)
-      return res.status(500).json(err);
-
-    let imagen = new Image({
-      nombre: archivo.name,
-      extension: extension,
-      url: `archivos/${archivo.name}`
-    });
-
-    imagen.save((error, imagen) => {
-
-      if (error) {
-        return res.status(400).json({ Ok: false });
-      }
-
-      res.json({ Ok: true, mensaje: 'Imagen subida correctamente', imagen });
-
-    });
-
-  });
-});
-
 
 // ============================================
 //   Obtener imagenes
 // ============================================
 
 router.get('/imagenes', function (req, res) {
+
   let inicio = req.query.inicio || 0;
   inicio = Number(inicio);
 
@@ -67,10 +23,14 @@ router.get('/imagenes', function (req, res) {
     .skip(inicio)
     .limit(3)
     .then((data) => {
-      res.send(data);
-      res.end();
+
+      Image.countDocuments((error, cantidad)=> {
+        res.json( { imagenes: data, cantidad} );
+        res.end();
+      });
+      
     })
-    .catch((erro) => {
+    .catch((error) => {
       res.send(error);
       res.end();
     });
@@ -119,7 +79,7 @@ router.get('/imagen/:id', function (req, res) {
 
   id = req.params.id;
 
-  Image.find({ _id: id })
+  Image.findOne({ _id: id })
     .then((data) => {
       res.send(data);
       res.end();

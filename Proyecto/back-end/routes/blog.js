@@ -4,7 +4,9 @@ const conexion = require('../modelo/database');
 const router = express.Router();
 
 
-// GUARDAR BLOG
+// ============================================
+//   Guardar blog
+// ============================================
 
 router.post('/', function(req, res) {
 
@@ -12,9 +14,9 @@ router.post('/', function(req, res) {
 
   let blog = new Blog({
       nombre: body.nombre,
-      categoria: body.categorias,
+      categoria: body.categoria,
       urlImagen: body.urlImagen,
-      comentarios: body.comentario,
+      comentarios: body.comentarios,
       usuario: body.usuario
   });
 
@@ -28,6 +30,10 @@ router.post('/', function(req, res) {
   }); 
 
 });
+
+// ============================================
+//   Obtener blogs
+// ============================================
 
 router.get('/', function(req ,res){
 
@@ -43,6 +49,10 @@ router.get('/', function(req ,res){
   });   
 });
 
+// ============================================
+//   Obtener blog por id
+// ============================================
+
 router.get('/:id', function(req ,res){
 
     id = req.params.id;
@@ -57,6 +67,10 @@ router.get('/:id', function(req ,res){
         res.end();
     });   
 });
+
+// ============================================
+//   Eliminar blog por el id
+// ============================================
 
 router.delete('/:id', function(req ,res){
 
@@ -74,6 +88,10 @@ router.delete('/:id', function(req ,res){
 
 });
 
+// ============================================
+//   Obtener blog de usuario
+// ============================================
+
 router.get('/usuario/:usuario', function(req ,res){
 
     id = req.params.usuario;
@@ -90,6 +108,26 @@ router.get('/usuario/:usuario', function(req ,res){
 
 });
 
+// ============================================
+//   Obtener blog por categoria
+// ============================================
+
+router.get('/categoria/:categoria', function(req ,res){
+
+    let parametro = req.params.categoria;
+    let regex = new RegExp( parametro, 'i' );
+
+    Blog.find({ categoria : regex }, { })
+    .then( (data) => {
+        res.send(data);
+        res.end();
+    })
+    .catch( (erro) => {
+        res.send(erro);
+        res.end();
+    });  
+
+});
 
 
 module.exports = router;

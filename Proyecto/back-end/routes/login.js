@@ -51,8 +51,7 @@ router.post('/cliente', (req, res) => {
 
             if (!bcryptjs.compareSync(body.contrasenia, usuario.contrasenia)) {
                 return res.status(200).json({
-                    ok: false,
-                    usuario
+                    ok: false
                 });
             }
 
