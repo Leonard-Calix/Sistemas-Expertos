@@ -5,7 +5,7 @@ var nombreBaseDatos ="expertos";
 
 class Database{
     constructor(){
-        this.conectar();
+        this.conexionMongoAtlas();
     }
 
     conectar(){
@@ -14,6 +14,17 @@ class Database{
             console.log("Se conecto a la base de datos...");
         })
         .catch(error=>{
+            console.error(JSON.stringify(error));   
+        });
+    }
+
+    conexionMongoAtlas(){
+        mongoose.connect(`mongodb+srv://leonardo:calix1994@bloggerweb-ykwq4.mongodb.net/BloggerWeb?retryWrites=true&w=majority`)
+        .then(()=>{
+            console.log("Se conecto a la base de datos...");
+        })
+        .catch(error=>{
+            
             console.error(JSON.stringify(error));   
         });
     }
