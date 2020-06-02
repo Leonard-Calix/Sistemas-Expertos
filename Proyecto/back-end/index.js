@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+app.set('puerto', process.env.PORT || 4300);
+
+
 // importar rutas
 
 var rutaUpload = require('./routes/cargas');
@@ -25,6 +28,8 @@ var rutaCategoria = require('./routes/categoria');
 var rutaComentario = require('./routes/comentario');
 var rutaLogin = require('./routes/login');
 var busquedaBusqueda = require('./routes/busqueda');
+var rutaApp = require('./routes/app');
+
 
 
 app.use('/archivos', rutaImagenes);
@@ -38,10 +43,9 @@ app.use('/categoria', rutaCategoria);
 app.use('/comentario', rutaComentario);
 app.use('/login', rutaLogin);
 app.use('/busqueda', busquedaBusqueda);
+app.use('/', rutaApp);
 
 
+app.listen( app.get('puerto') , () => console.log(`Servidor levantado en el puerto ${ app.get('puerto') }`) );
 
-app.listen('4300', function () {
-    console.log('Servidor levantado... en el PUERTO 4300!')
-});
 

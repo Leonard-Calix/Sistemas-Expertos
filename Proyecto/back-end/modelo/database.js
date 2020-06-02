@@ -5,7 +5,7 @@ var nombreBaseDatos ="expertos";
 
 class Database{
     constructor(){
-        this.conexionMongoAtlas();
+        this.conectar();
     }
 
     conectar(){
