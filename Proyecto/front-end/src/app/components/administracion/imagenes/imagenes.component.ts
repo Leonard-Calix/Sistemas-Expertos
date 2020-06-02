@@ -17,7 +17,7 @@ export class ImagenesComponent implements OnInit {
 
   constructor(private _cargaImagenes: CargaImagenesService) {
 
-    this.loading = false;
+    this.loading = true;
 
   }
 
@@ -28,9 +28,7 @@ export class ImagenesComponent implements OnInit {
 
     this.loading = false;
 
-
-
-    }, 1500);
+    }, 1000);
 
     this.desde = 0;
     this.obtenerImagenes();
@@ -48,7 +46,7 @@ export class ImagenesComponent implements OnInit {
     if (desde < 0) {
       return;
     }
- 
+    this.loading = true;
     this.desde += valor;
     this.obtenerImagenes();
 
@@ -59,7 +57,8 @@ export class ImagenesComponent implements OnInit {
       this._cargaImagenes.obtenerImagenes(this.desde).subscribe((data: any) => {
         this.imagenes = data.imagenes;
         this.cantidadImagenes = data.cantidad;
-        console.log(data)
+        console.log(data);
+        this.loading = false;
       });
   }
 

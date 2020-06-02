@@ -4,7 +4,7 @@ import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BlogService } from '@services/blog.service';
 import { CargaImagenesService } from '@services/carga-imagenes.service';
-import swal from 'sweetalert';
+//import swal from 'sweetalert';
 
 
 @Component({
@@ -192,7 +192,7 @@ export class CrearBlog2Component implements OnInit {
       console.log('respuesta');
       //console.log(data);
       
-      swal('Importante',`Nuevo post agregado con exito`, 'success');
+      //swal('Importante',`Nuevo post agregado con exito`, 'success');
 
 
       if(data){

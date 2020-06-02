@@ -45,7 +45,7 @@
                [(ngModel)]="usuario.confirmacion"  required #confirmacion="ngModel" minlength="6" >
                <div *ngIf="confirmacion.errors?.required && confirmacion.touched" class="mensaje-error" >Este campo es requerido</div>
                <div *ngIf="confirmacion.errors?.minlength" class="mensaje-error" >la contrasena debes de ser por lo menos {{ confirmacion.errors.minlength.requiredLength }} caracteres</div>
-               <div *ngIf="usuario.confirmacion!=usuario.contrasena && !confirmacion.errors?.minlength" class="mensaje-error" >Las contrasenas no coinciden</div>
+               <div *ngIf="usuario.confirmacion!=usuario.contrasenia && !confirmacion.errors?.minlength" class="mensaje-error" >Las contrasenas no coinciden</div>
             </div>
           </div>
           <div class="custom-control custom-checkbox">

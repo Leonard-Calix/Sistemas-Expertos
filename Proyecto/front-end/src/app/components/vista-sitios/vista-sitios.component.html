@@ -1,4 +1,4 @@
-<div class="container mt-3 animated fadeIn d-none">
+<div class="container mt-3 animated fadeIn">
     <div class="row pt-2"><br><br>
         <div *ngFor="let sitio of sitios" class="col-md-5 col-12 m-2 mr-auto ml-auto">
             <a target="_blank" [routerLink]="['/template', sitio._id,' ']">
@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<div class="pt-5 fondo bg-light">
+<div class="pt-5 fondo bg-light d-none">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
