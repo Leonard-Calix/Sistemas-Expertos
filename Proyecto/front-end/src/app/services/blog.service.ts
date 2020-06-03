@@ -9,36 +9,40 @@ export class BlogService {
 
   constructor( private servicio:HttpClient ) { }
 
+  urlServivicios: string = 'https://blogerweb.herokuapp.com';
+  
+
+
   obtenerBlogUsuario(usuario: String){
-    return this.servicio.get('http://192.168.0.16:4300/blog/usuario/'+usuario);
+    return this.servicio.get(`${ this.urlServivicios }/blog/usuario/${ usuario }`);
   }
 
   guardarBlog(blog){
-    return this.servicio.post('http://192.168.0.16:4300/blog', blog);
+    return this.servicio.post(`${ this.urlServivicios }/blog`, blog);
   }
 
   obtenerBlog(blog){
-    return this.servicio.get(`http://192.168.0.16:4300/blog/${blog}`);
+    return this.servicio.get(`${ this.urlServivicios }/blog/${blog}`);
   }
 
   obtenerBlogs(){
-    return this.servicio.get(`http://192.168.0.16:4300/blog`);
+    return this.servicio.get(`${ this.urlServivicios }/blog`);
   }
 
   obtenerShorcustBlog(blog){
-    return this.servicio.get(`http://192.168.0.16:4300/shortcuts/blog/${blog}`);
+    return this.servicio.get(`${ this.urlServivicios }/shortcuts/blog/${blog}`);
   }
 
   guardarShorcustBlog(shortcuts){
-    return this.servicio.post(`http://192.168.0.16:4300/shortcuts/blog`, shortcuts);
+    return this.servicio.post(`${ this.urlServivicios }/shortcuts/blog`, shortcuts);
   }
 
   editarShorcustBlog(blog){
-    return this.servicio.put(`http://192.168.0.16:4300/shortcuts/blog`, blog);
+    return this.servicio.put(`${ this.urlServivicios }/shortcuts/blog`, blog);
   }
 
   obtenerBlogCategoria(categoria){
-    return this.servicio.get(`http://192.168.0.16:4300/blog/categoria/${categoria}`);
+    return this.servicio.get(`${ this.urlServivicios }/blog/categoria/${categoria}`);
   }
   
 }

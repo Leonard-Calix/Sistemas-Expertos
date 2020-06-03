@@ -2,10 +2,9 @@
     <div class="row">
 
         <div class="col-md-5 col-12 m-2" *ngFor="let blog of blogs">
-            <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" target="_blank">
+            <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]">
                 <div class="card bg-dark text-white">
-                    <img class="card-img img-fluid" [src]="'http://192.168.0.16:4300/' + blog.urlImagen"
-                        alt="Card image">
+                    <img class="card-img img-fluid" [src]="'https://blogerweb.herokuapp.com/' + blog.urlImagen"  >
                     <div class="card-img-overlay">
                         <h5 class="card-title"> <b>{{ blog.nombre }}</b> </h5>
                         <p class="card-text"><b>{{ blog.descripcion }}</b></p>
@@ -22,11 +21,10 @@
         <div class="row">
             <div class="col-lg-8 col-md-8 col-12">
                 <div class="row">
-                    <div class="col-md-6 col-12 animated fadeIn" *ngFor="let blog of blogs">
-                        <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" target="_blank">
+                    <div class="col-md-6 col-12 animated fadeIn mb-2" *ngFor="let blog of blogs">
+                        <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" >
                             <div class="card bg-dark text-white">
-                                <img class="card-img img-fluid" [src]="'http://192.168.0.16:4300/' + blog.urlImagen"
-                                    alt="Card image">
+                                <img class="card-img img-fluid" [src]=" 'https://blogerweb.herokuapp.com/' + blog.urlImagen" alt="Card image">
                                 <div class="card-img-overlay">
                                     <h5 class="card-title"><b>{{ blog.nombre }}</b> </h5>
                                     <p class="card-text"><b>{{ blog.descripcion }}</b></p>

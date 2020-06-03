@@ -11,6 +11,7 @@ export class AuthenticationService {
   esCliente: boolean = false;
   userId: string ='';
   localStorage = window.localStorage;
+  urlServivios: string = 'https://blogerweb.herokuapp.com';
 
   constructor( private http: HttpClient ) {
 
@@ -33,7 +34,7 @@ export class AuthenticationService {
   }
 
   loginAdmin(user){
-    return this.http.post('http://192.168.0.16:4300/login/administrador', user);
+    return this.http.post(`${ this.urlServivios }/login/administrador`, user);
   }
 
   setEsAdmin(){
@@ -55,7 +56,7 @@ export class AuthenticationService {
   /////////////////////////////////////////////////////////////////////////////////////
 
   loginCliente(user){
-    return this.http.post('http://192.168.0.16:4300/login/cliente', user);
+    return this.http.post(`${ this.urlServivios }/login/cliente`, user);
   }
 
   getEsCliente(){

@@ -9,6 +9,8 @@ import { UsuarioInterface } from "../components/interfaces/usuario.Interface";
 })
 export class UsuarioService {
 
+  utl:string = 'https://blogerweb.herokuapp.com';
+
   usuario:UsuarioInterface = {
     nombre: null,
     apellido: null,
@@ -25,19 +27,19 @@ export class UsuarioService {
   constructor( private http:HttpClient ) { }
   
   obtenerUsuarios(data){
-    return this.http.get('http://192.168.0.16:4300/usuario');
+    return this.http.get(`${ this.utl }/usuario`);
   }
 
   agregarUsuario(data){
-    return this.http.post('http://192.168.0.16:4300/usuario', data );
+    return this.http.post(`${ this.utl }/usuario`, data );
   }
 
   obtenerUsuario(id){
-    return this.http.get(`http://192.168.0.16:4300/usuario/`+id);
+    return this.http.get(`${ this.utl }/usuario/`+id);
   }
 
   eliminarUsuario(id){
-    return this.http.delete('http://192.168.0.16:4300/usuario/'+id );
+    return this.http.delete(`${ this.utl }/usuario/`+id );
   }
 
   

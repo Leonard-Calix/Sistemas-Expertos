@@ -30,7 +30,7 @@
 <br><br>
 <div *ngIf="!loading" class="row">
     <div *ngFor="let imagen of imagenes" class="col-4 animated fadeIn">
-      <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" [src]="'http://192.168.0.16:4300/' + imagen.url"  alt="">
+      <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" [src]="'https://blogerweb.herokuapp.com/' + imagen.url"  alt="">
       <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
     </div>
   </div>
@@ -55,7 +55,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="card bg-dark text-white text-center">
-                            <img class="card-img img-fluid rounded"  [src]="'http://192.168.0.16:4300/archivos/' + imagenSelecionada"  alt="Card image">
+                            <img class="card-img img-fluid rounded"  [src]="'https://blogerweb.herokuapp.com/archivos/' + imagenSelecionada"  alt="Card image">
                         </div>
                     </div>
                 </div>

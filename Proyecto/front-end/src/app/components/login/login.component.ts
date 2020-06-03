@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { UsuarioService } from '@services/usuario.service';
 import { AuthenticationService } from '@services/authentication.service';
 import { Router } from '@angular/router';
@@ -16,7 +15,8 @@ export class LoginComponent implements OnInit {
   usuario:any = {
     correo: '',
     contrasenia: ''  
-  }
+  };
+  
   error = false;
 
   constructor( private servicio: UsuarioService, private auth: AuthenticationService, private router:Router ) { }
@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
     console.log(this.usuario);
 
     this.auth.loginCliente(this.usuario).subscribe( (data:any) => {
+      console.log(data);
       if(data.ok){
-        console.log(data);
         this.auth.setEsCliente();
         this.auth.setUsuario(data.id);
 
@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
         this.auth.getEsCliente();
 
         this.router.navigate(['/index/perfil']);
-
 
       }else{
         console.log(data);

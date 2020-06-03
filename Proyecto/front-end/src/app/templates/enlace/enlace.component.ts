@@ -17,7 +17,7 @@ export class EnlaceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log('Informacion enlace : ', this.enlace.titulo );
+    console.log('Informacion enlace : ', this.enlace );
     this.obtenerArchivo();
 
   }
@@ -25,7 +25,7 @@ export class EnlaceComponent implements OnInit {
   obtenerArchivo(){
     this.servicio.obtenerImagen(this.enlace.id).subscribe((data:any) => {
       this.archivo = data;
-      console.log( data);
+      console.log('Archivo : ',  this.archivo);
       
     });
   }

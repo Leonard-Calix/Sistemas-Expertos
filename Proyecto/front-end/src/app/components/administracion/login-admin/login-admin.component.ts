@@ -25,15 +25,15 @@ export class LoginAdminComponent implements OnInit {
     let usuario = {
       correo: this.correo,
       contrasenia: this.contrasenia
-    }
+    };
 
     this.auth.loginAdmin(usuario).subscribe( (data:any) => {
 
-      if(data.length > 0){
+      if(data.ok){
         console.log(data);
 
         this.auth.setEsAdmin();
-        this.auth.setUsuario(data[0].id);
+        this.auth.setUsuario(data.id);
         this.auth.getEsAdmin();
         this.auth.getUsuario();
 

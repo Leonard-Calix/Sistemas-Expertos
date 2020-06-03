@@ -8,7 +8,7 @@ export class CategoriaService {
 
   constructor( private http: HttpClient ) { }
 
-  link:string = 'http://192.168.0.16:4300/categoria/';
+  link:string = 'https://blogerweb.herokuapp.com/categoria';
 
   obtenerCategorias(){
     return this.http.get(`${this.link}`);

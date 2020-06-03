@@ -36,6 +36,7 @@ export class SubirImagenComponent implements OnInit {
       formData.append('archivo', this.archivo[0], this.archivo[0].name);
 
       this._cargaImagenes.cargarImagenes(formData).subscribe((res) => {
+        
         console.log(res);
         this.res = res
         this.progreso = 100;

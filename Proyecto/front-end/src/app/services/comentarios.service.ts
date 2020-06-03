@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ComentariosService {
 
-  url = 'http://192.168.0.16:4300/comentario';
+  url = 'https://blogerweb.herokuapp.com/comentario';
 
   constructor( private http: HttpClient ) { }
 

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CargaImagenesService {
 
-  urlServicio:string = 'http://192.168.0.16:4300/';
+  urlServicio:string = 'https://blogerweb.herokuapp.com';
 
   constructor(private httpCient:HttpClient) { }
 
@@ -18,30 +18,30 @@ export class CargaImagenesService {
 
   cargarImagenes(formData){
 
-    return this.httpCient.post('http://192.168.0.16:4300/archivos' , formData );
+    return this.httpCient.post(` ${ this.urlServicio }/upload` , formData );
     
   }
 
   obtenerImagenes(data):Observable<any>{
   
-    return this.httpCient.get('http://192.168.0.16:4300/archivos/imagenes?inicio='+data);
+    return this.httpCient.get(`${ this.urlServicio }/archivos/imagenes?inicio=${ data }`);
 
   }
 
   getVideo(){
   
-    return this.httpCient.get('http://192.168.0.16:4300/archivos/videos');
+    return this.httpCient.get(` ${ this.urlServicio }/archivos/videos`);
 
   }
 
   obtenerArchivos(){
   
-    return this.httpCient.get('http://192.168.0.16:4300/archivos/documentos');
+    return this.httpCient.get(`${ this.urlServicio }/archivos/documentos`);
 
   }
 
   obtenerImagen(id){
-    return this.httpCient.get(`http://192.168.0.16:4300/archivos/imagen/${id}`);
+    return this.httpCient.get(`${ this.urlServicio }/archivos/imagen/${id}`);
   }
 
 }

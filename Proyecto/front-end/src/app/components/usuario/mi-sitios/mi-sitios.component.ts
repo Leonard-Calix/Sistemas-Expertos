@@ -17,15 +17,15 @@ export class MiSitiosComponent implements OnInit {
   ngOnInit(): void {
 
     this.usuarioAuntenticado = this.auth.userId;
-    this.obtenerSitios();
+    this.obtenerSitios();    
+    console.log( 'Usuario : ' , this.usuarioAuntenticado );
     
-
   }
 
   obtenerSitios(){
     this.servicio.obtenerSitioUsuario(this.usuarioAuntenticado).subscribe( (data: any) => {
       this.sitios = data;
-      console.log(data);
+      console.log('Sitios :', data);
     });
   }
 

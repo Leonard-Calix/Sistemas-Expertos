@@ -57,7 +57,7 @@
 
         <div *ngIf="galeria" class="row">
           <div *ngFor="let imagen of imagenes" class="col-4 animated fadeIn">
-            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" [src]="'http://192.168.0.16:4300/' + imagen.url"  alt="">
+            <img *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="img-fluid rounded pb-2" [src]="'https://blogerweb.herokuapp.com/' + imagen.url"  alt="">
             <p *ngIf="imagen.extension=='png' || imagen.extension=='jpg' || imagen.extension=='jpeg'" class="text-sm text-title"> <b> <span class="text-primary">Id</span> </b> {{ imagen._id }} </p>
           </div>
         </div>

@@ -57,7 +57,7 @@ export class ImagenesComponent implements OnInit {
       this._cargaImagenes.obtenerImagenes(this.desde).subscribe((data: any) => {
         this.imagenes = data.imagenes;
         this.cantidadImagenes = data.cantidad;
-        console.log(data);
+        //console.log(data);
         this.loading = false;
       });
   }

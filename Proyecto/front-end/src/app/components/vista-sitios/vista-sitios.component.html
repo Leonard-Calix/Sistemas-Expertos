@@ -1,7 +1,7 @@
 <div class="container mt-3 animated fadeIn">
     <div class="row pt-2"><br><br>
         <div *ngFor="let sitio of sitios" class="col-md-5 col-12 m-2 mr-auto ml-auto">
-            <a target="_blank" [routerLink]="['/template', sitio._id,' ']">
+            <a [routerLink]="['/template', sitio._id, ' ']">
                 <div class="card bg-dark text-white">
                     <img class="card-img img-fluid" src="../../../assets/img/template-sitio.png" alt="Card image">
                     <div class="card-img-overlay">

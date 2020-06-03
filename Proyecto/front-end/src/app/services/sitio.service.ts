@@ -6,30 +6,32 @@ import { HttpClient } from "@angular/common/http";
 })
 export class SitioService {
 
+  urlServicios: any = 'https://blogerweb.herokuapp.com';
+
   constructor( private peticion: HttpClient  ) { }
 
   ontenerUnSitio(sitio: String){
-    return this.peticion.get('http://192.168.0.16:4300/sitio/'+sitio);
+    return this.peticion.get(`${ this.urlServicios }/sitio/${ sitio }`);
   }
 
   obtenerSitios(){
-    return this.peticion.get('http://192.168.0.16:4300/sitio');
+    return this.peticion.get(`${ this.urlServicios }/sitio`);
   }
 
   obtenerSitioUsuario(usuario: String){
-    return this.peticion.get('http://192.168.0.16:4300/sitio/usuario/'+usuario);
+    return this.peticion.get(`${ this.urlServicios }/sitio/usuario/${ usuario } `);
   }
 
   guardarSitio(sitio){
-    return this.peticion.post('http://192.168.0.16:4300/sitio', sitio);
+    return this.peticion.post(`${ this.urlServicios }/sitio`, sitio);
   }
 
   guardarShorcouts(sitio){
-    return this.peticion.post('http://192.168.0.16:4300/shortcuts/sitio', sitio);
+    return this.peticion.post(`${ this.urlServicios }/shortcuts/sitio`, sitio);
   }
 
   obtenerShorcouts(idSitio){
-    return this.peticion.get('http://192.168.0.16:4300/shortcuts/sitio/'+idSitio);
+    return this.peticion.get(`${ this.urlServicios }/shortcuts/sitio/${ idSitio }`);
   }
 
 }
