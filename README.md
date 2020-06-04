@@ -35,7 +35,6 @@ ng serve --o ( para abrir el proyecto en un navegador )
 ```
 USUARIO : leonardo
 CONTRASEÑA : calix1994 
-ng serve --o ( para abrir el proyecto en un navegador )
 
 ```
 
