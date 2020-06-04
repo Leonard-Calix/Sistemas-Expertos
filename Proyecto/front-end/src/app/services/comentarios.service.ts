@@ -28,6 +28,6 @@ export class ComentariosService {
   }
 
   realizarBusqueda(parametro){
-    return this.http.get(`http://192.168.0.16:4300/busqueda/${parametro}`);
+    return this.http.get(`https://blogerweb.herokuapp.com/busqueda/${parametro}`);
   }
 }

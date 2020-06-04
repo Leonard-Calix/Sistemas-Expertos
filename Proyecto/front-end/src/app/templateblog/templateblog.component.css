@@ -1,6 +1,6 @@
 .centrado{
-    margin:10px auto;
-    display:block;
+    margin:10px auto !important;
+    display:block !important;
 }
 
 .cuerpo{

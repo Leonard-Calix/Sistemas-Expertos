@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-md-5 col-12 m-2" *ngFor="let blog of blogs">
-            <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]">
+            <a target="_blank" [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]">
                 <div class="card bg-dark text-white">
                     <img class="card-img img-fluid" [src]="'https://blogerweb.herokuapp.com/' + blog.urlImagen"  >
                     <div class="card-img-overlay">
@@ -22,7 +22,7 @@
             <div class="col-lg-8 col-md-8 col-12">
                 <div class="row">
                     <div class="col-md-6 col-12 animated fadeIn mb-2" *ngFor="let blog of blogs">
-                        <a [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" >
+                        <a target="_blank" [routerLink]="[ '/plantillaBlogs', blog._id, 'visualizar', ' ' ]" >
                             <div class="card bg-dark text-white">
                                 <img class="card-img img-fluid" [src]=" 'https://blogerweb.herokuapp.com/' + blog.urlImagen" alt="Card image">
                                 <div class="card-img-overlay">
