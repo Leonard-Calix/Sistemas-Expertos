@@ -8,61 +8,35 @@ Para instalar Node JS. accede al siguiente enlace [NodeJS](https://nodejs.org/).
 Instalar el cli de Angular JS. 
 Para instalar Angular JS accede al siguiente enlace [Angular JS](https://angular.io/).
 
+###### Paso 3:
+Instalar mongodb. 
+Para instalar Angular JS accede al siguiente enlace [MongoDB](https://www.mongodb.com/).
+
 
 ### Modulos necesarios para el Back-End
 
-###### Paso 1 instalar node :
+###### Abrir el proyecto en un editor de texto y navegar en la carpeta back-end, luego descargar las dependencias :
 ```
+cd back-end
 npm install 
 
 ```
-
-###### Paso 2 Instalar express :
-```
-npm install espress --save
-
-```
-###### Paso 3 Instalar mongoose :
-```
-npm install mongoose
-
-```
-###### Paso 4 Instalar cors :
-```
-npm install cors
-
-```
-###### Paso 5 Instalar nodemon  :
-```
-npm install cors
-
-```
-
 ### Modulos necesarios para el Front-End
 
-###### Paso 6 Instalar bootstrap  :
+###### Abrir el proyecto en un editor de texto y navegar en la carpeta front-end, luego descargar las dependencias :
 ```
- npm install bootstrap
-
-```
-###### Paso 7 Instalar JQuery :
-```
- npm install jquery
-
-```
-###### Paso 8 Instalar Poper.js  :
-```
- npm install popper.js
-
-```
-###### Paso 9 Instalar bootstrap  :
-```
- npm install font-awesome --save
+cd front-end
+npm install 
+ng serve --o ( para abrir el proyecto en un navegador )
 
 ```
 
+### Credenciales de la conexion de mongoDB
+```
+USUARIO : leonardo
+CONTRASEÑA : calix1994 
+ng serve --o ( para abrir el proyecto en un navegador )
 
-
-
+```
 
 
